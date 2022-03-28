@@ -8,13 +8,27 @@ const cors = require('cors')
 
 const app = express()
 
-
-
 app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('This is root home server page!')
+})
+
+app.get('/recipes', async (req, res) => {
+    const recipes = await Recipe.find()
+    res.json(recipes)
+  })
+  app.get('/recipes/:id', async (req, res) => {
+    try {
+      const { id } = req.params
+      const recipe = await Recipe.findById(id)
+      if (!recipe) throw Error('Park not found.')
+      res.json(recipe)
+    } catch (e) {
+      console.log(e)
+      res.send('Recipe not found!!!')
+    }
 })
 
 app.use(bodyParser.json())
