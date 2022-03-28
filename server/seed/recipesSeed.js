@@ -67,13 +67,174 @@ const main = async () => {
         steps: ""
       },
       { 
-        
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
       },
       { 
-        
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
       },
       { 
-        
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      },
+      { 
+        name: "",
+        type: '',
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
       }
     ]
 
