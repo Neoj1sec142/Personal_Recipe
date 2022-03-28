@@ -5,13 +5,15 @@
 [x][GitHub](https://github.com/Neoj1sec142/Personal_Recipe.git)
 ***
 ### Back End:   
-[] Build functional server/DB   
-[] Build models from ERD  
-[] Begin routes set up  
+[x] Build functional server/DB   
+[x] Build models from ERD  
+[x] Begin routes set up  
+[] Refactor Seed Data   
 [] Create page/add new recipe function  
-[] Get recipe function  
+[x] Get recipe function  
 [] Update recipe function  
-[] Delete recipe function
+[] Delete recipe function   
+[]
 ***
 Front End:
 [] React boilerplate set up
