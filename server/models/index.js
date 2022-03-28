@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const RecipeSchema = require('./recipes')
 const CommentSchema = require('./comments')
 
-const Recipe = mongoose.model('products', RecipeSchema)
-const Comment = mongoose.model('brands', CommentSchema)
+const Recipe = mongoose.model('recipes', RecipeSchema)
+const Comment = mongoose.model('comments', CommentSchema)
 
 module.exports = {
   Recipe,

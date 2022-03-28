@@ -23,7 +23,7 @@ app.get('/recipes', async (req, res) => {
     try {
       const { id } = req.params
       const recipe = await Recipe.findById(id)
-      if (!recipe) throw Error('Park not found.')
+      if (!recipe) throw Error('Recipe not found.')
       res.json(recipe)
     } catch (e) {
       console.log(e)
