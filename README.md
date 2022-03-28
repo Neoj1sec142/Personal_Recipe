@@ -18,7 +18,9 @@ Front End:
 * Homepage:   
     [] Nav Bar   
     [] Search Recipe Bar   
-    [] Ability to display recipe   
+    [] Ability to display recipe 
+* Add New Page:
+    [] Page for all input for new recipes
 * All Recipes:   
     [] Should just display names   
     [] OnClick should displpay       recipe page
