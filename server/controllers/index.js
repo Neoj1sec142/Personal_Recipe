@@ -14,6 +14,27 @@ const addComment = async (req, res) => {
     }
 }
 
+const createRecipe = async () => {
+    try {
+      await Recipe.insertOne({
+        name: "",
+        type: "",
+        ingredients: "",
+        servings: "",
+        time_cook: "",
+        temp: "",
+        caution: "",
+        steps: ""
+      })
+    } catch (error) {
+      console.log('error')
+    } finally {
+      await db.close()
+    }
+  }
+
+  //createRecipe()
+
 const getAllRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find({})
@@ -39,5 +60,6 @@ const getRecipeById = async (req, res) => {
 module.exports = {
     addComment,
     getAllRecipes,
-    getRecipeById
+    getRecipeById,
+    createRecipe
 }
