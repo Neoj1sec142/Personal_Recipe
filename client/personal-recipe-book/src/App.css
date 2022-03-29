@@ -33,3 +33,11 @@
     transform: rotate(360deg);
   }
 }
+.info {
+  display: inline block;
+  width: 700px;
+  height: 700px;
+  text-align: center;
+  color: #282c34;
+  background-color: #61dafb;
+}

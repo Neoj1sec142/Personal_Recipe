@@ -33,6 +33,7 @@ const Main = () => {
     useEffect(() => {
         const getRecipeResults = async () => {
             const recipes = await axios.get("http://localhost:3001/recipes", { mode: 'cors' })
+            console.log(recipes)
             setSearchResults(recipes.data)
         }
         getRecipeResults()
@@ -44,7 +45,7 @@ const Main = () => {
 
     return (
         <div>
-            <div className="dDisplay">
+            <div className="display">
             {searchResults.map((res) => (
                 <Recipe 
                     key={res._id} 

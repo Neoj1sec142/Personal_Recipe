@@ -36,6 +36,9 @@ function App() {
     <div className="App">
       <Nav className ="Nav"/>
       <Search />
+      <div className='search-res'>
+        {`${recipeResult.value}`}
+      </div>
       <div className='AppMain'>
         <Routes>
           <Route path='/' element={<Main />} />
