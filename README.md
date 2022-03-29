@@ -13,21 +13,22 @@
 [x] Get recipe function  
 [] Update recipe function  
 [] Delete recipe function   
-[] Connect DB to front
+[x] Connect DB to front
 ***
 Front End:   
 [x] React boilerplate set up
 * Homepage:   
     [x] Nav Bar   
-    [] Search Recipe Bar   
-    [] Ability to display recipe 
+    [x] Search Recipe Bar 
+    [] Access Data in DB  
+    [] Ability to display search results
 * Add New Page:   
     [] Page for all input for new recipes
 * All Recipes:   
     [] Should just display names   
     [] OnClick should displpay       recipe page
 * About Page:    
-    [] Should display the vision of the app with credits and refs
+    [x] Should display the vision of the app with credits and refs
 ***
 #### Tech Used:
 * Node
