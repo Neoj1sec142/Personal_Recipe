@@ -9,7 +9,7 @@ const main = async () => {
   const recipes = [
       
       { 
-        id: 1,
+        key: 1,
         name: "Chicken a la King",
         type: 'Dinner Meals',
         ingredients: "1/4 cup butter, 1/3 cup all-purpose flour, 1/2 teaspoon salt, 2 cups chicken broth, 2 cups diced cooked chicken 1 bag of frozen peas, 2oz diced pimentos, honey butter biscuts",
@@ -23,7 +23,7 @@ const main = async () => {
 
       
       { 
-        id: 2,
+        key: 2,
         name: "Jonny Walker Old Fashioned",
         type: 'Drinks',
         ingredients: "2sts Jonny Red Label, 1sts of Old Fashion Mix, 1/2&1/2sts of cherry juice-orange juice, orange peel, a cherry on top.",
@@ -37,7 +37,7 @@ const main = async () => {
 
       
       { 
-        id: 3,
+        key: 3,
         name: "Avocado Egg Toast",
         type: 'Breakfast',
         ingredients: "2 Pieces Sourdough bread, 1 avocado, 2 eggs, tomato, parmesain romano cheese, cholula, crushed red peppers, salt & pepper",
@@ -51,7 +51,7 @@ const main = async () => {
 
       
       { 
-        id: 4,
+        key: 4,
         name: "Custard Toast",
         type: 'Breakfast',
         ingredients: "1 slice of bread, 1 egg, 1 tbspn honey, 2 tbspn yogurt, fresh fruit",
@@ -65,7 +65,7 @@ const main = async () => {
 
       
       { 
-        id: 5,
+        key: 5,
         name: "Tropical Bowl",
         type: 'Breakfast',
         ingredients: "1 banana, 1/2 cup frozen mango, 1/2 cup frozen blueberries, 1/4 cup granola, 1 tspn vanilla, 1 tbspn almond butter, 1/2 almond milk",
@@ -79,7 +79,7 @@ const main = async () => {
 
       
       { 
-        id: 6,
+        key: 6,
         name: "Oatmeal Chia Blast",
         type: 'Breakfast',
         ingredients: "1/2 cup oats, 1 tbspn chia seeds, 1/2 mashed banana, 1/2 cup almondmilk, 1/2 tbsn hemp seed, fresh fruit",
@@ -93,7 +93,7 @@ const main = async () => {
 
       
       { 
-        id: 7,
+        key: 7,
         name: "Smoothie Bowl",
         type: 'Breakfast',
         ingredients: "1 banana, 1 cup frozen spinach, 1 cup kale, 1 cup frozen wild berries, 1/2 cup of oats, 1 tspn flax seed, 1 tspn hemp seed, 1/2 oatmilk",
@@ -107,7 +107,7 @@ const main = async () => {
 
       
       { 
-        id: 8,
+        key: 8,
         name: "Buddah Bowl",
         type: 'Dinner',
         ingredients: "1 cup chopped spinach, 1 cup chopped kale, 1 avocado, 1/2 cup toamtoes, 1/2 cup green onions, 1 lemon wedge, 1/2 cup quoina, 1/2 chic peas rinsed, dollop of hummus, balsamic dressing",
@@ -121,7 +121,7 @@ const main = async () => {
 
       
       { 
-        id: 9,
+        key: 9,
         name: "Overnight Oats",
         type: 'Breakfast',
         ingredients: "1/2 cup oats, 1/2 cup almond milk, 1/4 dairy free vanilla yogurt, 1 tbspn rinsed chai seeds, 1 tbspn honey, fresh fruit if necessary",
@@ -135,7 +135,7 @@ const main = async () => {
 
       
       { 
-        id: 10,
+        key: 10,
         name: "Dad's Egg/Tuna Salad Sammy",
         type: 'Dinner',
         ingredients: "1 can tuna, 1 egg yolk, 1 & 1/2 tbspn mayo, 1 tbson mustard, 1 spear dill pickle diced, 3 tbspn fresh diced onion, salt pepper, 4 pieces of buttered toast ",
