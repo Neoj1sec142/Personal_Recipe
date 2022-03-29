@@ -15,18 +15,6 @@ const Search = (props) => {
                 Search
             </button>
         </form>
-        <form onSubmit={props.onSubmit2}>
-            <input 
-                type='number'
-                name='time_cook'
-                value={props.value2}
-                placeholder="Time crunch?"
-                onChange={props.onCheck}
-                />
-            <button type="submit">
-                Search
-            </button>
-        </form>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 const Recipe = (props) => {
     let navigate = useNavigate()
     
-    const showRecipe = () => {
+    const showRecipe = (props) => {
         navigate(`${props.key}`)
     }
     return (

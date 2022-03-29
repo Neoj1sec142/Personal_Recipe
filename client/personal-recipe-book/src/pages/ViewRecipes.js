@@ -1,14 +1,25 @@
-import { useState } from 'react'
+import React from 'react'
+
 
 const ViewRecipes = (props) => {
-  const [recipeId, setRecipeId] = useState(null)
-  const [recipe, setRecipe] = useState([])
-
-  //const getRecipeByMeal = async () => {}
+  
+console.log(props)
+  
 
   return (
-    <div className="container-grid">
-
+    <div className="allRecipes-grid">
+      
+      {/* <div className="img-wrapper">
+       <img style={{display: 'block', width:'500px'}} src={props.image} alt=""/>
+      </div> */}
+      <div className="info-wrapper flex-col">
+        <ul>
+          <li>
+            
+          </li>
+        </ul>
+        
+      </div>
     </div>
   )
 }

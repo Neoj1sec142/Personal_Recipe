@@ -41,3 +41,12 @@
   color: #282c34;
   background-color: #61dafb;
 }
+
+.card {
+  max-width: 300px;
+  max-height: 380px;
+  border-radius: 4px;
+  background-color: #1b1b1b;
+  cursor: pointer;
+  transition: all 0.2s;
+}

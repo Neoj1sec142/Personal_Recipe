@@ -2,28 +2,28 @@ import React, {useState, useEffect} from "react";
 import Search from '../components/Search'
 import { Link } from "react-router-dom";
 import axios from "axios"
-import Recipe from '../components/Recipe'
+import Recipe from './Recipe'
 
 const Main = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const [searchResults, setSearchResults] = useState([])
-    const [searchValue, setSearchValue] = useState()
+    //const [searchValue, setSearchValue] = useState()
     const [searching, setSearching] = useState(false)
 
-    const getSearchResults = async (e) => {
-        setSearching(true)
-        e.preventDefault()
-        const recipes = await axios.get("http://localhost:3001/recipes", { mode: 'cors' })
-        console.log(recipes.data)
-        setSearchResults(recipes.data)
-        setSearchQuery('')
-    }
+    // const getSearchResults = async (e) => {
+    //     setSearching(true)
+    //     e.preventDefault()
+    //     const recipes = await axios.get("http://localhost:3001/recipes", { mode: 'cors' })
+    //     console.log(recipes.data)
+    //     setSearchResults(recipes.data)
+    //     setSearchQuery('')
+    // }
 
     const getRecipeResults = async (e) => {
         setSearching(false)
         e.preventDefault()
         setSearchResults(e.target)
-        setSearchValue('')
+        //setSearchValue('')
     }
 
     const handleChange = (e) => {
@@ -40,7 +40,7 @@ const Main = () => {
     },[])
     
     const handleValue = (e) => {
-        setSearchValue(parseInt(e.target.value))
+       // setSearchValue(parseInt(e.target.value))
     }
 
     return (
@@ -57,12 +57,10 @@ const Main = () => {
             ))}
             </div>
             <Search 
-                onSubmit1={getSearchResults}
-                onSubmit2={getRecipeResults}
+                onSubmit1={getRecipeResults}
                 onChange={handleChange}
                 onCheck={handleValue}
                 value1={searchQuery}
-                value2={searchValue}
             />
             <h2>Search Results</h2>
             <section className="searchResults">

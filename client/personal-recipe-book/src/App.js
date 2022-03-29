@@ -10,7 +10,7 @@ import { Route, Routes, } from 'react-router-dom';
 import axios from 'axios'
 // imports for components and pages
 import About from './pages/About.js'
-import Recipe from './components/Recipe'
+import Recipe from './pages/Recipe'
 import ViewRecipes from './pages/ViewRecipes'
 
 
@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     const getRecipeResults = async () => {
       const recipe = await axios.get("http://localhost:3001/recipes", { mode: 'cors' } )
-      //console.log(recipe)
+      console.log(recipe.data)
         setRecipeResult(recipe.data)
     }
     getRecipeResults()
@@ -44,7 +44,7 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/about' element={<About />}  />
           <Route path='/recipes/:id' element={<Recipe  />} />
-          <Route path='/viewrecipes/' element={<ViewRecipes />} />
+          <Route path='/pages/ViewRecipes.js' element={<ViewRecipes />} />
         </Routes> 
       </div>
     <Footer />
