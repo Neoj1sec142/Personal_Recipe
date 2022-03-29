@@ -1,10 +1,11 @@
 const { Recipe, Comment } = require('./models')
 const express = require('express')
-//const routes = require('./routes')
+const routes = require('./routes/routes')
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001
 const db = require('./db')
 const cors = require('cors')
+
 
 const app = express()
 
@@ -32,7 +33,7 @@ app.get('/recipes', async (req, res) => {
 })
 
 app.use(bodyParser.json())
-//app.use('/api', routes)
+app.use('/api', routes)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'))
 
