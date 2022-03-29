@@ -13,7 +13,8 @@ const Main = () => {
     const getSearchResults = async (e) => {
         setSearching(true)
         e.preventDefault()
-        const recipes = await axios.get("http://localhost:3001/personal-recipe-book")
+        const recipes = await axios.get("http://localhost:3001/recipes", { mode: 'cors' })
+        console.log(recipes.data)
         setSearchResults(recipes.data)
         setSearchQuery('')
     }
@@ -31,7 +32,7 @@ const Main = () => {
 
     useEffect(() => {
         const getRecipeResults = async () => {
-            const recipes = await axios.get("http://localhost:3001/personal-recipe-book")
+            const recipes = await axios.get("http://localhost:3001/recipes", { mode: 'cors' })
             setSearchResults(recipes.data)
         }
         getRecipeResults()

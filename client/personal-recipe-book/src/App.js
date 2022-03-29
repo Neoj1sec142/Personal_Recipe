@@ -24,8 +24,8 @@ function App() {
   // use effect to make the axios call
   useEffect(() => {
     const getRecipeResults = async () => {
-      const recipe = await axios.get("http://localhost:3001/personal-recipe-book")
-      console.log(recipe)
+      const recipe = await axios.get("http://localhost:3001/recipes", { mode: 'cors' } )
+      //console.log(recipe)
         setRecipeResult(recipe.data)
     }
     getRecipeResults()
