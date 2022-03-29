@@ -6,7 +6,8 @@ import About from './pages/About.js'
 import React, { useState, useEffect } from 'react'
 import Recipe from './components/Recipe'
 import Nav from './components/Nav'
-//import axios from 'axios'
+import axios from 'axios'
+import Search from './components/Search';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const getRecipeResults = async () => {
-      //const recipe = await axios.get("http://localhost:3001/recipes")
+      const recipe = await axios.get("http://localhost:3001/personal-recipe-book")
         setRecipeResult(recipe.data)
     }
     getRecipeResults()
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <Nav className ="Nav"/>
+      <Search />
       <div className='AppMain'>
         <Routes>
           <Route path='/' element={<Main />} />
