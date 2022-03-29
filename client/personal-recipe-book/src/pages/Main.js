@@ -32,7 +32,7 @@ const Main = () => {
 
     useEffect(() => {
         const getRecipeResults = async () => {
-            const recipes = await axios.get("http://localhost:3001/recipes", { mode: 'cors' })
+            const recipes = await axios.get("http://localhost:3001/recipes/", { mode: 'cors' })
             console.log(recipes.data)
             setSearchResults(recipes.data)
         }
@@ -48,7 +48,7 @@ const Main = () => {
             <div className="display">
             {searchResults.map((res) => (
                 <Recipe 
-                    key={res.id} 
+                    key={res.key} 
                     name={res.name} 
                     time_cook={res.time_cook} 
                     ingredients={res.ingredients}
@@ -72,7 +72,7 @@ const Main = () => {
                     </Link>
                 ))}
                 {!searching && searchResults.map((result) => (
-                    <Recipe key={result.id} name={result.name} time_cook={result.time_cook} ingredients={result.ingredients} steps={result.steps}/>
+                    <Recipe key={result.key} name={result.name} time_cook={result.time_cook} ingredients={result.ingredients} steps={result.steps}/>
                 ))}
             </section>
             </div>
