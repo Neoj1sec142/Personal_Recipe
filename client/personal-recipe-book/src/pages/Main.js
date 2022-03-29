@@ -32,7 +32,7 @@ const Main = () => {
 
     useEffect(() => {
         const getRecipeResults = async () => {
-            const recipes = await axios.get("http://localhost:3001/recipes/", { mode: 'cors' })
+            const recipes = await axios.get("http://localhost:3001/api/recipes/", { mode: 'cors' })
             console.log(recipes.data)
             setSearchResults(recipes.data)
         }
