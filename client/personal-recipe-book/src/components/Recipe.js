@@ -10,7 +10,11 @@ const Recipe = (props) => {
     return (
         <div onClick={showRecipe}>
             <h3>{props.name}</h3>
-            <p>{props.time_cook}</p>
+            <p>
+                {props.time_cook}
+                {props.ingredients}
+                {props.steps}
+            </p>
         </div>
     )
 }

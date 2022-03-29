@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Search from '../components/Search'
 import { Link } from "react-router-dom";
-import axios from "axios"
+//import axios from "axios"
 import Recipe from '../components/Recipe'
 
 const Main = () => {
@@ -13,7 +13,7 @@ const Main = () => {
     const getSearchResults = async (e) => {
         setSearching(true)
         e.preventDefault()
-        const recipes = await axios.get("http://localhost:3001/recipes")
+        //const recipes = await axios.get("http://localhost:3001/recipes")
         setSearchResults(recipes.data)
         setSearchQuery('')
     }
@@ -31,7 +31,7 @@ const Main = () => {
 
     useEffect(() => {
         const getRecipeResults = async () => {
-            const recipes = await axios.get("http://localhost:3001/recipes")
+            //const recipes = await axios.get("http://localhost:3001/recipes")
             setSearchResults(recipes.data)
         }
         getRecipeResults()

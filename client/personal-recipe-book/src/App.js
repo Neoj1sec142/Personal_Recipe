@@ -6,7 +6,7 @@ import About from './pages/About.js'
 import React, { useState, useEffect } from 'react'
 import Recipe from './components/Recipe'
 import Nav from './components/Nav'
-import axios from 'axios'
+//import axios from 'axios'
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const getRecipeResults = async () => {
-      const recipe = await axios.get("http://localhost:3001/recipes")
+      //const recipe = await axios.get("http://localhost:3001/recipes")
         setRecipeResult(recipe.data)
     }
     getRecipeResults()
