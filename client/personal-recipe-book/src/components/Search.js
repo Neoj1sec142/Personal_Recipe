@@ -20,7 +20,7 @@ const Search = (props) => {
                 type='number'
                 name='time_cook'
                 value={props.value2}
-                placeholder="How much time do you have?"
+                placeholder="Time crunch?"
                 onChange={props.onCheck}
                 />
             <button type="submit">

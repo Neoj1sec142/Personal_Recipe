@@ -13,7 +13,7 @@ const Main = () => {
     const getSearchResults = async (e) => {
         setSearching(true)
         e.preventDefault()
-        const recipes = await axios.get("http://localhost:3001/recipes")
+        const recipes = await axios.get("http://localhost:3001/personal-recipe-book")
         setSearchResults(recipes.data)
         setSearchQuery('')
     }
@@ -31,7 +31,7 @@ const Main = () => {
 
     useEffect(() => {
         const getRecipeResults = async () => {
-            const recipes = await axios.get("http://localhost:3001/recipes")
+            const recipes = await axios.get("http://localhost:3001/personal-recipe-book")
             setSearchResults(recipes.data)
         }
         getRecipeResults()
@@ -44,8 +44,14 @@ const Main = () => {
     return (
         <div>
             <div className="dDisplay">
-            {Recipe.map((res) => (
-                <Recipe key={res._id} name={res.title} desc={res.description} />
+            {searchResults.map((res) => (
+                <Recipe 
+                    key={res._id} 
+                    name={res.title} 
+                    time_cook={res.time_cook} 
+                    ingredients={res.ingredients}
+                    steps={res.steps}
+                />
             ))}
             </div>
             <Search 

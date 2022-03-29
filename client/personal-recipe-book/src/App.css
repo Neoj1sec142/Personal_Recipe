@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -21,11 +17,12 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(43, 16, 165);
 }
 
-.App-link {
+.linkedin {
   color: #61dafb;
+  animation-name: App-logo-spin;
 }
 
 @keyframes App-logo-spin {
