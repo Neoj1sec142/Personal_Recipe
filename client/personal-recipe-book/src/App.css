@@ -33,7 +33,7 @@
     transform: rotate(360deg);
   }
 }
-.info {
+.recipe-card {
   display: inline block;
   width: 700px;
   height: 700px;
@@ -49,4 +49,9 @@
   background-color: #1b1b1b;
   cursor: pointer;
   transition: all 0.2s;
+}
+
+.movie{
+  display: flex;
+  border: 1px solid black;
 }

@@ -11,12 +11,12 @@ const Recipe = (props) => {
     return (
         <div className="recipe-card" >
             <div onClick={showRecipe}>
-                <h3>{props.name}</h3>
+                <h3>Name: {props.name}</h3>
                 <div className='info' >
                     <p>
-                        {`${props.time_cook}
-                        ${props.ingredients}
-                        ${props.steps}`}
+                        Time Cook: {`${props.time_cook}`}
+                        Ingredients: {`${props.ingredients}`}
+                        Directions: {`${props.steps}`}
                     </p>
                 </div>
             </div>
