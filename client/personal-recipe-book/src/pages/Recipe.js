@@ -6,7 +6,7 @@ const Recipe = (props) => {
     let navigate = useNavigate()
     
     const showRecipe = (props) => {
-        navigate(`${props.key}`)
+        navigate(`${props._id}`)
     }
     return (
         <div className="recipe-card" >
