@@ -6,7 +6,7 @@ const Nav = () => {
   return (
     <header>
       <nav>
-        <Link to='/'>Home</Link>
+        <Link to='../pages/Main.js'>Home</Link>
         <Link to='../pages/About.js'>About</Link>
         <Link to='../pages/ViewRecipes.js'>Recipes</Link>
         <Link to='../pages/NewRecipe.js'>New Recipe</Link>

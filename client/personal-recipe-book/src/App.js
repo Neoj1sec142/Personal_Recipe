@@ -26,14 +26,17 @@ function App() {
       <header>
         <Nav className ="Nav"/>
       </header>
+      <main>
       <div className='AppMain'>
         <Routes>
           <Route path='/' element={<Main />} />
+          <Route path='./main' element={<Main />} />
           <Route path='/about' element={<About />}  />
           <Route path='/recipes/:id' element={<Recipe  />} />
           <Route path='/pages/ViewRecipes.js' element={<ViewRecipes />} />
         </Routes> 
       </div>
+      </main>
       <footer>
         <Footer />
       </footer>
