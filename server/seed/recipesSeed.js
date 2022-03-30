@@ -17,7 +17,7 @@ const main = async () => {
         time_cook: "45 min",
         temp: "low heat",
         caution: "n/a",
-        steps: "In a saucepan, ,elt butter; stir in flour and salt until smooth. Add the broth and milk; bring to a boil over medium head. Cook and stir for two minutes or until thickened. Stir in chicken, peas, and pimentos; Serve over buscuits with dash of salt and pepper."
+        steps: "In a saucepan, melt butter; stir in flour and salt until smooth. Add the broth and milk; bring to a boil over medium head. Cook and stir for two minutes or until thickened. Stir in chicken, peas, and pimentos; Serve over buscuits with dash of salt and pepper."
       },
       
 

@@ -13,13 +13,7 @@ import Recipe from './pages/Recipe'
 import ViewRecipes from './pages/ViewRecipes'
 
 
-
-
-
-
 function App() {
-  
-
 
   return (
     <div className="App">
@@ -28,11 +22,11 @@ function App() {
       </header>
       <main>
       <div className='AppMain'>
+        <Main />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='./main' element={<Main />} />
-          <Route path='/about' element={<About />}  />
-          <Route path='/recipes/:id' element={<Recipe  />} />
+          <Route path='./pages/About.js' element={<About />}  />
+          <Route path='./pages/Recipe.js' element={<Recipe  />} />
           <Route path='/pages/ViewRecipes.js' element={<ViewRecipes />} />
         </Routes> 
       </div>

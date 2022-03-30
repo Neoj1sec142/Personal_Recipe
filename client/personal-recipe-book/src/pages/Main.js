@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Search from '../components/Search'
+
 
 import axios from "axios"
 import Recipe from './Recipe'
@@ -9,50 +9,45 @@ import { useNavigate } from "react-router-dom";
 
 const Main = () => {
     const [recipeResults, setRecipeResults] = useState([])
-
-
-    // for(let i=0; i<=recipes.data.recipes.length; i++){
-    //     setRecipeResults(recipes.data.recipes[i])}
-   
+    const navigate = useNavigate()
     // use effect to make the axios call
     useEffect(() => {
     const getRecipeResults = async () => {
         const recipes = await axios.get("http://localhost:3001/api/recipes", { mode: 'cors' } )
         const data = [...recipes.data.recipes]
         setRecipeResults(data)
-        console.log(recipeResults)
+        
+      
+        //console.log(recipeResults)
     }
     getRecipeResults()
     },[])
-    // const navigate = useNavigate()
-    // const showRecipe = () => {
-    //     navigate(recipes.data._id)
-    // }
-
+    
+    const showRecipe = () => {
+        navigate(recipeResults.data._id)
+    }
     // u2w1ThurLessConRendering for info
-    //const handleSearchClick = () => showRecipe(onSubmit1)
+    const handleSearchChange = () => showRecipe(recipeResults)
 
-    // for(let i=0; i<recipeArray.length; i++){
+    // for(let i=0; i<recipeResults.length; i++){
     //     allRecipes[i].map((recipe) => ( ))}
     return (
         <div>
             <div className="searchBar">
-            <Search />
-            <div className="recipeSearch">
-                <h3>Recipe List</h3>
+                <input type='text' placeholder="Search Recipes" onChange={handleSearchChange} />
+            <div className="recipeResults">
+                <h3>Recipes:</h3>
+                    
                     {recipeResults.map((recipe) => (
-                        <Recipe 
-                            name={recipe.name}
-                            key={recipe.key}
-                            ingredients={recipe.ingredients}
-                        />
+                        
+                        <Recipe />
                     ))}
             </div>
             </div>
         </div>
            
-                
-  
+               
+    
        
     )
 }
