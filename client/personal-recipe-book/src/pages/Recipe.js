@@ -31,21 +31,26 @@ const Recipe = () => {
     //     allRecipes[i].map((recipe) => ( ))}
     //console.log(props.data)
     
-    console.log(recipeResults)
+    //console.log(recipeResults)
+
     return(
         <div className='recipe-grid'>
             <h2>Recipes:</h2>
             <RecipeCard>
-
                 <ul>
                     {recipeResults.map((recipe) => (
                     <li>
-                        <h3>Name: {recipe.name}</h3>
-                        <h5>Ingredints: {recipe.ingredints}</h5>
+                        <h4>Name: {recipe.name}</h4>
+                        <h6>Type: {recipe.type}</h6>
+                        <h6>Servings: {recipe.servings}</h6>
+                        <h6>Time Cook: {recipe.time_cook}</h6>
+                        <h6>Temp: {recipe.temp}</h6>
+                        <h6>Caution: {recipe.caution}</h6>
+                        <h6>Directions: {recipe.steps}</h6>
+                        
                     </li>
                     ))}
                 </ul>
-            
             </RecipeCard>
         </div>
     )

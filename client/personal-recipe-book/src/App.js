@@ -10,7 +10,8 @@ import { Route, Routes, } from 'react-router-dom';
 // imports for components and pages
 import About from './pages/About.js'
 import Recipe from './pages/Recipe'
-import ViewRecipes from './pages/ViewRecipes'
+import NewRecipe from './pages/NewRecipe.js'
+import SearchRecipes from './pages/SearchRecipes'
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
           <Route index element={<Main />} />
           <Route path='/About' element={<About />}  />
           <Route path='/Recipe/' element={<Recipe  />} />
-          <Route path='./pages/ViewRecipes' element={<ViewRecipes />} />
+          <Route path='/SearchRecipes/' element={<SearchRecipes  />} />
+          <Route path='/NewRecipe' element={<NewRecipe />} />
         </Routes> 
       </div>
       </main>

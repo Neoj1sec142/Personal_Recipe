@@ -7,7 +7,7 @@ console.log(props)
   
 
   return (
-    <div className="allRecipes-grid">
+    <div className="search-recipes-grid">
       
       {/* <div className="img-wrapper">
        <img style={{display: 'block', width:'500px'}} src={props.image} alt=""/>
