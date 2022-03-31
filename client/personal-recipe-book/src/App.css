@@ -1,19 +1,28 @@
 .App {
   text-align: center;
 }
-
+.link{
+  padding: 2em;
+}
 .nav-bar{
   color: white;
   background-color: #212121;
   display: flex;
   justify-content: center;
+  border-radius: 1em;
   align-items: center;
   height: 3em;
   margin: 1em;
 }
 
-.nav-bar link{
-  border-radius: 2em;
+.name-results{
+  display: flex; 
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: black;
+  background-color: aqua;
+  margin: 2em;
+  padding: 1em;
 }
 
 
