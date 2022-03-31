@@ -1,34 +1,51 @@
 //import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import React, { useState } from 'react'
-import NewCard from '../components/NewCard'
+//import axios from 'axios'
+//import React, { useState } from 'react'
+//import NewCard from '../components/NewCard'
+//import Form from 'react-bootstrap/Form'
 
 
 const NewRecipe = (props) => {
 
-    let [newBody, setNewBody] = useState({
-        'name': '',
-        'type': '',
-        'ingredients': '',
-        'servings': '',
-        'time_cook': '',
-        'temp': '',
-        'caution': '',
-        'steps': ''
-    })
-    let [search, setSearch] = useState('')
+    // let [newBody, setNewBody] = useState({
+    //     'name': '',
+    //     'type': '',
+    //     'ingredients': '',
+    //     'servings': '',
+    //     'time_cook': '',
+    //     'temp': '',
+    //     'caution': '',
+    //     'steps': ''
+    // })
+    // let [search, setSearch] = useState('')
 
-    const handleClick = (e) => {
-        e.preventDefault()
-        if (!newBody) {
-          alert('Entry Needed')
-        } else {
-          setNewBody(e.target.value)
-        }
-        setSearch('')
-    }
+    // const handleClick = (e) => {
+    //     e.preventDefault()
+    //     if (!newBody) {
+    //       alert('Entry Needed')
+    //     } else {
+    //       setNewBody(e.target.value)
+    //     }
+    //     setSearch('')
+    // }
 
-
+    // createRecipe() {  
+   
+    //     $.ajax({  
+    //        url: "api/recipes",  
+    //        type: "POST",  
+    //        dataType: 'json',  
+    //        ContentType: 'application/json',  
+    //        success: function(data) {           
+    //          this.setState({data1: data});   
+               
+    //        }.bind(this),  
+    //        error: function(err) {  
+    //          console.log(err);  
+                 
+    //        }.bind(this)  
+    //     });  
+    //   },  
 
 
     // const navigate = useNavigate();
@@ -36,28 +53,28 @@ const NewRecipe = (props) => {
     //     navigate(recipeResults.data._id)
     // }
     // u2w1ThurLessConRendering for info
-    const handleChange = () => {}
-    const handleSubmit = () => {
-        let databody = {
-            'name': search.state.nameIn,
-            'type': search.state.typeIn,
-            'ingredients': search.state.ingredientsIn,
-            'servings': search.state.servingsIn,
-            'time_cook': search.state.time_cookIn,
-            'temp': search.state.tempIn,
-            'caution': search.state.cautionIn,
-            'steps': search.state.stepsIn
-        }
-        return axios.post("http://localhost:3001/api/recipes/", {
-            method: 'POST',
-            body: JSON.stringify(databody),
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-        } , { mode: 'cors' })
-        .then(res => res.json())
-        .then(data => console.log(data))
-    }
+    //const handleChange = () => {}
+    // const handleSubmit = () => {
+    //     let databody = {
+    //         'name': search.state.nameIn,
+    //         'type': search.state.typeIn,
+    //         'ingredients': search.state.ingredientsIn,
+    //         'servings': search.state.servingsIn,
+    //         'time_cook': search.state.time_cookIn,
+    //         'temp': search.state.tempIn,
+    //         'caution': search.state.cautionIn,
+    //         'steps': search.state.stepsIn
+    //     }
+    //     return axios.post("http://localhost:3001/api/recipes/", {
+    //         method: 'POST',
+    //         body: JSON.stringify(databody),
+    //         headers: {
+    //             'Content-Type' : 'application/json'
+    //         },
+    //     } , { mode: 'cors' })
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
+    // }
     return(
         // <div className='new'>
         //     <form value='input'>
@@ -84,14 +101,24 @@ const NewRecipe = (props) => {
         //         </div>
         //     </form>
         // </div>
-        <div className="new">
-            <h2>Add a Recipe:</h2>
-            <br />
-            <div>
-                <NewCard>
-                <ul>
-                    <li>
-                <input
+        // <div className="new">
+        //     <h2>Add a Recipe:</h2>
+        //     <br />
+                
+        //         <form value='input'>
+        //             <input name='new_name' value='name' placeholder='name' onChange={handleChange} />
+        //             <input name='new_type' value='type' placeholder='name' />
+        //             <input name='new_ingredients' value='ingredients' placeholder='ingredients' />
+        //             <input name='new_servings' value='servings' placeholder='servings' />
+        //             <input name='new_time_cook' value='time_cook' placeholder='time_cook' />
+        //             <input name='new_temp' value='temp' placeholder='temp' />
+        //             <input name='new_caution' value='caution' placeholder='caution' />
+        //             <input name='new_steps' value='steps' placeholder='steps' />
+                
+        //         <form onSubmit={this.handleSubmit()}>
+
+                
+                {/* <input
                     className="input"
                     id='name'
                     type="text"
@@ -156,25 +183,25 @@ const NewRecipe = (props) => {
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 <br />
-                <br />
-                <input
-                    className="btn"
-                    type="submit"
-                    value="Add"
-                    onClick={handleSubmit}
-                />
-                {/* <input
-                    className="btn"
-                    type="submit"
-                    value="Withdraw"
-                    onClick={removeClick}
-                /> */}
-                </li>
-                ))}
-                </ul>
-                </NewCard>
-            </div>
-        </div>
+                <br /> */}
+                // <input
+                //     className="btn"
+                //     type="submit"
+                //     value="Add"
+                //     onClick={handleClick}
+                // />
+        //         <input
+        //             className="btn"
+        //             type="submit"
+        //             value="Withdraw"
+        //             onClick={removeClick}
+        //         />
+        //       </NewCard>
+    
+               
+                
+        //     </div>
+        // </div>
     )
 }
 
