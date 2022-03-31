@@ -37,7 +37,7 @@ const Main = () => {
                 {/* <input type='text' placeholder="Search Recipes" onChange={handleSearchChange} /> */}
             <div className="recipeResults">
                 <h3>Recipes:</h3>
-                <Recipe />  
+                {/* <Recipe />   */}
                     {/* {recipeResults.map((recipe) => (
                         
                         

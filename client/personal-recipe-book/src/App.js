@@ -1,6 +1,6 @@
 import './App.css';
 // import for main page
-import Footer from './components/Footer';
+
 import Nav from './components/Nav'
 import Main from './pages/Main'
 // imports for react hooks and axios
@@ -22,17 +22,17 @@ function App() {
       </header>
       <main>
       <div className='AppMain'>
-        <Main />
+        
         <Routes>
           <Route index element={<Main />} />
-          <Route path='./pages/About.js' element={<About />}  />
-          <Route path='./pages/Recipe.js' element={<Recipe  />} />
-          <Route path='/pages/ViewRecipes.js' element={<ViewRecipes />} />
+          <Route path='/About' element={<About />}  />
+          <Route path='./Recipe' element={<Recipe  />} />
+          <Route path='/ViewRecipes' element={<ViewRecipes />} />
         </Routes> 
       </div>
       </main>
       <footer>
-        <Footer />
+        
       </footer>
     </div>
   );

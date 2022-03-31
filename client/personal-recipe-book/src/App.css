@@ -2,11 +2,42 @@
   text-align: center;
 }
 
+.nav-bar{
+  color: white;
+  background-color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  margin: 1em;
+}
+
+.nav-bar link{
+  border-radius: 2em;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.About{
+  background-color: #a7a6a6;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 33em;
+}
+p{
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  width: 40em;
+  margin: 2em;
+  background-color: #61dafb;
 }
 
 .App-header {
@@ -53,8 +84,8 @@
 
 .recipeResults{
   display: block;
-  color: black;
-  background-color: grey;
+  color: rgb(248, 239, 239);
+  background-color: rgb(240, 231, 231);
   max-width: 300px;
   max-height: 380px;
   border-radius: 4px;
