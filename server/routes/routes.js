@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const controllers = require('../controllers')
+const RecipeSchema = require('../models/recipes')
 const router = Router();
 
 router.get('/', (req, res) => res.send('This is root server page!'))
@@ -10,6 +11,29 @@ router.get('/', (req, res) => res.send('This is root server page!'))
 router.get('/recipes', controllers.getAllRecipes)
 router.get('/recipes/:id', controllers.getRecipeById)
 router.get('/main?search=:name', controllers.searchRecipeName)
+router
+    .route("/update-student/:id")
+    .get((req,res) => {
+        RecipeSchema, controllers.getRecipeById
+    })
+    .put((req,res, next) => {
+        RecipeSchema.findByIdAndUpdate(
+            req.params.id,
+            {
+              $set: req.body,
+            },
+            (error, data) => {
+              if (error) {
+                return next(error);
+                console.log(error);
+              } else {
+                res.json(data);
+                console.log("Recipe updated successfully !");
+              }
+            }
+          );
+        });  
+    
 module.exports = router;
 
 //

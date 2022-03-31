@@ -35,10 +35,12 @@ app.get('/recipes', async (req, res) => {
       res.send('Recipe not found!!!')
     }
 })
-
+app.put('/recipes/update/:name', (req,res) => {
+  res.send(`Recipe profile with the name of ${req.params.name} was updated`)
+})
 app.post("/api/savedata",function(req,res){   
        
-  var rec = new Recipe(req.body);  
+  let rec = new Recipe(req.body);  
       rec.save(function(err,data){  
           if(err){  
               res.send(err);                
@@ -48,8 +50,8 @@ app.post("/api/savedata",function(req,res){
           }  
       });  
 })  
-
-router.post('/recipes', controllers.createRecipe)
+//app.post("/update-student/:id", controllers.getRecipeById)
+//router.post('/recipes', controllers.createRecipe)
 app.use('/api', routes)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'))

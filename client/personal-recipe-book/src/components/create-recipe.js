@@ -4,7 +4,8 @@ import RecipeForm from "./RecipeForm"
 
 const CreateRecipe = () => {
     const [formValues, setFormValues] = 
-      useState({ name: '', email: '', rollno: '' })
+      useState({ name: '', type: '', ingredients: '', servings: '', 
+      time_cook: '', temp: '', caution: '', steps: '' })
     // onSubmit handler
     const onSubmit = recipeObject => {
       axios.post(
