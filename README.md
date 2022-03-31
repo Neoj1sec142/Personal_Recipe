@@ -9,7 +9,7 @@
 [x] Build models from ERD  
 [x] Begin routes set up  
 [x] Refactor Seed Data   
-[] Create page/add new recipe function  
+[x] Create page/add new recipe function  
 [x] Get recipe function  
 [] Update recipe function  
 [] Delete recipe function   
@@ -20,10 +20,15 @@ Front End:
 * Homepage:   
     [x] Nav Bar   
     [x] Search Recipe Bar 
-    [] Access Data in DB  
+    [x] Access Data in DB  
     [] Ability to display search results
 * Add New Page:   
-    [] Page for all input for new recipes
+    [x] Page for all input for new recipes
+    [] set up input functionality
+    [] set up post 
+    [] add submit button
+    [] add update method
+    [] add delete method
 * All Recipes:   
     [] Should just display names   
     [] OnClick should displpay       recipe page
@@ -40,6 +45,17 @@ Front End:
 ***
 References:
 ***
-Install List:
+#### Install List:
+* Back:
+    * npm i morgan 
+    * npm i cors
+	* npm i express
+    * npm i body-parser
+* Front:
+    * npm i axios
+    * npx create-react-app 
+    * npm install --save @fortawesome/react-fontawesome @fortawesome/fontawesome-		svg-core @fortawesome/free-brands-svg-icons
+
 ***
-Credits:
+#### Credits:
+* Shout out to the GA repos that come in clutch when I'm in panic mode because I forgot what I was doing or I got stuck.
