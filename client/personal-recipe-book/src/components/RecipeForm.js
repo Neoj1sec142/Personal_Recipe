@@ -69,6 +69,7 @@ const RecipeForm = (props) => {
    
     return (
       <div className="form-wrapper">
+             <h4>Enter your new recipe:</h4>
        <form type='input'>
          <input type="text" 
                 value={searchNameState} 

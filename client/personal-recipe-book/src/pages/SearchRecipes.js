@@ -8,21 +8,19 @@ const SearchRecipes = (props) => {
   const [searchQuery, setSearchQuery] = useState('')
 
     const navigate = useNavigate()
-    const showRecipe = () => {
-        navigate(searchResults._id)
-    }
+    
     useEffect(() => {
       const getSearchResults = async () => {
-          const recipes = await axios.get(`http://localhost:3001/recipes/${searchQuery}`, { mode: 'cors' } )
-          const data = [...recipes.data.recipes]
-          setSearchResults(data)
-          setSearchQuery('')
-          
-        
-          
+            const recipe = await axios.get(`http://localhost:3001/recipes/:id`, { mode: 'cors' } )
+            setSearchResults(recipe)
       }
       getSearchResults()
       },[])
+
+      const handleClick = () => {
+        navigate(searchResults._id)
+        setSearchQuery('')
+        }
 
   return (
     <div className="search-recipes-grid">
@@ -31,8 +29,7 @@ const SearchRecipes = (props) => {
                 placeholder="Search by ID"
                 onChange={(e) => setSearchQuery(e.target.value)}></input>
          <button type="submit" 
-                  onClick={(e) => {
-                      showRecipe()}}></button>
+                  onClick={(e) => handleClick}></button>
             <SearchCard>
                 <ul>
                     

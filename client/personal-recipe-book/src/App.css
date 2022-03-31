@@ -28,8 +28,10 @@
 
 
 .About{
-  background-color: #a7a6a6;
-  color: white;
+  background-image: url('https://wallpaperaccess.com/full/875624.jpg');
+  background-size: cover;
+  color: rgb(5, 5, 5);
+  text-decoration: underline;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -42,7 +44,8 @@ p{
   flex-direction: row;
   width: 40em;
   margin: 2em;
-  background-color: #61dafb;
+  color: black;
+  background-color: #61dafb3f;
 }
 
 .App-header {
@@ -134,4 +137,23 @@ ul{
   padding: 10px;
   flex-wrap: wrap;
   
+}
+input{
+  background-image: url('https://image.shutterstock.com/image-vector/pixel-art-game-background-road-260nw-1061954495.jpg');
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  padding: 1em;
+}
+.form-wrapper{
+  background-image: url('http://i.imgur.com/glWla8v.png');
+  background-size: cover;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: underline;
 }

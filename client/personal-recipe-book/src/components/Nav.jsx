@@ -12,7 +12,6 @@ const Nav = () => {
         <Link to='/' style={{ color: '#FFFFFF' }} className='link'>Home</Link>
         <Link to='/About' style={{ color: '#FFFFFF' }} className='link'>About</Link>
         <Link to='/Recipe' style={{ color: '#FFFFFF' }} className='link'>Recipes</Link>
-        <Link to='/NewRecipe' style={{ color: '#FFFFFF' }} className='link'>New Recipe</Link>
         <Link to='/SearchRecipes' style={{ color: '#FFFFFF' }} className='link'>Search Recipe</Link>
         <Link to='/RecipeForm' style={{ color: '#FFFFFF' }} className='link'>Create Recipe</Link>
         <div className="Footer">

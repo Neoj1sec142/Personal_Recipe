@@ -10,7 +10,7 @@ import { Route, Routes, } from 'react-router-dom';
 // imports for components and pages
 import About from './pages/About.js'
 import Recipe from './pages/Recipe'
-import NewRecipe from './pages/NewRecipe.js'
+
 import SearchRecipes from './pages/SearchRecipes'
 import RecipeForm from './components/RecipeForm'
 
@@ -30,7 +30,7 @@ function App() {
           <Route path='/About' element={<About />}  />
           <Route path='/Recipe/' element={<Recipe  />} />
           <Route path='/SearchRecipes' element={<SearchRecipes  />} />
-          <Route path='/NewRecipe' element={<NewRecipe />} />
+          
           <Route path='/RecipeForm' element={<RecipeForm />} />
         </Routes> 
       </div>
