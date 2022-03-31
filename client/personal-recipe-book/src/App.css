@@ -16,11 +16,7 @@
   border-radius: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+
 
 .About{
   background-color: #a7a6a6;
@@ -74,6 +70,9 @@ p{
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   max-width: 300px;
   max-height: 380px;
   border-radius: 4px;
@@ -92,4 +91,17 @@ p{
   background-color: #1b1b1b;
   cursor: pointer;
   transition: all 0.2s;
+}
+ul{
+  display: flex;
+  width: 45em;
+  background-color: #a7a6a6;
+}
+
+.recipe-search-grid{
+  display: flex;
+  background-color: aqua;
+  height: 3em;
+  width: 20em;
+  margin: 1em;
 }

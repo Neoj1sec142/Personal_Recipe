@@ -5,12 +5,16 @@ const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001
 const db = require('./db')
 const cors = require('cors')
+const { Router } = require('express');
+const controllers = require('./controllers/index')
+const router = Router();
 
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
     res.send('This is root home server page!')
@@ -32,7 +36,7 @@ app.get('/recipes', async (req, res) => {
     }
 })
 
-app.use(bodyParser.json())
+router.post('/recipes', controllers.createRecipe)
 app.use('/api', routes)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'))

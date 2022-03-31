@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 
 import axios from "axios"
-import Recipe from './Recipe'
+//import Recipe from './Recipe'
 //import { useNavigate } from "react-router-dom";
 // import { Link, useNavigate } from "react-router-dom";
 
@@ -13,16 +13,16 @@ const Main = () => {
     // use effect to make the axios call
     useEffect(() => {
     const getRecipeResults = async () => {
-        const recipes = await axios.get("http://localhost:3001/api/recipes", { mode: 'cors' } )
+        const recipes = await axios.get("http://localhost:3001/api/recipes/", { mode: 'cors' } )
         const data = [...recipes.data.recipes]
         setRecipeResults(data)
         
       
-        //console.log(recipeResults)
+        
     }
     getRecipeResults()
     },[])
-    
+    console.log(recipeResults)
     // const showRecipe = () => {
     //     navigate(recipeResults.data._id)
     // }
