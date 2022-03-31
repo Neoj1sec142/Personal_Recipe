@@ -103,8 +103,22 @@ p{
 }
 ul{
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-decoration: underline;
+  align-items: center;
   width: 45em;
-  background-color: #a7a6a6;
+  padding: 1em;
+  text-shadow: #1b1b1b;
+  background-image: url('https://png.pngtree.com/thumb_back/fh260/back_pic/03/89/50/6057d92231543d1.jpg');
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+}
+.recipe-header{
+  text-decoration: underline;
 }
 
 .recipe-search-grid{

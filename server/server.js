@@ -38,7 +38,7 @@ app.get('/recipes', async (req, res) => {
 app.put('/recipes/update/:name', (req,res) => {
   res.send(`Recipe profile with the name of ${req.params.name} was updated`)
 })
-app.post("/api/savedata",function(req,res){   
+app.post("/recipes",function(req,res){   
        
   let rec = new Recipe(req.body);  
       rec.save(function(err,data){  

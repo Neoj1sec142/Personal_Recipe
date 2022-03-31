@@ -29,7 +29,7 @@ function App() {
           <Route index element={<Main />} />
           <Route path='/About' element={<About />}  />
           <Route path='/Recipe/' element={<Recipe  />} />
-          <Route path='/SearchRecipes/' element={<SearchRecipes  />} />
+          <Route path='/SearchRecipes' element={<SearchRecipes  />} />
           <Route path='/NewRecipe' element={<NewRecipe />} />
           <Route path='/RecipeForm' element={<RecipeForm />} />
         </Routes> 

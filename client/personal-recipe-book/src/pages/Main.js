@@ -31,7 +31,6 @@ const Main = () => {
             <div className="searchBar">
                 {/* <input type='text' placeholder="Search Recipes" onChange={handleSearchChange} /> */}
                 <div className="name-results">
-                    <h3>Recipes:</h3>
                     <ul>
                         <MainCard>
                             {

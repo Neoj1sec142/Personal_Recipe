@@ -35,7 +35,6 @@ const Recipe = () => {
 
     return(
         <div className='recipe-grid'>
-            <h2>Recipes:</h2>
             <RecipeCard>
                 <ul>
                     {recipeResults.map((recipe) => (

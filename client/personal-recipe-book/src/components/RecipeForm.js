@@ -40,8 +40,8 @@ const RecipeForm = (props) => {
   
   useEffect(() => {
       // POST request using axios inside useEffect hook
-      const recipe = { title: 'React Hooks POST Request Example' };
-      axios.post('http://localhost:3001/api/recipes', recipe)
+      const recipe = { newBody };
+      axios.post('http://localhost:3001/recipes', recipe)
           .then(response => setRecipeId(response.data.id));
   
   }, []);

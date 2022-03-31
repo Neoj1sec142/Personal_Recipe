@@ -1,13 +1,13 @@
 
-
-const RecipeCard = (props) => {
+const SearchCard = (props) => {
 
     return (
         <div className="recipe-header">
-          <h1>Recipes:</h1>
+            
+          <h1> Search Recipes:</h1>
           {props.children}
         </div>
       )
 }
 
-export default RecipeCard
+export default SearchCard
