@@ -105,3 +105,10 @@ ul{
   width: 20em;
   margin: 1em;
 }
+.new{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-wrap: wrap;
+  
+}
