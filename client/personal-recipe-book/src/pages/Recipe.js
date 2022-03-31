@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 //import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import RecipeCard from '../components/RecipeCard'
 
 
 const Recipe = () => {
@@ -32,8 +33,20 @@ const Recipe = () => {
     
     console.log(recipeResults)
     return(
-        <div className='recipe-search-grid'>
-           
+        <div className='recipe-grid'>
+            <h2>Recipes:</h2>
+            <RecipeCard>
+
+                <ul>
+                    {recipeResults.map((recipe) => (
+                    <li>
+                        <h3>Name: {recipe.name}</h3>
+                        <h5>Ingredints: {recipe.ingredints}</h5>
+                    </li>
+                    ))}
+                </ul>
+            
+            </RecipeCard>
         </div>
     )
 }

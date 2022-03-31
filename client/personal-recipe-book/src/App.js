@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route index element={<Main />} />
           <Route path='/About' element={<About />}  />
-          <Route path='/Recipe/:id' element={<Recipe  />} />
+          <Route path='/Recipe/' element={<Recipe  />} />
           <Route path='./pages/ViewRecipes' element={<ViewRecipes />} />
         </Routes> 
       </div>
