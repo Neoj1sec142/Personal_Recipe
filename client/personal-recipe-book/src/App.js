@@ -24,7 +24,7 @@ function App() {
       <div className='AppMain'>
         <Main />
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route index element={<Main />} />
           <Route path='./pages/About.js' element={<About />}  />
           <Route path='./pages/Recipe.js' element={<Recipe  />} />
           <Route path='/pages/ViewRecipes.js' element={<ViewRecipes />} />
