@@ -1,217 +1,114 @@
-//import { useNavigate } from 'react-router-dom'
-//import axios from 'axios'
-//import React, { useState } from 'react'
-//import NewCard from '../components/NewCard'
-//import Form from 'react-bootstrap/Form'
+
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
 
 
-const NewRecipe = (props) => {
+const RecipeForm = (props) => {
+  const [searchNameState, setSearchNameState] = useState('')
+  const [searchTypeState, setSearchTypeState] = useState('')
+  const [searchIngState, setSearchIngState] = useState('')
+  const [searchTimeState, setSearchTimeState] = useState('')
+  const [searchTempState, setSearchTempState] = useState('')
+  const [searchCauState, setSearchCauState] = useState('')
+  const [searchSerState, setSearchSerState] = useState('')
+  const [searchStepState, setSearchStepState] = useState('')
+  const [recipeId, setRecipeId] = useState('')
+  let [newBody, setNewBody] = useState({
+    name: '',
+    type: '',
+    ingredients: '',
+    time_cook: '',
+    temp: '',
+    caution: '',
+    servings: '',
+    steps: ''
+  })
 
-    // let [newBody, setNewBody] = useState({
-    //     'name': '',
-    //     'type': '',
-    //     'ingredients': '',
-    //     'servings': '',
-    //     'time_cook': '',
-    //     'temp': '',
-    //     'caution': '',
-    //     'steps': ''
-    // })
-    // let [search, setSearch] = useState('')
-
-    // const handleClick = (e) => {
-    //     e.preventDefault()
-    //     if (!newBody) {
-    //       alert('Entry Needed')
-    //     } else {
-    //       setNewBody(e.target.value)
-    //     }
-    //     setSearch('')
-    // }
-
-    // createRecipe() {  
+    const handleChange = (e) => {
+      setNewBody({
+        name: searchNameState,
+        type: searchTypeState,
+        ingredients: searchIngState,
+        time_cook: searchTimeState,
+        temp: searchTempState,
+        caution: searchCauState,
+        servings: searchSerState,
+        steps: searchStepState
+      })
+      console.log(newBody)
+    }
+  
+  useEffect(() => {
+      // POST request using axios inside useEffect hook
+      const recipe = { newBody };
+      axios.post('http://localhost:3001/recipes', recipe)
+          .then(response => setRecipeId(response.data.id));
+  
+  }, []);
+  
+  // useEffect(() => {
+  //   const handleSubmit = async () => {
+  //     axios.post('', recipes)
+  //       .then(response => this.setState({ recipeId: response.data.id }));
+      
+      
+  //     setRecipeResults(data)
+  //   const  = (e) => {
+  //      handleChange()
+  //   }
+  //     handleSubmit()
+  //     setSearchNameState('')
+  //     setSearchTypeState('')
+  //     setSearchIngState('')
+  //     setSearchTimeState('')
+  //     setSearchTempState('')
+  //     setSearchCauState('')
+  //     setSearchSerState('')
+  //     setSearchStepState('')
+  // },[]) 
    
-    //     $.ajax({  
-    //        url: "api/recipes",  
-    //        type: "POST",  
-    //        dataType: 'json',  
-    //        ContentType: 'application/json',  
-    //        success: function(data) {           
-    //          this.setState({data1: data});   
-               
-    //        }.bind(this),  
-    //        error: function(err) {  
-    //          console.log(err);  
-                 
-    //        }.bind(this)  
-    //     });  
-    //   },  
-
-
-    // const navigate = useNavigate();
-    // const showRecipe = () => {
-    //     navigate(recipeResults.data._id)
-    // }
-    // u2w1ThurLessConRendering for info
-    //const handleChange = () => {}
-    // const handleSubmit = () => {
-    //     let databody = {
-    //         'name': search.state.nameIn,
-    //         'type': search.state.typeIn,
-    //         'ingredients': search.state.ingredientsIn,
-    //         'servings': search.state.servingsIn,
-    //         'time_cook': search.state.time_cookIn,
-    //         'temp': search.state.tempIn,
-    //         'caution': search.state.cautionIn,
-    //         'steps': search.state.stepsIn
-    //     }
-    //     return axios.post("http://localhost:3001/api/recipes/", {
-    //         method: 'POST',
-    //         body: JSON.stringify(databody),
-    //         headers: {
-    //             'Content-Type' : 'application/json'
-    //         },
-    //     } , { mode: 'cors' })
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-    // }
-    return(
-        // <div className='new'>
-        //     <form value='input'>
-        //         <input name='new_name' value='name' placeholder='name' onChange={handleChange} />
-        //         <input name='new_type' value='type' placeholder='name' />
-        //         <input name='new_ingredients' value='ingredients' placeholder='ingredients' />
-        //         <input name='new_servings' value='servings' placeholder='servings' />
-        //         <input name='new_time_cook' value='time_cook' placeholder='time_cook' />
-        //         <input name='new_temp' value='temp' placeholder='temp' />
-        //         <input name='new_caution' value='caution' placeholder='caution' />
-        //         <input name='new_steps' value='steps' placeholder='steps' />
-        //         <div>
-                //  <form onSubmit={this.handleSubmit()}>
-                //     <label>
-                //         Name
-                //         <input type="text" name="name" value={this.nameIn} onChange={this.handleNameChange}/>
-                //     </label>
-                //     <label>
-                //         quote
-                //         <input type="text" name="quote" value={this.quoteIn} onChange={this.handleQuoteChange}/>
-                //     </label>
-                //         <input type="submit" value="Add to DB" />
-                // </form>  
-        //         </div>
-        //     </form>
-        // </div>
-        // <div className="new">
-        //     <h2>Add a Recipe:</h2>
-        //     <br />
-                
-        //         <form value='input'>
-        //             <input name='new_name' value='name' placeholder='name' onChange={handleChange} />
-        //             <input name='new_type' value='type' placeholder='name' />
-        //             <input name='new_ingredients' value='ingredients' placeholder='ingredients' />
-        //             <input name='new_servings' value='servings' placeholder='servings' />
-        //             <input name='new_time_cook' value='time_cook' placeholder='time_cook' />
-        //             <input name='new_temp' value='temp' placeholder='temp' />
-        //             <input name='new_caution' value='caution' placeholder='caution' />
-        //             <input name='new_steps' value='steps' placeholder='steps' />
-                
-        //         <form onSubmit={this.handleSubmit()}>
-
-                
-                {/* <input
-                    className="input"
-                    id='name'
-                    type="text"
-                    placeholder="name"
-                    value={props.name}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='type'
-                    type="text"
-                    placeholder="type"
-                    value={props.type}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='ingredients'
-                    type="text"
-                    placeholder="ingredients"
-                    value={props.ingredients}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='servings'
-                    type="text"
-                    placeholder="servings"
-                    value={props.servings}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='time_cook'
-                    type="text"
-                    placeholder="time_cook"
-                    value={props.time_cook}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='temp'
-                    type="text"
-                    placeholder="temp"
-                    value={props.temp}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='caution'
-                    type="text"
-                    placeholder="caution"
-                    value={props.caution}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
-                    className="input"
-                    id='steps'
-                    type="text"
-                    placeholder="steps"
-                    value={props.steps}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <br />
-                <br /> */}
-                // <input
-                //     className="btn"
-                //     type="submit"
-                //     value="Add"
-                //     onClick={handleClick}
-                // />
-        //         <input
-        //             className="btn"
-        //             type="submit"
-        //             value="Withdraw"
-        //             onClick={removeClick}
-        //         />
-        //       </NewCard>
+    return (
+      <div className="form-wrapper">
+             <h4>Enter your new recipe:</h4>
+       <form type='input'>
+         <input type="text" 
+                value={searchNameState} 
+                placeholder="New Recipe Name"
+                onChange={(e) => setSearchNameState(e.target.value)}></input>
+         <input type="text" 
+                value={searchTypeState} 
+                placeholder="Type"
+                onChange={(e) => setSearchTypeState(e.target.value)}></input>
+         <input type='text' 
+                value={searchIngState} 
+                placeholder="Ingredients"
+                onChange={(e) => setSearchIngState(e.target.value)}></input>
+         <input type="text" 
+                value={searchTimeState} 
+                placeholder="Time Cook"
+                onChange={(e) => setSearchTimeState(e.target.value)}></input>
+         <input type="text" 
+                value={searchTempState} 
+                placeholder="Temp"
+                onChange={(e) => setSearchTempState(e.target.value)}></input>
+         <input type="text" 
+                value={searchCauState} 
+                placeholder="Caution"
+                onChange={(e) => setSearchCauState(e.target.value)}></input>
+         <input type="text" 
+                value={searchSerState}
+                placeholder="Servings"
+                onChange={(e) => setSearchSerState(e.target.value)}></input>
+         <input type="text" 
+                value={searchStepState} 
+                placeholder="Directions"
+                onChange={(e) => setSearchStepState(e.target.value)}></input>
+         <button type="submit" 
+                  onClick={(e) => {
+                      handleChange()}}></button>
+       </form>
+      </div>
+    );
+  };
     
-               
-                
-        //     </div>
-        // </div>
-    )
-}
-
-export default NewRecipe
-
-    // name: "",
-    // type: '',
-    // ingredients: "",
-    // servings: "",
-    // time_cook: "",
-    // temp: "",
-    // caution: "",
-    // steps: ""
+  export default RecipeForm

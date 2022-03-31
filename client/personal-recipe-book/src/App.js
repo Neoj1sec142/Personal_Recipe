@@ -12,7 +12,7 @@ import About from './pages/About.js'
 import Recipe from './pages/Recipe'
 
 import SearchRecipes from './pages/SearchRecipes'
-import RecipeForm from './components/RecipeForm'
+import RecipeForm from './pages/NewRecipe'
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           <Route path='/Recipe/' element={<Recipe  />} />
           <Route path='/SearchRecipes' element={<SearchRecipes  />} />
           
-          <Route path='/RecipeForm' element={<RecipeForm />} />
+          <Route path='/NewRecipe' element={<RecipeForm />} />
         </Routes> 
       </div>
       </main>
