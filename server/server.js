@@ -36,6 +36,19 @@ app.get('/recipes', async (req, res) => {
     }
 })
 
+app.post("/api/savedata",function(req,res){   
+       
+  var rec = new Recipe(req.body);  
+      rec.save(function(err,data){  
+          if(err){  
+              res.send(err);                
+          }  
+          else{        
+               res.send({data:"Recipe has been Inserted..!!"});  
+          }  
+      });  
+})  
+
 router.post('/recipes', controllers.createRecipe)
 app.use('/api', routes)
 
