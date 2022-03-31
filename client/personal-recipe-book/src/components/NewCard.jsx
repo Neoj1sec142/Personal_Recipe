@@ -6,12 +6,7 @@
 
 const newRecipe = () => {
     return(<div></div>)
-    //  class NewRecipe extends Recipe {
-            
-    //           return (
-    //               <div>
-    //   )
-    //}
+    
     
 }
 
