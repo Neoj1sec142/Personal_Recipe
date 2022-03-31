@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import axios from 'axios'
 
 
 const RecipeForm = (props) => {
@@ -11,6 +12,7 @@ const RecipeForm = (props) => {
   const [searchCauState, setSearchCauState] = useState('')
   const [searchSerState, setSearchSerState] = useState('')
   const [searchStepState, setSearchStepState] = useState('')
+  const [recipeId, setRecipeId] = useState('')
   let [newBody, setNewBody] = useState({
     name: '',
     type: '',
@@ -24,30 +26,46 @@ const RecipeForm = (props) => {
 
     const handleChange = (e) => {
       setNewBody({
-        "name": searchNameState,
-        "type": searchTypeState,
-        "ingredients": searchIngState,
-        "time_cook": searchTimeState,
-        "temp": searchTempState,
-        "caution": searchCauState,
-        "servings": searchSerState,
-        "steps": searchStepState
+        name: searchNameState,
+        type: searchTypeState,
+        ingredients: searchIngState,
+        time_cook: searchTimeState,
+        temp: searchTempState,
+        caution: searchCauState,
+        servings: searchSerState,
+        steps: searchStepState
       })
+      console.log(newBody)
     }
-
+  
   useEffect(() => {
-    const handleSubmit = (e) => {
-       handleChange()
-    }
-      setSearchNameState('')
-      setSearchTypeState('')
-      setSearchIngState('')
-      setSearchTimeState('')
-      setSearchTempState('')
-      setSearchCauState('')
-      setSearchSerState('')
-      setSearchStepState('')
-  },[]) 
+      // POST request using axios inside useEffect hook
+      const recipe = { title: 'React Hooks POST Request Example' };
+      axios.post('http://localhost:3001/api/recipes', recipe)
+          .then(response => setRecipeId(response.data.id));
+  
+  }, []);
+  
+  // useEffect(() => {
+  //   const handleSubmit = async () => {
+  //     axios.post('', recipes)
+  //       .then(response => this.setState({ recipeId: response.data.id }));
+      
+      
+  //     setRecipeResults(data)
+  //   const  = (e) => {
+  //      handleChange()
+  //   }
+  //     handleSubmit()
+  //     setSearchNameState('')
+  //     setSearchTypeState('')
+  //     setSearchIngState('')
+  //     setSearchTimeState('')
+  //     setSearchTempState('')
+  //     setSearchCauState('')
+  //     setSearchSerState('')
+  //     setSearchStepState('')
+  // },[]) 
    
     return (
       <div className="form-wrapper">
@@ -55,36 +73,38 @@ const RecipeForm = (props) => {
          <input type="text" 
                 value={searchNameState} 
                 placeholder="New Recipe Name"
-                onChange={setSearchNameState}></input>
+                onChange={(e) => setSearchNameState(e.target.value)}></input>
          <input type="text" 
                 value={searchTypeState} 
                 placeholder="Type"
-                onChange={setSearchTypeState}></input>
+                onChange={(e) => setSearchTypeState(e.target.value)}></input>
          <input type='text' 
                 value={searchIngState} 
                 placeholder="Ingredients"
-                onChange={setSearchIngState}></input>
+                onChange={(e) => setSearchIngState(e.target.value)}></input>
          <input type="text" 
                 value={searchTimeState} 
                 placeholder="Time Cook"
-                onChange={setSearchTimeState}></input>
+                onChange={(e) => setSearchTimeState(e.target.value)}></input>
          <input type="text" 
                 value={searchTempState} 
                 placeholder="Temp"
-                onChange={setSearchTempState}></input>
+                onChange={(e) => setSearchTempState(e.target.value)}></input>
          <input type="text" 
                 value={searchCauState} 
                 placeholder="Caution"
-                onChange={setSearchCauState}></input>
+                onChange={(e) => setSearchCauState(e.target.value)}></input>
          <input type="text" 
                 value={searchSerState}
                 placeholder="Servings"
-                onChange={setSearchSerState}></input>
+                onChange={(e) => setSearchSerState(e.target.value)}></input>
          <input type="text" 
                 value={searchStepState} 
                 placeholder="Directions"
-                onChange={setSearchStepState}></input>
-         <button type="submit" onClick={handleChange}></button>
+                onChange={(e) => setSearchStepState(e.target.value)}></input>
+         <button type="submit" 
+                  onClick={(e) => {
+                      handleChange()}}></button>
        </form>
       </div>
     );
