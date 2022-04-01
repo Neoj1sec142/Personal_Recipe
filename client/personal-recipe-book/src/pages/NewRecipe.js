@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //import ReactDOM from 'react-dom';
 import axios from 'axios'
 
@@ -62,50 +62,37 @@ const NewRecipe = () => {
                      servings: {searchSerState},
                      steps: {searchStepState},
               });
-              console.log(recipe)
-              e.preventDefault();  
-              axios.post('http://localhost:3001/recipes/new', {recipe})
+              axios.post('http://localhost:3001/recipes', {recipe})
                      .then(response => {
                             console.log("Status: ", response.status);
                             console.log("Data: ", response.data);
                      }).catch(error => {
-                            console.error('Something went wrong') 
+                            console.error('Something went wrong', error) 
                      })
+              console.log(recipe)
+              e.preventDefault();                
        }
        
     
 //   useEffect(() => {
-//       // POST request using axios inside useEffect hook
-//       const recipe = { newBody };
-//       axios.post('http://localhost:3001/recipes', recipe)
-//           .then(response => setRecipeId(response.data.id));
-  
-//   }, []);
+//        const functName = () => {
+//        }
+//        functName()
+// }, []);
       
-              
+//        let axiosConfig = {
+//               headers: {
+//                      'Content-Type' : 'application/json; charset=UTF-8',
+//                      'Accept': 'Token',
+//                      "Access-Control-Allow-Origin": "*",
+//        }
+//      };
+
+
 
   
-  // useEffect(() => {
-  //   const handleSubmit = async () => {
-  //     axios.post('', recipes)
-  //       .then(response => this.setState({ recipeId: response.data.id }));
-      
-      
-  //     setRecipeResults(data)
-  //   const  = (e) => {
-  //      handleChange()
-  //   }
-  //     handleSubmit()
-  //     setSearchNameState('')
-  //     setSearchTypeState('')
-  //     setSearchIngState('')
-  //     setSearchTimeState('')
-  //     setSearchTempState('')
-  //     setSearchCauState('')
-  //     setSearchSerState('')
-  //     setSearchStepState('')
-  // },[]) 
-//   onSubmit={(e) => {handleSubmit(e)}}
+
+
     return (
        <div className="form-wrapper">
               <header className="New-header">
@@ -117,63 +104,71 @@ const NewRecipe = () => {
                      <input type="text" 
                             value={searchNameState.value}
                             placeholder="New Recipe Name"
-                            required
+                            path="name"
+                            
                             onChange={(e) => {handleChange(e)}} /><br/>
                       <label >
                             Type:
                      </label><br/>
                      <input type="text" 
                             value={searchTypeState.value} 
+                            path="type"
                             placeholder="Type"
-                            required
+                            
                             onChange={(e) => {handleTypeChange(e)}} /><br/>
                       <label >
                             Ingredients:
                      </label><br/>
                      <input type='text' 
                             value={searchIngState.value}
+                            path="ingredients"
                             placeholder="Ingredients"
-                            required
+                            
                             onChange={(e) => {handleIngChange(e)}} /><br/>
                      <label >
                             Time Cook:
                      </label><br/>
                      <input type="text" 
                             value={searchTimeState.value}
+                            path="time_cook"
                             placeholder="Time Cook"
-                            required
+                            
                             onChange={(e) => {handleTimeChange(e)}} /><br/>
                      <label >
                             Temp:
                      </label><br/>
                      <input type="text" 
                             value={searchTempState.value}
+                            path="temp"
                             placeholder="Temp"
-                            required
+                            
                             onChange={(e) => {handleTempChange(e)}} /><br/>
                      <label >
                             Caution:
                      </label><br/>
                      <input type="text" 
                             value={searchCauState.value}
+                            path="caution"
                             placeholder="Caution"
-                            required
+                            
                             onChange={(e) => {handleCauChange(e)}} /><br/>
                       <label >
                             Caution:
                      </label><br/>
                      <input type="text" 
                             value={searchSerState.value}
+                            path="servings"
                             placeholder="Servings"
-                            required
+                            
                             onChange={(e) => {handleSerChange(e)}} /><br/>
                       <label >
                             Caution:
                      </label><br/>
                      <input type="text" 
                             value={searchStepState.value}
+                            path="steps"
                             placeholder="Directions"
-                            required
+                            
                             onChange={(e) => {handleStepChange(e)}} /><br/>
                      <button type="submit" 
                             onClick={(e) => {handleClick(e)}}></button>

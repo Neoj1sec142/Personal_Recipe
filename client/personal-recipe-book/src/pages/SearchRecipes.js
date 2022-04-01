@@ -21,7 +21,7 @@ const SearchRecipes = (props) => {
     
     useEffect(() => {
       const getSearchResults = async () => {
-            const recipe = await axios.get(`http://localhost:3001/api/recipes/`, { mode: 'cors' } )
+            const recipe = await axios.get(`http://localhost:3001/recipes/`, { mode: 'cors' } )
             setSearchResults(recipe.data.recipes)
             
       }
@@ -62,6 +62,7 @@ const SearchRecipes = (props) => {
                     
                 </ul>
             </SearchCard>
+            
         </div>
   )
 }

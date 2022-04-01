@@ -14,22 +14,17 @@ const addComment = async (req, res) => {
     }
 }
 
-
-    const createRecipe = async (req, res) => {
-        try {
-            const recipe = await new Recipe(req.body)
-            await recipe.save()
-            return res.status(201).json({
-                recipe,
-            });
+const createRecipe = async (req, res) => {
+    try {
+        const recipe = await new Recipe(req.body)
+        await recipe.save()
+        return res.status(201).json({
+            recipe,
+        });
         } catch (error) {
             return res.status(500).json({ error: error.message })
         } 
-    }
-    
-
-
-  //createRecipe()
+}
 
 const getAllRecipes = async (req, res) => {
     try {
