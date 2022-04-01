@@ -14,6 +14,7 @@ const Nav = () => {
         <Link to='/Recipe' style={{ color: '#FFFFFF' }} className='link'>Recipes</Link>
         <Link to='/SearchRecipes' style={{ color: '#FFFFFF' }} className='link'>Search Recipe</Link>
         <Link to='/NewRecipe' style={{ color: '#FFFFFF' }} className='link'>Create Recipe</Link>
+        
         <div className="Footer">
           <a href="https://www.linkedin.com/in/mark-harmon-805aa3232/" 
             className="linkedin"
