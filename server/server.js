@@ -66,10 +66,10 @@ app.get('/todo/:id', async (req, res) => {
     res.send('Comment not found!!!')
   }
 })
-app.post('/todo', function(req,res){ 
+app.post('/todo',function(req,res){ 
  
        
-  const rec = new Recipe(req.body.data);  
+  const rec = new Comment(req.body.data);  
       rec.save(function(err,data){  
           if(err){  
               res.send(err);                
