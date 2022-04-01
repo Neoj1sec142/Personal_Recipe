@@ -11,13 +11,14 @@ const ToDo = (props) => {
     })
     const [queryRate, setQueryRate] = useState('')
     const [queryComm, setQueryComm] = useState('')
+    const [idQuery, setIdQuery] = useState('')
 
     useEffect(() => {
         const getComments = async () => {
             const comments = await axios.get("http://localhost:3001/todo", { mode: 'cors' } )
             const data = [...comments.data]
             setCall(data)
-            console.log(call)
+            
         }
         getComments()
         },[])
@@ -42,25 +43,29 @@ const ToDo = (props) => {
     
     const removeClick = (e) => {
         console.log(e.target)
-        axios.delete(`http://localhost:3001/todo/${task._id.value}`, { data:  task })
+        axios.delete(`http://localhost:3001/todo/${idQuery}`, { data:  task })
                      .then(response => {
                             console.log("Status: ", response.status);
                             console.log("Data: ", response.data);
-                     }).catch(error => {
+                     }).catch((error) => {
                             console.error('Something went wrong', error) 
                      })
         e.preventDefault()
     }
+    const handleId = (e) => {
+        setIdQuery(e.target.value)
+    }
       
     return(
         <div className="todo">
+            <input type='idQuery' onChange={(e) => {handleId(e)}}></input>
             <div>
             <NewCard>
                 <ul>
                     {call.map((com)=>( 
                     <li>
                         <button type='delete' onClick={(e) => {removeClick(e)}} />
-                        <h2>{com.comment}{com.rating}</h2>
+                        <h2>{com.comment}{com.rating}{com._id}</h2>
                     </li>
                     ))}
                 </ul>
