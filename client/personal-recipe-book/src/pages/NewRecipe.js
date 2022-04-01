@@ -15,7 +15,7 @@ const NewRecipe = () => {
        const [searchSerState, setSearchSerState] = useState('')
        const [searchStepState, setSearchStepState] = useState('')
        //use state for axios post
-       let [recipe, setNewBody] = useState({
+       const [recipe, setNewBody] = useState({
               name: '',
               type: '',
               ingredients: '',
@@ -51,18 +51,18 @@ const NewRecipe = () => {
        const handleStepChange = (e) => {
               setSearchStepState(e.target.value);
        }
-       const handleClick= (e) => {
+       const handleClick = (e) => {
               setNewBody({
-                     name: {searchTypeState},
-                     type: {searchTypeState},
-                     ingredients: {searchIngState},
-                     time_cook: {searchTimeState},
-                     temp: {searchTempState},
-                     caution: {searchCauState},
-                     servings: {searchSerState},
-                     steps: {searchStepState},
+                     name: searchTypeState,
+                     type: searchTypeState,
+                     ingredients: searchIngState,
+                     time_cook: searchTimeState,
+                     temp: searchTempState,
+                     caution: searchCauState,
+                     servings: searchSerState,
+                     steps: searchStepState,
               });
-              axios.post('http://localhost:3001/recipes', {recipe})
+              axios.post('http://localhost:3001/recipes',{data: recipe})
                      .then(response => {
                             console.log("Status: ", response.status);
                             console.log("Data: ", response.data);

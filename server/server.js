@@ -41,13 +41,13 @@ app.put('/recipes/update/:name', (req,res) => {
 app.delete('/recipes/:id', controllers.deleteRecipe)
 app.post("/recipes",function(req,res){   
        
-  let rec = new Recipe(req.body);  
+  const rec = new Recipe(req.body.data);  
       rec.save(function(err,data){  
           if(err){  
               res.send(err);                
           }  
           else{        
-               res.send({data:"Recipe has been Inserted..!!"});  
+               res.send({data: 'Recipe added'});  
           }  
       });  
 })  
@@ -69,13 +69,13 @@ app.get('/todo/:id', async (req, res) => {
 app.post('/todo', function(req,res){ 
  
        
-  let rec = new Recipe(req.body);  
+  const rec = new Recipe(req.body.data);  
       rec.save(function(err,data){  
           if(err){  
               res.send(err);                
           }  
           else{        
-               res.send({data:"Comment has been Inserted..!!"});  
+               res.send({data: "Comment has been Inserted..!!"});  
           }  
       });  
 })  
