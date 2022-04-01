@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 //import ReactDOM from 'react-dom';
-//import axios from 'axios'
+import axios from 'axios'
 
 
 const RecipeForm = (props) => {
@@ -15,7 +15,7 @@ const RecipeForm = (props) => {
        const [searchSerState, setSearchSerState] = useState('')
        const [searchStepState, setSearchStepState] = useState('')
        //use state for axios post
-       let [newBody, setNewBody] = useState({
+       let [recipe, setNewBody] = useState({
               name: '',
               type: '',
               ingredients: '',
@@ -62,11 +62,17 @@ const RecipeForm = (props) => {
                      servings: {searchSerState},
                      steps: {searchStepState},
               });
-              console.log(newBody)
               e.preventDefault();  
+              axios.post('http://localhost:3001/api/recipes/new', {recipe})
+              .then(response => {
+                console.log("Status: ", response.status);
+                console.log("Data: ", response.data);
+              }).catch(error => {
+                console.error('Something went wrong') 
+              })
        }
        
-//     
+    
 //   useEffect(() => {
 //       // POST request using axios inside useEffect hook
 //       const recipe = { newBody };
@@ -74,6 +80,9 @@ const RecipeForm = (props) => {
 //           .then(response => setRecipeId(response.data.id));
   
 //   }, []);
+      
+              
+
   
   // useEffect(() => {
   //   const handleSubmit = async () => {
