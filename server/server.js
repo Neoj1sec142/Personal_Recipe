@@ -38,6 +38,7 @@ app.get('/recipes', async (req, res) => {
 app.put('/recipes/update/:name', (req,res) => {
   res.send(`Recipe profile with the name of ${req.params.name} was updated`)
 })
+app.delete('/recipes/:id', controllers.deleteRecipe)
 app.post("/recipes",function(req,res){   
        
   let rec = new Recipe(req.body);  
@@ -50,7 +51,21 @@ app.post("/recipes",function(req,res){
           }  
       });  
 })  
-
+app.get('/todo', async (req, res) => {
+  const comment = await Comment.find()
+  res.json(comment)
+})
+app.get('/todo/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const comment = await Comment.findById(id)
+    if (!comment) throw Error('Comment not found.')
+    res.json(comment)
+  } catch (e) {
+    console.log(e)
+    res.send('Comment not found!!!')
+  }
+})
 app.post('/todo', controllers.addComment)
 
 app.put('/todo/:id', controllers.updateComment)

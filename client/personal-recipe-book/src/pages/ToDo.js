@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import NewCard from '../components/NewCard'
+import { useNavigate } from 'react-router-dom'
 
 const ToDo = (props) => {
-
-    let [task, setTask] = useState({
+    const [call, setCall] = useState([])
+    const [task, setTask] = useState({
         rating: '',
         comment: ''
-    })
-    let [queryRate, setQueryRate] = useState('')
-    let [queryComm, setQueryComm] = useState('')
+})
+    const [queryRate, setQueryRate] = useState('')
+    const [queryComm, setQueryComm] = useState('')
+
+    useEffect(() => {
+        const getComments = async () => {
+            const comments = await axios.get("http://localhost:3001/todo", { mode: 'cors' } )
+            const data = [...comments.data]
+            setCall(data)
+            console.log(call)
+        }
+        getComments()
+        },[])
   
     const handleClick = (e) => {
-      e.preventDefault()
       if (!task) {
         console.log('Enter Task')
       } else {
@@ -27,12 +38,14 @@ const ToDo = (props) => {
                      }).catch(error => {
                             console.error('Something went wrong', error) 
                      })
-      setQueryRate('')
-      setQueryComm('')
+                     e.preventDefault()
+    //   setQueryRate('')
+    //   setQueryComm('')
     }
     
     const removeClick = (e) => {
-        axios.delete('http://localhost:3001/todo:id', {task})
+        console.log(e.target)
+        axios.delete(`http://localhost:3001/todo/${task._id.value}`, { data:  task })
                      .then(response => {
                             console.log("Status: ", response.status);
                             console.log("Data: ", response.data);
@@ -44,14 +57,23 @@ const ToDo = (props) => {
       
     }
     
-  
+  console.log(call)
 
     return(
         <div className="todo">
-
-            <h2>{props.comment}{props.comment}<button type="delete" 
-                            onClick={(e) => {removeClick(e)}}>X</button></h2>
-            
+            <div>
+            <NewCard>
+                <ul>
+                    {call.map((com)=>(
+                        
+                    <li>
+                        <button type='delete' onClick={(e) => {removeClick(e)}} />
+                        <h2>{com.comment}{com.rating}</h2>
+                    </li>
+                    ))}
+                </ul>
+            </NewCard>
+            </div>
             <br />
             <div>
                 <input

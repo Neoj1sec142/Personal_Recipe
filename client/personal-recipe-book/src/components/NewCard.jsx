@@ -4,11 +4,19 @@
 // import axios from 'axios'
 // import NewCard from '../components/NewCard'
 
-const newRecipe = () => {
-    return(<div></div>)
+const NewCard = (props) => {
     
-    
+
+
+    return (
+        <div className="comment-header">
+          <h1>Task List:</h1>
+          {props.children}
+        </div>
+      )
 }
 
-export default newRecipe
+
+
+export default NewCard
 

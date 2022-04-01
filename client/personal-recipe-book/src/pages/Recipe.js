@@ -25,15 +25,19 @@ const Recipe = () => {
     // const showRecipe = () => {
     //     navigate(recipeResults)
     // }
-    // u2w1ThurLessConRendering for info
-    // const handleSearchChange = () => showRecipe()
-
-    // for(let i=0; i<recipeResults.length; i++){
-    //     allRecipes[i].map((recipe) => ( ))}
-    //console.log(props.data)
-    
-    //console.log(recipeResults)
-
+    const removeClick = (e) => {
+        console.log(e)
+        axios.delete(`http://localhost:3001/recipes/${recipeResults._id}`, { data: '' })
+                     .then(response => {
+                            console.log("Status: ", response.status);
+                            console.log("Data: ", response.data);
+                     }).catch(error => {
+                            console.error('Something went wrong', error) 
+                     })
+        e.preventDefault()
+      
+      
+    }
     return(
         <div className='recipe-grid'>
             <DataContext.Provider value={{ recipeResults, setRecipeResults }}>
@@ -48,7 +52,8 @@ const Recipe = () => {
                         <h6>Temp: {recipe.temp}</h6>
                         <h6>Caution: {recipe.caution}</h6>
                         <h6>Directions: {recipe.steps}</h6>
-                        
+                        <h6>ID: {recipe._id}</h6>
+                        <button type='delete' formTarget={recipe._id} onClick={(e) => {removeClick(e)}} />
                     </li>
                     ))}
                 </ul>

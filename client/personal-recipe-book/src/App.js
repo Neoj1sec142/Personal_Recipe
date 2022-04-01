@@ -13,6 +13,7 @@ import Recipe from './pages/Recipe'
 
 import SearchRecipes from './pages/SearchRecipes'
 import NewRecipe from './pages/NewRecipe'
+import ToDo from './pages/ToDo';
 
 
 
@@ -31,8 +32,7 @@ function App() {
           <Route path='/About' element={<About />}  />
           <Route path='/Recipe/' element={<Recipe  />} />
           <Route path='/SearchRecipes' element={<SearchRecipes  />} />
-          
-          
+          <Route path='/ToDo' element={<ToDo  />} />
           <Route path='/NewRecipe' element={<NewRecipe />} />
         </Routes> 
       </div>
