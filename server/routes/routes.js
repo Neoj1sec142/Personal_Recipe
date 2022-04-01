@@ -10,14 +10,16 @@ router.get('/', (req, res) => res.send('This is root server page!'))
 
 router.get('/recipes', controllers.getAllRecipes)
 router.post('/recipes', controllers.createRecipe)
+router.post('/todo', controllers.addComment)
+router.put('/todo/:id', controllers.updateComment)
+router.delete('/todo/:id', controllers.deleteComment)
 router.get('/recipes/:id', controllers.getRecipeById)
 router.get('/main?search=:name', controllers.searchRecipeName)
-router
-    .route("/update-recipe/:id")
-    .get((req,res) => {
+router.route("/update-recipe/:id")
+      .get((req,res) => {
         RecipeSchema, controllers.getRecipeById
-    })
-    .put((req,res, next) => {
+      })
+      .put((req,res, next) => {
         RecipeSchema.findByIdAndUpdate(
             req.params.id,
             {

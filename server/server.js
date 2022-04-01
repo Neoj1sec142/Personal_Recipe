@@ -51,7 +51,10 @@ app.post("/recipes",function(req,res){
       });  
 })  
 
-//app.post('/recipes', controllers.createRecipe)
+app.post('/todo', controllers.addComment)
+
+app.put('/todo/:id', controllers.updateComment)
+app.delete('/todo/:id', controllers.deleteComment)
 app.use('/api', routes)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'))
