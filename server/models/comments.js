@@ -4,7 +4,6 @@ const Comment = new Schema(
   {
     rating: { type: String, required: false },
     comment: { type: String, required: false }
-    
   },
   { timestamps: true }
 )

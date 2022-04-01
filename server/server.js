@@ -66,8 +66,33 @@ app.get('/todo/:id', async (req, res) => {
     res.send('Comment not found!!!')
   }
 })
-app.post('/todo', controllers.addComment)
-
+app.post('/todo', function(req,res){ 
+ 
+       
+  let rec = new Recipe(req.body);  
+      rec.save(function(err,data){  
+          if(err){  
+              res.send(err);                
+          }  
+          else{        
+               res.send({data:"Comment has been Inserted..!!"});  
+          }  
+      });  
+})  
+// app.delete('/todo/:id', function(req,res){ 
+ 
+       
+//   let rec = new Recipe(req.body);  
+//       rec.save(function(err,data){  
+//           if(err){  
+//               res.send(err);                
+//           }  
+//           else{        
+//                res.send({data:"Comment has been Inserted..!!"});  
+//           }  
+//       });  
+// }) 
+app.get('/todo', controllers.getAllComments)
 app.put('/todo/:id', controllers.updateComment)
 app.delete('/todo/:id', controllers.deleteComment)
 app.use('/api', routes)

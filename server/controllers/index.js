@@ -1,5 +1,14 @@
 const { Recipe, Comment } = require("../models")
 
+const getAllComments = async (req, res) => {
+    try {
+        const comments = await Comment.find({})
+        return res.status(200).json({ comments })
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 
 const createRecipe = async (req, res) => {
     try {
@@ -115,5 +124,6 @@ module.exports = {
     searchRecipeName,
     deleteComment,
     updateComment,
-    deleteRecipe
+    deleteRecipe,
+    getAllComments
 }
