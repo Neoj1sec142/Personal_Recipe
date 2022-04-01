@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 //import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import RecipeCard from '../components/RecipeCard'
+import { DataContext } from '../components/DataContext'
 
 
 const Recipe = () => {
@@ -35,6 +36,7 @@ const Recipe = () => {
 
     return(
         <div className='recipe-grid'>
+            <DataContext.Provider value={{ recipeResults, setRecipeResults }}>
             <RecipeCard>
                 <ul>
                     {recipeResults.map((recipe) => (
@@ -51,6 +53,7 @@ const Recipe = () => {
                     ))}
                 </ul>
             </RecipeCard>
+            </DataContext.Provider>
         </div>
     )
 }

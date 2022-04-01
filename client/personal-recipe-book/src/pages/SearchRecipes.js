@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import SearchCard from '../components/SearchCard'
+import { DataContext } from '../components/DataContext'
 
 const SearchRecipes = (props) => {
   const [searchResults, setSearchResults] = useState({})
+  const [search, setSearch] = useState({})
   const [searchQuery, setSearchQuery] = useState('')
 
     const navigate = useNavigate()
@@ -12,15 +14,18 @@ const SearchRecipes = (props) => {
     useEffect(() => {
       const getSearchResults = async () => {
             const recipe = await axios.get(`http://localhost:3001/recipes/:id`, { mode: 'cors' } )
-            setSearchResults(recipe)
+            setSearchResults(recipe[searchQuery]._id)
+            console.log(searchResults)
       }
       getSearchResults()
       },[])
 
       const handleClick = () => {
-        navigate(searchResults._id)
+        navigate(searchResults.index)
+        setSearch(searchResults.index)
+        console.log(searchResults)
         setSearchQuery('')
-        }
+      }
 
   return (
     <div className="search-recipes-grid">
@@ -29,7 +34,7 @@ const SearchRecipes = (props) => {
                 placeholder="Search by ID"
                 onChange={(e) => setSearchQuery(e.target.value)}></input>
          <button type="submit" 
-                  onClick={(e) => handleClick}></button>
+                  onClick={(e) => handleClick(e)}></button>
             <SearchCard>
                 <ul>
                     
