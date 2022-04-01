@@ -5,18 +5,17 @@ import React, { useEffect, useState } from "react";
 
 
 const RecipeForm = (props) => {
-  const [searchNameState, setSearchNameState] = useState('')
-  const [searchTypeState, setSearchTypeState] = useState('')
-  const [searchIngState, setSearchIngState] = useState('')
-  const [searchTimeState, setSearchTimeState] = useState('')
-  const [searchTempState, setSearchTempState] = useState('')
-  const [searchCauState, setSearchCauState] = useState('')
-  const [searchSerState, setSearchSerState] = useState('')
-  const [searchStepState, setSearchStepState] = useState('')
-  const [recipeId, setRecipeId] = useState('')
-  let [newBody, setNewBody] = useState({
-       
-       // const initalValues = {
+       // use state for input bars
+       const [searchNameState, setSearchNameState] = useState('')
+       const [searchTypeState, setSearchTypeState] = useState('')
+       const [searchIngState, setSearchIngState] = useState('')
+       const [searchTimeState, setSearchTimeState] = useState('')
+       const [searchTempState, setSearchTempState] = useState('')
+       const [searchCauState, setSearchCauState] = useState('')
+       const [searchSerState, setSearchSerState] = useState('')
+       const [searchStepState, setSearchStepState] = useState('')
+       //use state for axios post
+       let [newBody, setNewBody] = useState({
               name: '',
               type: '',
               ingredients: '',
@@ -26,81 +25,48 @@ const RecipeForm = (props) => {
               servings: '',
               steps: ''
        })
-       // const [values, setValues] = useState(initalValues)
-       //  const handleInputChange = (e) => {
-              
-       //         const { name, type, ingredients, time_cook, temp, caution, servings, steps  } = e.target;
-          
-       //        setNewBody({
-       //          [name]: e.target.value,
-       //          [type]: e.target.value,
-       //          [ingredients]: e.target.value,
-       //          [time_cook]: e.target.value,
-       //          [temp]: e.target.value,
-       //          [caution]: e.target.value,
-       //          [servings]: e.target.value,
-       //          [steps]: e.target.value,
-       //        });
-       //  };
-       // function to update state of name with
-       // value enter by user in form
-       const handleChange =(e)=>{
+       //functions to update state of newBody
+       //enter by user in form
+       const handleChange = (e) => {
               setSearchNameState(e.target.value);
        }
-       //function to update state of age with value
-       //enter by user in form
-       const handleTypeChange =(e)=>{
+       const handleTypeChange = (e) => {
               setSearchTypeState(e.target.value);
        }
-       const handleIngChange =(e)=>{
+       const handleIngChange = (e) => {
               setSearchIngState(e.target.value);
        }
-       const handleTimeChange =(e)=>{
+       const handleTimeChange = (e) => {
               setSearchTimeState(e.target.value);
        }
-       const handleTempChange =(e)=>{
+       const handleTempChange = (e) => {
               setSearchTempState(e.target.value);
        }
-       const handleCauChange =(e)=>{
+       const handleCauChange = (e) => {
               setSearchCauState(e.target.value);
        }
-       const handleSerChange =(e)=>{
+       const handleSerChange = (e) => {
               setSearchSerState(e.target.value);
        }
-       const handleStepChange =(e)=>{
+       const handleStepChange = (e) => {
               setSearchStepState(e.target.value);
        }
-
-       const handleClick=(e)=>{
-              
+       const handleClick= (e) => {
               setNewBody({
-                     name: searchNameState.value,
-                     type: searchTypeState.value,
-                     ingredients: searchIngState.value,
-                     time_cook: searchTimeState.value,
-                     temp: searchTempState.value,
-                     caution: searchCauState.value,
-                     servings: searchSerState.value,
-                     steps: searchStepState.value,
+                     name: {searchTypeState},
+                     type: {searchTypeState},
+                     ingredients: {searchIngState},
+                     time_cook: {searchTimeState},
+                     temp: {searchTempState},
+                     caution: {searchCauState},
+                     servings: {searchSerState},
+                     steps: {searchStepState},
               });
-             
+              console.log(newBody)
               e.preventDefault();  
        }
-       console.log(newBody.name)
-//     const handleChange = (e) => {
-//       setNewBody({
-//         name: searchNameState,
-//         type: searchTypeState,
-//         ingredients: searchIngState,
-//         time_cook: searchTimeState,
-//         temp: searchTempState,
-//         caution: searchCauState,
-//         servings: searchSerState,
-//         steps: searchStepState
-//       })
-//       console.log(newBody)
-//     }
-  
+       
+//     
 //   useEffect(() => {
 //       // POST request using axios inside useEffect hook
 //       const recipe = { newBody };
@@ -142,7 +108,7 @@ const RecipeForm = (props) => {
                             value={searchNameState.value}
                             placeholder="New Recipe Name"
                             required
-                            onChange={(e) => {setSearchNameState(e)}} /><br/>
+                            onChange={(e) => {handleChange(e)}} /><br/>
                       <label >
                             Type:
                      </label><br/>
@@ -150,7 +116,7 @@ const RecipeForm = (props) => {
                             value={searchTypeState.value} 
                             placeholder="Type"
                             required
-                            onChange={(e) => {setSearchTypeState(e)}} /><br/>
+                            onChange={(e) => {handleTypeChange(e)}} /><br/>
                       <label >
                             Ingredients:
                      </label><br/>
