@@ -15,9 +15,7 @@ const Recipe = () => {
         const recipes = await axios.get("http://localhost:3001/api/recipes", { mode: 'cors' } )
         const data = [...recipes.data.recipes]
         setRecipeResults(data)
-        
-      
-        
+    
     }
     getRecipeResults()
     },[])
