@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 
 
-const RecipeForm = (props) => {
+const NewRecipe = () => {
        // use state for input bars
        const [searchNameState, setSearchNameState] = useState('')
        const [searchTypeState, setSearchTypeState] = useState('')
@@ -62,14 +62,15 @@ const RecipeForm = (props) => {
                      servings: {searchSerState},
                      steps: {searchStepState},
               });
+              console.log(recipe)
               e.preventDefault();  
-              axios.post('http://localhost:3001/api/recipes/new', {recipe})
-              .then(response => {
-                console.log("Status: ", response.status);
-                console.log("Data: ", response.data);
-              }).catch(error => {
-                console.error('Something went wrong') 
-              })
+              axios.post('http://localhost:3001/recipes/new', {recipe})
+                     .then(response => {
+                            console.log("Status: ", response.status);
+                            console.log("Data: ", response.data);
+                     }).catch(error => {
+                            console.error('Something went wrong') 
+                     })
        }
        
     
@@ -182,4 +183,4 @@ const RecipeForm = (props) => {
     );
   };
     
-  export default RecipeForm
+  export default NewRecipe
