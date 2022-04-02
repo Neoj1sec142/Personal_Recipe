@@ -101,14 +101,15 @@ const deleteComment = async (req, res) => {
 const updateComment = async (req, res) => {
     try {
         const { id } = req.params;
-        await Comment.findByIdAndUpdate(id, req.body, { new: true }, (err, comment) => {
+        await Comment.findByIdAndUpdate(id, req.body,  (err, comment) => {
             if (err) {
                 res.status(500).send(err);
             }
             if (!comment) {
                 res.status(500).send('Comment not found!');
-            }
+            }else {
             return res.status(200).json(comment);
+            }
         })
     } catch (error) {
         return res.status(500).send(error.message);

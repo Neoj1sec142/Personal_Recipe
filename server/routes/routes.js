@@ -17,27 +17,27 @@ router.put('/todo/:id', controllers.updateComment)
 router.delete('/todo/:id', controllers.deleteComment)
 router.get('/recipes/:id', controllers.getRecipeById)
 router.get('/main?search=:name', controllers.searchRecipeName)
-router.route("/update-recipe/:id")
-      .get((req,res) => {
-        RecipeSchema, controllers.getRecipeById
-      })
-      .put((req,res, next) => {
-        RecipeSchema.findByIdAndUpdate(
-            req.params.id,
-            {
-              $set: req.body,
-            },
-            (error, data) => {
-              if (error) {
-                return next(error);
-                console.log(error);
-              } else {
-                res.json(data);
-                console.log("Recipe updated successfully !");
-              }
-            }
-          );
-        });  
+router.put("/todo/update/:id/:comment", controllers.updateComment)
+      // .get((req,res) => {
+      //   RecipeSchema, controllers.getRecipeById
+      // })
+      // .put((req,res, next) => {
+      //   CommentSchema.findByIdAndUpdate(
+      //       req.params.id,
+      //       {
+      //         $set: req.body,
+      //       },
+      //       (error, data) => {
+      //         if (error) {
+      //           return next(error);
+      //           console.log(error);
+      //         } else {
+      //           res.json(data);
+      //           console.log("Recipe updated successfully !");
+      //         }
+      //       }
+      //     );
+      //   });  
     
 module.exports = router;
 

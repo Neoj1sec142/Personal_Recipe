@@ -93,7 +93,7 @@ app.post('/todo',function(req,res){
 //       });  
 // }) 
 app.get('/todo', controllers.getAllComments)
-app.put('/todo/:id', controllers.updateComment)
+app.put('/todo/update/:id/:comment', controllers.updateComment)
 app.delete('/todo/:id', controllers.deleteComment)
 app.use('/api', routes)
 
