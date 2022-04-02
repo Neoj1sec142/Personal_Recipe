@@ -5,12 +5,13 @@ import NewCard from '../components/NewCard'
 
 const ToDo = (props) => {
     const [call, setCall] = useState([])
-    const [task, setTask] = useState({
-        rating: '',
-        comment: '',
-    })
     const [queryRate, setQueryRate] = useState('')
     const [queryComm, setQueryComm] = useState('')
+    const [task, setTask] = useState({
+        rating: queryRate,
+        comment: queryComm,
+    })
+    
     const [idQuery, setIdQuery] = useState('')
 
     useEffect(() => {
@@ -82,12 +83,13 @@ const ToDo = (props) => {
     return(
         <div className="todo">
             <input type='idQuery' onChange={(e) => {handleId(e)}}></input>
+            <button type='submit' onClick={(e) => {removeClick(e)}} />
             <div>
             <NewCard>
                 <ul>
                     {call.map((com)=>( 
                     <li>
-                        <button type='submit' onClick={(e) => {removeClick(e)}} />
+                        
                         <h2>{com.comment}{com.rating}{com._id}</h2>
                         <div>
                             <input className="rate-input"
