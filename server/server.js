@@ -15,9 +15,14 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json())
+app.use(express.static(`${__dirname}/client/build`))
 
 app.get('/', (req, res) => {
     res.send('This is root home server page!')
+})
+
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`)
 })
 
 app.get('/recipes', async (req, res) => {
@@ -92,6 +97,7 @@ app.post('/todo',function(req,res){
 //           }  
 //       });  
 // }) 
+
 app.get('/todo', controllers.getAllComments)
 app.put('/todo/update/:id/:comment', controllers.updateComment)
 app.delete('/todo/:id', controllers.deleteComment)
