@@ -55,7 +55,7 @@ const ToDo = (props) => {
         setUpdate({
             comment: queryUpComm,
     })
-    await axios.put(`http://localhost:3001/update-comment/${addy.value}`,  update)
+    await axios.put(`http://localhost:3001/comments/${addy.value}`,  update)
         .then(response => console.log(response.data.updatedAt));
     }
     
