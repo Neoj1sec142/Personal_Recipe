@@ -89,35 +89,47 @@ const ToDo = (props) => {
                     <li>
                         <button type='submit' onClick={(e) => {removeClick(e)}} />
                         <h2>{com.comment}{com.rating}{com._id}</h2>
+                        <div>
+                            <input className="rate-input"
+                                    type="text"
+                                    placeholder="rate"
+                                    value={queryRate.value}
+                                    onChange={(e) => handleRate(e)}/>
+                        <br />
+                            <input className="comm-input"
+                                    type="text"
+                                    placeholder="Task:"
+                                    value={queryComm.value}
+                                    onChange={(e) => handleComm(e)}/>
+                        <br />
+                            <button className="btn"
+                                    type="submit"
+                                    onClick={(e) => {handleClick(e)}}/>
+                        </div>
                     </li>
                     ))}
                 </ul>
             </NewCard>
+            <div>
+                <input className="rate-input"
+                        type="text"
+                        placeholder="rate"
+                        value={queryRate.value}
+                        onChange={(e) => handleRate(e)}/>
+                <br />
+                <input className="comm-input"
+                        type="text"
+                        placeholder="Task:"
+                        value={queryComm.value}
+                        onChange={(e) => handleComm(e)}/>
+                <br />
+                <button className="btn"
+                        type="submit"
+                        onClick={(e) => {handleClick(e)}}/>
+            </div>
             </div>
             <br />
-            <div>
-                <input
-                    className="rate-input"
-                    type="text"
-                    placeholder="rate"
-                    value={queryRate.value}
-                    onChange={(e) => handleRate(e)}
-                />
-            <br />
-                <input
-                    className="comm-input"
-                    type="text"
-                    placeholder="Task:"
-                    value={queryComm.value}
-                    onChange={(e) => handleComm(e)}
-                />
-            <br />
-                <button
-                    className="btn"
-                    type="submit"
-                    onClick={(e) => {handleClick(e)}}
-                />
-      </div>
+            
     </div>
     )
 }
