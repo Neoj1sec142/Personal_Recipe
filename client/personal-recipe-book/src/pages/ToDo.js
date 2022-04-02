@@ -7,6 +7,10 @@ const ToDo = (props) => {
     const [call, setCall] = useState([])
     const [queryRate, setQueryRate] = useState('')
     const [queryComm, setQueryComm] = useState('')
+    const [queryUpInput, setQueryUpInput] = useState('')
+    const [queryUpComm, setQueryUpComm] = useState('')
+    const [addy, setAddy] = useState('')
+    const [update, setUpdate] = useState({comment: queryUpComm})
     const [task, setTask] = useState({
         rating: queryRate,
         comment: queryComm,
@@ -22,31 +26,40 @@ const ToDo = (props) => {
             
         }
         getComments()
-        },[])
-        const handleClick = (e) => {
-            setTask({
-                   rating: queryRate,
-                   comment: queryComm,
-                   
-            });
-            axios.post('http://localhost:3001/todo',{data: task})
-                   .then(response => {
-                          console.log("Status: ", response.status);
-                          console.log("Data: ", response.data);
-                   }).catch(error => {
-                          console.error('Something went wrong', error) 
-                   })
+    },[])
+        
+    const handleClick = (e) => {
+        setTask({
+            rating: queryRate,
+            comment: queryComm,
+        });
+        axios.post('http://localhost:3001/todo',{data: task})
+            .then(response => {
+                console.log("Status: ", response.status);
+                console.log("Data: ", response.data);
+            }).catch(error => {
+                console.error('Something went wrong', error) 
+            })
             console.log(task)
             e.preventDefault();                
      }
+    //  useEffect(() => {
+    //     // PUT request using axios inside useEffect React hook
+    //     //const article = { title: 'React Hooks PUT Request Example' };
+        
+    //     handleUpdateClick()
+    // // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    // }, []);
 
-    // const handleClick = (e) => {
-    //     setTask({
-    //         rating: {queryRate},
-    //         comment: {queryComm},
-    //     })
+    const handleUpdateClick = async (e) => {
+        setUpdate({
+            comment: queryUpComm,
+    })
+    await axios.put(`http://localhost:3001/update-comment/${addy.value}`,  update)
+        .then(response => console.log(response.data.updatedAt));
+    }
+    
       
-    //   axios.post('http://localhost:3001/todo', {data: task.data})
     //                  .then(response => {
     //                         console.log("Status: ", response.status);
     //                         console.log("Data: ", response.data);
@@ -76,8 +89,13 @@ const ToDo = (props) => {
         setQueryComm(e.target.value)
     }
     const handleRate = (e) => {
-        setQueryRate(e.target.value)
-        
+        setQueryRate(e.target.value) 
+    }
+    const handleUpdate = (e) => {
+        setQueryUpInput(e.target.value)
+    }
+    const handleUpdateAddy = (e) => {
+        setAddy(e.target.value)
     }
       
     return(
@@ -94,19 +112,24 @@ const ToDo = (props) => {
                         <div>
                             <input className="rate-input"
                                     type="text"
-                                    placeholder="rate"
+                                    placeholder="possible id slot"
                                     value={queryRate.value}
                                     onChange={(e) => handleRate(e)}/>
                         <br />
                             <input className="comm-input"
                                     type="text"
-                                    placeholder="Task:"
+                                    placeholder="Task Update:"
                                     value={queryComm.value}
-                                    onChange={(e) => handleComm(e)}/>
+                                    onChange={(e) => handleUpdate(e)}/>
                         <br />
                             <button className="btn"
                                     type="submit"
-                                    onClick={(e) => {handleClick(e)}}/>
+                                    onClick={(e) => {handleUpdateClick(e)}}>Update</button>
+                        <br />
+                        <br />
+                            <button className="btn"
+                                    type="submit"
+                                    onClick={(e) => {handleUpdateAddy(e)}}>ID</button>
                         </div>
                     </li>
                     ))}
