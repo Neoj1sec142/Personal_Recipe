@@ -8,6 +8,7 @@ import { DataContext } from '../components/DataContext'
 
 const Recipe = () => {
     const [recipeResults, setRecipeResults] = useState([])
+    const [removeId, setRemoveId] = useState('')
     
     // use effect to make the axios call
     useEffect(() => {
@@ -23,21 +24,26 @@ const Recipe = () => {
     // const showRecipe = () => {
     //     navigate(recipeResults)
     // }
-    const removeClick = (e) => {
-        console.log(e)
-        axios.delete(`http://localhost:3001/recipes/${recipeResults._id}`, { data: '' })
-                     .then(response => {
-                            console.log("Status: ", response.status);
-                            console.log("Data: ", response.data);
-                     }).catch(error => {
-                            console.error('Something went wrong', error) 
-                     })
-        e.preventDefault()
-      
-      
+    
+    const removeClick = async (e) => {
+        e.preventDefault();
+        await axios.delete(`http://localhost:3001/recipes/${removeId}`)
+                     
+        //window.location.reload(); 
     }
+    const handleRemove = (e) => {
+        setRemoveId(e.target.value)
+    }
+
     return(
         <div className='recipe-grid'>
+            <header>
+            <input type="text" 
+                    value={removeId.value}
+                    placeholder="Remove ID"        
+                    onChange={(e) => {handleRemove(e)}} /><br/>
+            <button type='delete' onClick={(e) => {removeClick(e)}} />
+            </header>
             <DataContext.Provider value={{ recipeResults, setRecipeResults }}>
             <RecipeCard>
                 <ul>
@@ -51,7 +57,7 @@ const Recipe = () => {
                         <h6>Caution: {recipe.caution}</h6>
                         <h6>Directions: {recipe.steps}</h6>
                         <h6>ID: {recipe._id}</h6>
-                        <button type='delete' formTarget={recipe._id} onClick={(e) => {removeClick(e)}} />
+                        
                     </li>
                     ))}
                 </ul>

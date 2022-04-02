@@ -10,7 +10,7 @@ router.get('/', (req, res) => res.send('This is root server page!'))
 
 router.get('/recipes', controllers.getAllRecipes)
 router.post('/recipes', controllers.createRecipe)
-router.delete('/recipes/:id', controllers.deleteComment)
+router.delete('/recipes/:id', controllers.deleteRecipe)
 router.get('/todo', controllers.getAllComments)
 router.post('/todo', controllers.addComment)
 router.put('/todo/:id', controllers.updateComment)
