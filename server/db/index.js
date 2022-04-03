@@ -1,7 +1,7 @@
 //Boiler plate for database below under index.js in db folder
 const mongoose = require('mongoose')
 require('dotenv').config() // Add this line
-
+//
 
 let dbUrl = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://127.0.0.1:27017/personaRecipeDatabase'
 
@@ -17,3 +17,4 @@ mongoose.set('debug', true)
 const db = mongoose.connection
 
 module.exports = db
+
