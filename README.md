@@ -24,11 +24,11 @@ Front End:
     [] Ability to display search results
 * Add New Page:   
     [x] Page for all input for new recipes
-    [] set up input functionality
-    [] set up post 
-    [] add submit button
+    [x] set up input functionality
+    [x] set up post 
+    [x] add submit button
     [] add update method
-    [] add delete method
+    [x] add delete method
 * All Recipes:   
     [] Should just display names   
     [] OnClick should displpay       recipe page
@@ -58,4 +58,11 @@ References:
 
 ***
 #### Credits:
-* Shout out to the GA repos that come in clutch when I'm in panic mode because I forgot what I was doing or I got stuck.
+* Shout out to the GA repos that come in clutch when I'm in panic mode because I forgot what I was doing or I got stuck. And Jermeys new repo he created to help with the axois calls.
+
+#### Directions:
+* To create a recipe you have to click the submit button twice    
+* To delete you need to copy the id from the recipes page and paste it into the input bar at the top then click the submitt button
+* All of the recipes can be viewed on the recieps page
+* The task page still needs a little work, the post is set up but for some reason  its not reading the data
+* Still need to find the correct way to set up the update route front&back

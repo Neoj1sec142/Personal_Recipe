@@ -153,6 +153,7 @@ input{
 .form-wrapper{
   background-image: url('http://i.imgur.com/glWla8v.png');
   background-size: cover;
+  color: rgb(7, 43, 1);
   padding-top: 20px;
   padding-bottom: 20px;
   text-decoration: underline;

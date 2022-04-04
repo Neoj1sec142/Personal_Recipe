@@ -20,29 +20,26 @@ const Recipe = () => {
     }
     getRecipeResults()
     },[])
-    // const navigate = useNavigate()
-    // const showRecipe = () => {
-    //     navigate(recipeResults)
-    // }
     
     const removeClick = async (e) => {
         e.preventDefault();
-        await axios.delete(`http://localhost:3001/recipes/${removeId}`)
-                     
-        //window.location.reload(); 
+        await axios.delete(`http://localhost:3001/recipes/${removeId}`)             
+        
     }
+
     const handleRemove = (e) => {
         setRemoveId(e.target.value)
     }
 
     return(
+
         <div className='recipe-grid'>
             <header>
             <input type="text" 
                     value={removeId.value}
                     placeholder="Remove ID"        
                     onChange={(e) => {handleRemove(e)}} /><br/>
-            <button type='delete' onClick={(e) => {removeClick(e)}} />
+            <button type='delete' onClick={(e) => {removeClick(e)}} >Delete By ID</button>
             </header>
             <DataContext.Provider value={{ recipeResults, setRecipeResults }}>
             <RecipeCard>
@@ -66,4 +63,5 @@ const Recipe = () => {
         </div>
     )
 }
+
 export default Recipe

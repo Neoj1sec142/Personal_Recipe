@@ -26,7 +26,7 @@ const NewRecipe = () => {
               steps: ''
        })
        //functions to update state of newBody
-       //enter by user in form
+       //enter by user input
        const handleChange = (e) => {
               setSearchNameState(e.target.value);
        }
@@ -72,26 +72,6 @@ const NewRecipe = () => {
               console.log(recipe)
               e.preventDefault();                
        }
-       
-    
-//   useEffect(() => {
-//        const functName = () => {
-//        }
-//        functName()
-// }, []);
-      
-//        let axiosConfig = {
-//               headers: {
-//                      'Content-Type' : 'application/json; charset=UTF-8',
-//                      'Accept': 'Token',
-//                      "Access-Control-Allow-Origin": "*",
-//        }
-//      };
-
-
-
-  
-
 
     return (
        <div className="form-wrapper">
@@ -171,7 +151,7 @@ const NewRecipe = () => {
                             
                             onChange={(e) => {handleStepChange(e)}} /><br/>
                      <button type="submit" 
-                            onClick={(e) => {handleClick(e)}}></button>
+                            onClick={(e) => {handleClick(e)}}>Create</button>
        </form>
        </header>
       </div>

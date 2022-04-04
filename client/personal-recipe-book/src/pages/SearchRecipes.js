@@ -28,13 +28,7 @@ const SearchRecipes = (props) => {
         getSearchResults()
         
       },[])
-      //console.log(search)
-      // const handleClicks = () => {
-      //   navigate(searchResults.index)
-      //   setSearch(searchResults.index)
-      //   console.log(searchResults)
-      //   setSearchQuery('')
-      // }
+      
       
       console.log(final)
       

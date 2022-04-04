@@ -1,8 +1,8 @@
 import './App.css';
 // import for main page
-
 import Nav from './components/Nav'
 import Main from './pages/Main'
+
 // imports for react hooks and axios
 import React from 'react'
 import { Route, Routes, } from 'react-router-dom';
