@@ -15,15 +15,15 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json())
-app.use(express.static(`${__dirname}/client/build`))
+//app.use(express.static(`${__dirname}/client/build`))
 
 app.get('/', (req, res) => {
     res.send('This is root home server page!')
 })
 
-app.get('/*', (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`)
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(`${__dirname}/client/build/index.html`)
+// })
 
 app.get('/recipes', async (req, res) => {
     const recipes = await Recipe.find()
