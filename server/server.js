@@ -40,7 +40,7 @@ app.get('/recipes', async (req, res) => {
       res.send('Recipe not found!!!')
     }
 })
-app.put('/recipes/update/:name', (req,res) => {
+app.put('/recipes', (req,res) => {
   res.send(`Recipe profile with the name of ${req.params.name} was updated`)
 })
 app.delete('/recipes/:id', controllers.deleteRecipe)
@@ -84,22 +84,10 @@ app.post('/todo',function(req,res){
           }  
       });  
 })  
-// app.delete('/todo/:id', function(req,res){ 
- 
-       
-//   let rec = new Recipe(req.body);  
-//       rec.save(function(err,data){  
-//           if(err){  
-//               res.send(err);                
-//           }  
-//           else{        
-//                res.send({data:"Comment has been Inserted..!!"});  
-//           }  
-//       });  
-// }) 
+
 
 app.get('/todo', controllers.getAllComments)
-app.put('/todo/update/:id/:comment', controllers.updateComment)
+app.put('/todo/:id', controllers.updateComment)
 app.delete('/todo/:id', controllers.deleteComment)
 app.use('/api', routes)
 

@@ -43,33 +43,20 @@ const ToDo = (props) => {
             console.log(task)
             e.preventDefault();                
      }
-    //  useEffect(() => {
-    //     // PUT request using axios inside useEffect React hook
-    //     //const article = { title: 'React Hooks PUT Request Example' };
-        
-    //     handleUpdateClick()
-    // // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    // }, []);
-
+    
+    //  async componentDidMount() {
+    //     // PUT request using axios with async/await
+    //     const article = { title: 'React Put Request Example' };
+    //     const response = await axios.put('https://reqres.in/api/articles/1', article);
+    //     this.setState({ updatedAt: response.data.updatedAt });
+    // }
+     
     const handleUpdateClick = async (e) => {
-        setUpdate({
-            comment: queryUpComm,
-    })
-    await axios.put(`http://localhost:3001/comments/${addy.value}`,  update)
+        const update = { update: queryUpComm }
+    await axios.put(`http://localhost:3001/todo/${addy}`,  update)
         .then(response => console.log(response.data.updatedAt));
     }
-    
-      
-    //                  .then(response => {
-    //                         console.log("Status: ", response.status);
-    //                         console.log("Data: ", response.data);
-    //                  }).catch((error) => {
-    //                         console.error('Something went wrong', error) 
-    //                  })
-    //                  e.preventDefault()
-    // //   setQueryRate('')
-    // //   setQueryComm('')
-    // }
+   
     
     const removeClick = (e) => {
         console.log(e.target)
@@ -93,9 +80,13 @@ const ToDo = (props) => {
     }
     const handleUpdate = (e) => {
         setQueryUpInput(e.target.value)
+        setUpdate({comment: queryUpComm.value})
     }
     const handleUpdateAddy = (e) => {
         setAddy(e.target.value)
+    }
+    const handleQueryUpComm = (e) => {
+        setQueryUpComm(e.target.value)
     }
       
     return(
@@ -107,20 +98,20 @@ const ToDo = (props) => {
                 <ul>
                     {call.map((com)=>( 
                     <li>
-                        
-                        <h2>{com.comment}{com.rating}{com._id}</h2>
+                        {com.key}
+                        <h2>{com.comment} {com.rating}{com._id}</h2>
                         <div>
                             <input className="rate-input"
                                     type="text"
                                     placeholder="possible id slot"
                                     value={queryRate.value}
-                                    onChange={(e) => handleRate(e)}/>
+                                    onChange={(e) => handleUpdate(e)}/>
                         <br />
                             <input className="comm-input"
                                     type="text"
                                     placeholder="Task Update:"
                                     value={queryComm.value}
-                                    onChange={(e) => handleUpdate(e)}/>
+                                    onChange={(e) => handleQueryUpComm(e)}/>
                         <br />
                             <button className="btn"
                                     type="submit"
@@ -150,7 +141,9 @@ const ToDo = (props) => {
                 <br />
                 <button className="btn"
                         type="submit"
-                        onClick={(e) => {handleClick(e)}}/>
+                        onClick={(e) => {handleClick(e)}}>
+                    Add Comment
+                </button>
             </div>
             </div>
             <br />
