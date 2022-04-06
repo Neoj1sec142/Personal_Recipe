@@ -62,6 +62,9 @@ References:
 * Shout out to the GA repos that come in clutch when I'm in panic mode because I forgot what I was doing or I got stuck. And Jermeys new repo he created to help with the axois calls.
 
 #### Directions:
+* To start server go into server file and npm run dev
+* To start client go to client/personal-recipe-database and npm start
+
 * To create a recipe you have to click the submit button twice    
 * To delete you need to copy the id from the recipes page and paste it into the input bar at the top then click the submitt button
 * All of the recipes can be viewed on the recieps page
