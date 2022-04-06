@@ -17,7 +17,7 @@ router.put('/todo/:id', controllers.updateComment)
 router.delete('/todo/:id', controllers.deleteComment)
 router.get('/recipes/:id', controllers.getRecipeById)
 router.get('/main?search=:name', controllers.searchRecipeName)
-router.put("/todo/update/:id/:comment", controllers.updateComment)
+router.put("/todo//:id/:comment", controllers.updateComment)
       // .get((req,res) => {
       //   RecipeSchema, controllers.getRecipeById
       // })
