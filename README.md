@@ -12,7 +12,7 @@
 [x] Create page/add new recipe function  
 [x] Get recipe function  
 [] Update recipe function  
-[] Delete recipe function   
+[x] Delete recipe function   
 [x] Connect DB to front
 ***
 Front End:   
@@ -27,10 +27,11 @@ Front End:
     [x] set up input functionality
     [x] set up post 
     [x] add submit button
-    [] add update method
+    [x] add update method
+    [] get update to render on screen
     [x] add delete method
 * All Recipes:   
-    [] Should just display names   
+    [x] Should display all recipes
     [] OnClick should displpay       recipe page
 * About Page:    
     [x] Should display the vision of the app with credits and refs
@@ -64,5 +65,7 @@ References:
 * To create a recipe you have to click the submit button twice    
 * To delete you need to copy the id from the recipes page and paste it into the input bar at the top then click the submitt button
 * All of the recipes can be viewed on the recieps page
-* The task page still needs a little work, the post is set up but for some reason  its not reading the data
+* The update route works on insomnia but seems im still a little confused to this route/function on the back end. Could use more resources.
 * Still need to find the correct way to set up the update route front&back
+
+* All that being said, please disregard the extra pages and componenets that are not set up yet. I intend on adding to this and refactoring it more. I want to make this app something for my portfolio but more so something I will actually use.
