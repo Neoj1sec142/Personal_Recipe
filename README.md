@@ -19,19 +19,19 @@ Front End:
 [x] React boilerplate set up
 * Homepage:   
     [x] Nav Bar   
-    [x] Search Recipe Bar 
+    [x] Search Recipe Bar    
     [x] Access Data in DB  
     [] Ability to display search results
 * Add New Page:   
-    [x] Page for all input for new recipes
-    [x] set up input functionality
-    [x] set up post 
-    [x] add submit button
-    [x] add update method
-    [] get update to render on screen
+    [x] Page for all input for new recipes   
+    [x] set up input functionality   
+    [x] set up post    
+    [x] add submit button   
+    [x] add update method   
+    [] get update to render on screen   
     [x] add delete method
 * All Recipes:   
-    [x] Should display all recipes
+    [x] Should display all recipes   
     [] OnClick should displpay       recipe page
 * About Page:    
     [x] Should display the vision of the app with credits and refs
@@ -68,4 +68,4 @@ References:
 * The update route works on insomnia but seems im still a little confused to this route/function on the back end. Could use more resources.
 * Still need to find the correct way to set up the update route front&back
 
-* All that being said, please disregard the extra pages and componenets that are not set up yet. I intend on adding to this and refactoring it more. I want to make this app something for my portfolio but more so something I will actually use.
+* &&&&&&&&&&&&&&&&&&&&&&&&&       All that being said, please disregard the extra pages and componenets that are not set up yet. I intend on adding to this and refactoring it more. I want to make this app something for my portfolio but more so something I will actually use.
