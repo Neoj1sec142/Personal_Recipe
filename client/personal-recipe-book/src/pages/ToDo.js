@@ -97,9 +97,9 @@ const ToDo = (props) => {
             <NewCard>
                 <ul>
                     {call.map((com)=>( 
-                    <li>
-                        {com.key}
-                        <h2>{com.comment} {com.rating}{com._id}</h2>
+                    <li key={com.key}>
+                        
+                        <h2 key={com.key}>{com.comment} {com.rating}{com._id}</h2>
                         <div>
                             <input className="rate-input"
                                     type="text"

@@ -12,14 +12,14 @@ const EditRecipe = (props) => {
     const onSubmit = (recipeObject) => {
       axios
         .put(
-          "http://localhost:4000/students/update-student/" +
+          "http://localhost:3001/recipes/:id/" +
             props.match.params.id,
           recipeObject
         )
         .then((res) => {
           if (res.status === 200) {
-            alert("Student successfully updated");
-            props.history.push("/student-list");
+            alert("Recipe successfully updated");
+            props.history.push("/recipe-list");
           } else Promise.reject();
         })
         .catch((err) => alert("Something went wrong"));
@@ -29,17 +29,17 @@ const EditRecipe = (props) => {
     useEffect(() => {
       axios
         .get(
-          "http://localhost:4000/students/update-student/" 
+          "http://localhost:3001/recipes/update-recipe/:id" 
           + props.match.params.id
         )
         .then((res) => {
-          const { name, email, rollno } = res.data;
-          setFormValues({ name, email, rollno });
+          const { name, type, servings, ingredients, time_cook, temp, caution,  steps } = res.data;
+          setFormValues({ name, type, servings, ingredients, time_cook, temp, caution,  steps });
         })
         .catch((err) => console.log(err));
     }, []);
     
-    // Return student form
+    // Return recipe form
     return (
       <RecipeForm
         initialValues={formValues}
