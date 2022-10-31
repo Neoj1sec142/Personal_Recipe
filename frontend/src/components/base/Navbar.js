@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logout } from '../store/actions/auth'
-
+import { logout } from '../../store/actions/auth'
+import Alert from '../Alert'
 const Navbar = ({isAuthenticated}) => {
 
     const authLinks = (
@@ -28,6 +28,7 @@ const Navbar = ({isAuthenticated}) => {
     )
 
     return(
+        <Fragment>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">Personal Recipe Book</a>
@@ -59,12 +60,14 @@ const Navbar = ({isAuthenticated}) => {
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <input value='none' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 </div>
             </div>
             </nav>
+            <Alert />
+            </Fragment>
     )
 }
 const mapStateToProps = state => ({

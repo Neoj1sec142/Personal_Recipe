@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../store/actions/auth'
-import CSRFToken from '../components/CSRFToken'
+import CSRFToken from '../components/base/CSRFToken'
 
 const Register = ({register, isAuthenticated}) => {
     const navigate = useNavigate()

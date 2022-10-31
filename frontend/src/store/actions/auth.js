@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import axios from 'axios'
+import { setAlert } from './alert'
 import { 
     REGISTER_SUCCESS, 
     REGISTER_FAIL, 
@@ -59,18 +60,21 @@ export const login = (username, password) => async dispatch => {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/accounts/login`, body, config)
         if(res.data.success){
             dispatch({
-                type: LOGIN_SUCCESS
+                type: LOGIN_SUCCESS,
+                payload: true
             })
-            
+            dispatch(setAlert('Authenticated successfully', 'success'))
         }else{
             dispatch({
                 type: LOGIN_FAIL
             })
+            dispatch(setAlert('Error Authenticating', 'error'))
         }
     }catch(err){
         dispatch({
             type: LOGIN_FAIL
         })
+        dispatch(setAlert('Error Authenticating', 'error'))
     }
 }
 
@@ -91,15 +95,18 @@ export const logout = () => async dispatch => {
             dispatch({
                 type: LOGOUT_SUCCESS
             })
+            dispatch(setAlert('You Have Logged Out Successfully', 'success'))
         }else{
             dispatch({
                 type: LOGOUT_FAIL
             })
+            dispatch(setAlert('Error Logging Out', 'error'))
         }
     }catch(err){
         dispatch({
             type: LOGOUT_FAIL
         })
+        dispatch(setAlert('Error Logging Out', 'error'))
     }
 }
 
@@ -118,15 +125,18 @@ export const register = (username, password, re_password) => async dispatch => {
             dispatch({
                 type: REGISTER_FAIL
             })
+            dispatch(setAlert('Error Creating Account', 'error'))
         }else{
             dispatch({
                 type: REGISTER_SUCCESS
             })
+            dispatch(setAlert('Account Created Successfully', 'success'))
         }
     }catch(err){
         dispatch({
             type: REGISTER_FAIL
         })
+        dispatch(setAlert('Error Creating Account', 'error'))
     }
 } 
 

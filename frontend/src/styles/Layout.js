@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/base/Navbar'
 import { connect } from 'react-redux'
 import { checkAuthenticated } from '../store/actions/auth'
 
