@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../store/actions/auth'
 import Alert from '../Alert'
-const Navbar = ({isAuthenticated}) => {
+const Navbar = ({isAuthenticated, logout}) => {
 
     const authLinks = (
         <Fragment>
@@ -55,9 +55,6 @@ const Navbar = ({isAuthenticated}) => {
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                     </li> */}
-                    <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
                 </ul>
                 <form class="d-flex">
                     <input value='none' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

@@ -36,5 +36,5 @@ class Step(models.Model):
     directions = models.TextField()
     posted_at = models.DateTimeField(default=now, blank=True)
     def __str__(self):
-        return self.step_number
+        return self.ingredients_used[:10]
     

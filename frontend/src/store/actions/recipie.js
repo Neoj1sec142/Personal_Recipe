@@ -52,7 +52,7 @@ export const load_recipies = () => async dispatch => {
         }
     }
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/recipies`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/recipies/`, config)
         if(res.status === 200){
             dispatch({
                 type: LOAD_RECIPIES_SUCCESS,
