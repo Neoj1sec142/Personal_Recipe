@@ -1,58 +1,39 @@
-import Cookies from "js-cookie";
+import { CreateRecipe, GetRecipeById, GetRecipes, RemoveRecipe } from '../services/RecipeServices'
 import { setAlert } from "./alert";
 import {
     LOAD_RECIPIES_SUCCESS, LOAD_RECIPIES_FAIL, 
     LOAD_RECIPIE_SUCCESS, LOAD_RECIPIE_FAIL, 
-    POST_RECIPIE_SUCCESS, POST_RECIPIE_FAIL
+    UPLOAD_RECIPIE_SUCCESS, UPLOAD_RECIPIE_FAIL,
+    DESTROY_RECIPE_SUCCESS, DESTROY_RECIPE_FAIL
 } from '../types'
-import axios from 'axios'
 
-export const post_recipie = ({
-    title, from_kitchen_of, prep_time, 
-    cook_time, meal_type, description
-}) => async dispatch => {
-    const config = {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-CSRFToken': Cookies.get('csrftoken')
-        }
-    }
-    const body = JSON.stringify({
-        'withCredentials': true,
-        title, from_kitchen_of, prep_time, 
-        cook_time, meal_type, description
-    })
+
+export const upload_recipie = (recipe) => async dispatch => {
     try{
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/recipies`, config, body)
-        if(res.status === 200){
+        const res = await CreateRecipe(recipe)
+        if(res.status === 201 || res.statusText === 'Created'){
             dispatch({
-                type: POST_RECIPIE_SUCCESS,
+                type: UPLOAD_RECIPIE_SUCCESS,
                 payload: res.data
             })
             dispatch(setAlert('Recipie Posted Successfully', 'success'))
         }else{
             dispatch({
-                type: POST_RECIPIE_FAIL
+                type: UPLOAD_RECIPIE_FAIL
             })
             dispatch(setAlert('Recipie Posting Error', 'error'))
         }
     }catch(err){
         dispatch({
-            type: POST_RECIPIE_FAIL
+            type: UPLOAD_RECIPIE_FAIL
         })
         dispatch(setAlert('Recipie Posting Error', 'error'))
     }
 }
 export const load_recipies = () => async dispatch => {
-    const config = {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }
+    
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/recipies/`, config)
+        const res = await GetRecipes()
         if(res.status === 200){
             dispatch({
                 type: LOAD_RECIPIES_SUCCESS,
@@ -70,14 +51,9 @@ export const load_recipies = () => async dispatch => {
     }
 }
 export const load_recipie_by_id = (id) => async dispatch => {
-    const config = {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }
+    
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/recipies/${id}`, config)
+        const res = await GetRecipeById(id)
         if(res.status === 200){
             dispatch({
                 type: LOAD_RECIPIE_SUCCESS,
@@ -91,6 +67,25 @@ export const load_recipie_by_id = (id) => async dispatch => {
     }catch(err){
         dispatch({
             type: LOAD_RECIPIE_FAIL
+        })
+    }
+}
+
+export const destroy_recipe = (id) => async dispatch => {
+    try{
+        const res = await RemoveRecipe(id)
+        if(res.status === 204 || res.statusText === "Not Found"){
+            dispatch({
+                type: DESTROY_RECIPE_SUCCESS
+            })
+        }else{
+            dispatch({
+                type: DESTROY_RECIPE_FAIL
+            })
+        }
+    }catch(err){
+        dispatch({
+            type: DESTROY_RECIPE_FAIL
         })
     }
 }

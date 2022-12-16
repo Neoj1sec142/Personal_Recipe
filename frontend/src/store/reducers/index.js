@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import auth from './auth'
+import ingredient from './ingredient'
 import alert from './alert'
 import recipie from './recipie'
+import step from './step'
 
 export default combineReducers({
-    auth,
     alert,
-    recipie
+    recipie,
+    ingredient,
+    step
 })
