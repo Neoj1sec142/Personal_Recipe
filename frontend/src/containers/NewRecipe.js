@@ -14,7 +14,7 @@ const NewRecipe = ({load_recipes, recipes}) => {
         e.preventDefault()
         const recipe_id = recipes.length - 1
         if(recipe_id){
-            navigate(`/add-indredients/${recipe_id}`)
+            navigate(`/add-ingredients/${recipe_id}`)
         }
     }
     

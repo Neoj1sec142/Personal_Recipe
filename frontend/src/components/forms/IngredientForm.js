@@ -19,7 +19,7 @@ const IngredientForm = ({upload_ingredient}) => {
     }
     return (
         <div className='card m-3 shadow'>
-            <form className='form-group d-flex justify-content-center' onSubmi={e=>onSubmit(e)}>
+            <form className='form-group' onSubmi={e=>onSubmit(e)}>
                 <input type='text' name='recipe' value={recipe} hidden />
                 <div className='row d-flex justify-content-center'>
                     <input className='form-control m-2 w-75 p-3'
@@ -44,7 +44,7 @@ const IngredientForm = ({upload_ingredient}) => {
                         <button className='btn btn-success m-2' type='submit'>Submit</button>
                     </div>
                     <div className='col d-flex justify-content-center'>
-                        <button className='btn btn-danger' type='cancel' onClick={()=>{}}>Cancel</button>
+                        <button className='btn btn-danger m-2' type='cancel' onClick={()=>{}}>Cancel</button>
                     </div>
                 </div>
             </form>
