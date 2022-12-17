@@ -1,13 +1,9 @@
-import React, { Fragment, useEffect } from 'react'
-import Navbar from '../components/base/Navbar'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { checkAuthenticated } from '../store/actions/auth'
+import Navbar from '../components/Navbar'
 
+const Layout = ({ children }) => {
 
-const Layout = ({ children, checkAuthenticated }) => {
-    useEffect(() => {
-        checkAuthenticated()
-    },[])
     return(
         <Fragment>
             <Navbar />
@@ -16,4 +12,4 @@ const Layout = ({ children, checkAuthenticated }) => {
     )
 }
 
-export default connect(null, {checkAuthenticated})(Layout)
+export default connect(null, {})(Layout)

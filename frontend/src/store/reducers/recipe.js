@@ -1,35 +1,35 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
-    LOAD_RECIPIES_SUCCESS, LOAD_RECIPIE_SUCCESS, 
-    LOAD_RECIPIES_FAIL, LOAD_RECIPIE_FAIL, 
-    UPLOAD_RECIPIE_FAIL, UPLOAD_RECIPIE_SUCCESS,
+    LOAD_RECIPES_SUCCESS, LOAD_RECIPE_SUCCESS, 
+    LOAD_RECIPES_FAIL, LOAD_RECIPE_FAIL, 
+    UPLOAD_RECIPE_FAIL, UPLOAD_RECIPE_SUCCESS,
     DESTROY_RECIPE_SUCCESS, DESTROY_RECIPE_FAIL
 } from '../types'
 
 const initialState = {
-    recipies: [],
-    recipie: {}
+    recipes: [],
+    recipe: {}
 }
 
 export default function(state= initialState, action){
     const { type, payload } = action
     switch(type){
-        case UPLOAD_RECIPIE_SUCCESS:
-        case LOAD_RECIPIES_SUCCESS:
+        case UPLOAD_RECIPE_SUCCESS:
+        case LOAD_RECIPES_SUCCESS:
             return{
                 ...state,
-                recipies: payload
+                recipes: payload
             }
-        case LOAD_RECIPIE_SUCCESS:
+        case LOAD_RECIPE_SUCCESS:
             return{
                 ...state,
-                recipie: payload
+                recipe: payload
             }
         case DESTROY_RECIPE_SUCCESS:
         case DESTROY_RECIPE_FAIL:
-        case UPLOAD_RECIPIE_FAIL:
-        case LOAD_RECIPIE_FAIL:
-        case LOAD_RECIPIES_FAIL:
+        case UPLOAD_RECIPE_FAIL:
+        case LOAD_RECIPE_FAIL:
+        case LOAD_RECIPES_FAIL:
             return {...state}
         default:
             return state

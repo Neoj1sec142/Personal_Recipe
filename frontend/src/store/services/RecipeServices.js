@@ -2,7 +2,7 @@ import Client from "./api";
 // Recipe Services
 export const GetRecipes = async () => {
     try{
-        const res = await Client.get('')
+        const res = await Client.get('recipe/')
         console.log(res, "recipe RES")
         return res
     }catch(err){console.log(err)}
@@ -10,7 +10,7 @@ export const GetRecipes = async () => {
 
 export const GetRecipeById = async (id) => {
     try{
-        const res = await Client.get(`${id}/`)
+        const res = await Client.get(`recipe/${id}/`)
         return res
     }catch(err){console.log(err)}
 }
@@ -28,20 +28,20 @@ export const CreateRecipe = async (recipe) => {
             serves: recipe.serves
         }
         console.log(data, "Before axios")
-        const res = await Client.post(``, data)
+        const res = await Client.post(`recipe/`, data)
         return res
     } catch (err) {console.log(err)}
 }
     
 export const RemoveRecipe = async (id) => {
     try{
-        const res = await Client.delete(`${id}/`)
+        const res = await Client.delete(`recipe/${id}/`)
         return res
     } catch (err) {console.log(err)}
 }
 export const UpdateRecipe = async (id, details) => {
     try {
-        const res = await Client.put(`${id}/`, details)
+        const res = await Client.put(`recipe/${id}/`, details)
         console.log(res, "UPDATE RES")
         return res
       } catch (err) {console.log(err)}

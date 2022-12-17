@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import {load_recipies} from '../store/actions/recipie'
-const Main = ({load_recipies, recipies}) => {
-    useEffect(() => {
-        load_recipies()
-    },[])
-    console.log(recipies, "RECIPIES")
+import {load_recipes} from '../store/actions/recipe'
+const Main = ({load_recipes, recipes}) => {
+    // useEffect(() => {
+    //     load_recipes()
+    // },[])
+    // console.log(recipes, "RECIPIES")
     return(
         <div className='container-fluid'>
             <div className='row mt-3 sqh text-center'>
@@ -33,7 +33,7 @@ const Main = ({load_recipies, recipies}) => {
 }
 
 const mapStateToProps = state => ({
-    recipies: state.recipie.recipies
+    // recipes: state.recipe.recipes
 })
 
-export default connect(mapStateToProps, {load_recipies})(Main)
+export default connect(mapStateToProps, {load_recipes})(Main)

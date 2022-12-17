@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.472e3629.css","mappings":"AAAA,KACI,eAAgB,CAChB,gBAAiB,CACjB,SACJ,CACA,KACI,iBAAkB,CAClB,iBACJ","sources":["styles/App.css"],"sourcesContent":[".sqh{\n    margin-left: 15%;\n    margin-right: 15%;\n    width: 70%;\n}\n.ovo{\n    overflow-x: scroll;\n    overflow-y: scroll;\n}"],"names":[],"sourceRoot":""}

@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import ingredient from './ingredient'
 import alert from './alert'
-import recipie from './recipie'
+import recipe from './recipe'
 import step from './step'
 
 export default combineReducers({
     alert,
-    recipie,
+    recipe,
     ingredient,
     step
 })
