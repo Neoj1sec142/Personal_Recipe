@@ -19,22 +19,22 @@ const AddIngredients = ({recipe, ingredients, load_recipe_by_id, load_ingredient
     useEffect(() => {
         if(submitted){ load_ingredients(id) } 
     },[submitted])
-    console.log(recipe, "recipe by id")
-    console.log(ingredients, "ingredients")
+    
 
     return (
         <div className='w-full'>
-            <h1 className='text-center mt-2'>Add a Ingredients</h1>
+            <h1 className='text-center mt-2'>Add Ingredients</h1>
             <RecipeCard recipe={recipe} setSubmitted={setSubmitted}/>
             <hr className='divider' />
-            <IngredientForm  />
-            <hr className='divider' />
+            <p className='fs-3 text-center'>Ingredients:</p>
             {ingredients.length ? ingredients.map((item, index) => (
             <div key={index}>
                 <IngredientCard ingredient={item} />
             </div>)) : null}
+            <hr className='divider' />
+            <IngredientForm  />
             <div className='d-flex justify-content-center'>
-                <button className='btn btn-secondary' type="proceed" >Proceed to Steps</button>
+                <a href={`/add-steps/${id}`} className='btn btn-secondary' type="proceed" >Proceed to Steps</a>
             </div>
         </div>
     )

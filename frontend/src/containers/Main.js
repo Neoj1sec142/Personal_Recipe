@@ -1,39 +1,32 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {load_recipes} from '../store/actions/recipe'
+
 const Main = ({load_recipes, recipes}) => {
-    // useEffect(() => {
-    //     load_recipes()
-    // },[])
-    // console.log(recipes, "RECIPIES")
+    useEffect(() => {
+        load_recipes()
+    },[])
+    console.log(recipes, "RECIPIES")
+
     return(
-        <div className='container-fluid'>
-            <div className='row mt-3 sqh text-center'>
-                <div className='col card'>
-                    <h7>User Profile Info</h7>
-                </div>
-                <div className='col card'>
-                    <h7>Recipie Count & Follower Count</h7>
-                </div>
-                <div className='col card'>
-                    <h7>Follow Button Messaeg Button</h7>
-                </div>
-            </div>
-            <hr className='divider sqh' />
-            <div className='row sqh'>
+        <div className='d-flex justify-content-center'>
+            <div className='card mt-2 mb-1 w-75 p-3'>
+                
                 <div className='card text-center'>
                     <h3 className='card-header'>Recipies in this Kitchen:</h3>
-                    <div className='card ovo'>
-                        Recipies Mapped
-                    </div>
+                    {recipes.length ? recipes.map((item, index) => (
+                    <div key={index}>
+                        <a href={`/recipe/${item.id}`} className="btn btn-primary m-2">{item.title}</a>
+                    </div>)):null}
                 </div>
+                
             </div>
         </div>
     )
 }
 
 const mapStateToProps = state => ({
-    // recipes: state.recipe.recipes
+    recipes: state.recipe.recipes
 })
 
 export default connect(mapStateToProps, {load_recipes})(Main)

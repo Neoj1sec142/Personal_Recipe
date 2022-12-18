@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {upload_step} from '../../store/actions/step'
 
-const StepForm = ({upload_step}) => {
-    const {recipe_id} = useParams()
+const StepForm = ({upload_step, setSubmitted}) => {
+    const {id} = useParams()
     const [formData, setFormData] = useState({
         recipe: '',
         label: '',
@@ -14,11 +14,12 @@ const StepForm = ({upload_step}) => {
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
     const onSubmit = e => {
         e.preventDefault()
-        upload_step(recipe_id, formData)
+        upload_step(id, formData)
+        setSubmitted(true)
     }
     return (
         <div className='card shadow m-3'>
-            <form className='form-group d-flex justify-content-center' onSubmit={e=>onSubmit(e)}>
+            <form className='form-group' onSubmit={e=>onSubmit(e)}>
                 <input type='text' name='recipe' value={recipe} hidden />
                 <div className='row d-flex justify-content-center'>
                     <input className='form-control m-2 w-75 p-3'

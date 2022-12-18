@@ -4,6 +4,7 @@ import Layout from './styles/Layout'
 import Main from './containers/Main'
 import NewRecipe from './containers/NewRecipe';
 import AddIngredients from './containers/AddIngredients';
+import AddSteps from './containers/AddSteps';
 import './styles/App.css';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/' element={<Main />}/>
           <Route path='/new-recipe' element={<NewRecipe />} />
           <Route path='/add-ingredients/:id' element={<AddIngredients />} />
+          <Route path='/add-steps/:id' element={<AddSteps />} />
         </Routes>
       </Layout>
     </div>

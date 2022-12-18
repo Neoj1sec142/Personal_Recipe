@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {upload_ingredient} from '../../store/actions/ingredient'
-const IngredientForm = ({upload_ingredient}) => {
-    const {recipe_id} = useParams();
+const IngredientForm = ({upload_ingredient, setSubmitted}) => {
+    const {id} = useParams();
     const [formData, setFormData] = useState({
         recipe: '',
         name: '',
@@ -11,15 +11,16 @@ const IngredientForm = ({upload_ingredient}) => {
         amount: ''
     })
     const {recipe, name, description, amount} = formData;
-    useEffect(() => setFormData({...formData, recipe: recipe_id}),[])
+    useEffect(() => setFormData({...formData, recipe: id}),[])
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
     const onSubmit = e => {
         e.preventDefault()
-        upload_ingredient(recipe_id, formData)
+        upload_ingredient(id, formData)
+        setSubmitted(true)
     }
     return (
         <div className='card m-3 shadow'>
-            <form className='form-group' onSubmi={e=>onSubmit(e)}>
+            <form className='form-group' onSubmit={e=>onSubmit(e)}>
                 <input type='text' name='recipe' value={recipe} hidden />
                 <div className='row d-flex justify-content-center'>
                     <input className='form-control m-2 w-75 p-3'
