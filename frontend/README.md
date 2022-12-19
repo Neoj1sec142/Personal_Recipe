@@ -15,3 +15,5 @@ Step:
     - recipe
     - label
     - description
+
+[Django Netlify Deployment](https://www.netlify.com/blog/2016/04/08/a-step-by-step-guide-cactus-on-netlify/)

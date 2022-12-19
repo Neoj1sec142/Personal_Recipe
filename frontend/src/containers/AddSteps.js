@@ -25,8 +25,13 @@ const AddSteps = ({load_steps, load_recipe_by_id, recipe, steps}) => {
             </div>)) : null}
             <hr className='divider' />
             <StepForm  />
-            <div className='d-flex justify-content-center'>
-                <a href='/' className='btn btn-success' type="proceed" >Finished</a>
+            <div className='row'>
+                <div className='col d-flex justify-content-center'>
+                    <a href='/' className='btn btn-success m-2' type="proceed" >Finished</a>
+                </div>
+                <div className='col d-flex justify-content-center'>
+                    <a className='btn btn-secondary m-2' href='/'>Back Home</a>
+                </div>
             </div>
         </div>
     )

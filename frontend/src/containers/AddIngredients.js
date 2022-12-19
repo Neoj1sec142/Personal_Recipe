@@ -17,7 +17,7 @@ const AddIngredients = ({recipe, ingredients, load_recipe_by_id, load_ingredient
         }
     }, [])
     useEffect(() => {
-        if(submitted){ load_ingredients(id) } 
+        if(id){ load_ingredients(id) }
     },[submitted])
     
 
@@ -33,8 +33,13 @@ const AddIngredients = ({recipe, ingredients, load_recipe_by_id, load_ingredient
             </div>)) : null}
             <hr className='divider' />
             <IngredientForm  />
-            <div className='d-flex justify-content-center'>
-                <a href={`/add-steps/${id}`} className='btn btn-secondary' type="proceed" >Proceed to Steps</a>
+            <div className='row'>
+                <div className='col d-flex justify-content-center'>
+                    <a href={`/add-steps/${id}`} className='btn btn-secondary m-2' type="proceed" >Proceed to Steps</a>
+                </div>
+                <div className='col d-flex justify-content-center'>
+                    <a className='btn btn-secondary m-2' href='/'>Back Home</a>
+                </div>
             </div>
         </div>
     )

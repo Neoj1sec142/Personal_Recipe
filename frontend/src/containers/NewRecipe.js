@@ -35,10 +35,13 @@ const NewRecipe = ({load_recipes, recipes}) => {
                 <div key={index}>
                     <RecipeCard recipe={item} setSubmitted={setSubmitted} />
                 </div>)) : null}
-                <div className='row d-flex justify-content-center'>
-                    <button onClick={e=>proceed(e)} 
-                        className='btn btn-outline-secondary m-3 w-75'>
-                        Proceed to Add Ingredients</button>
+                <div className='row'>
+                    <div className='col d-flex justify-content-center'>
+                        <button onClick={e=>proceed(e)} className='btn btn-outline-secondary m-2'>Proceed to Add Ingredients</button>
+                    </div>
+                    <div className='col d-flex justify-content-center'>
+                        <a className='btn btn-secondary m-2' href='/'>Back Home</a>
+                    </div>
                 </div>
             </div>
         )
