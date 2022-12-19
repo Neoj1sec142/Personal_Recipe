@@ -67,7 +67,7 @@ export const upload_step = (recipe_id, step) => async dispatch => {
         
     }
 }
-export const destory_step = (id) => async dispatch => {
+export const destroy_step = (id) => async dispatch => {
     try{
         const res = await RemoveStep(id)
         if(res.status === 204 || res.statusText === "Not Found"){

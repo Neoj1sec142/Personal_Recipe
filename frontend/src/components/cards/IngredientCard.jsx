@@ -1,10 +1,14 @@
 import React from 'react'
-// Models : Recipe Ingredient Step
+import { connect } from 'react-redux';
+import {destory_ingredient} from '../../store/actions/ingredient'
 
-const IngredientCard = ({ingredient}) => {
+const IngredientCard = ({destory_ingredient, ingredient}) => {
     const {recipe, name, description, amount, date_created, id} = ingredient;
+    const destroy = e => {
+        e.preventDefault()
+        destory_ingredient(id)
+    }
 
-    
     return(
         <div className='d-flex justify-content-center'>
             <div className='card mt-2 mb-1 w-75 p-3'>
@@ -13,11 +17,11 @@ const IngredientCard = ({ingredient}) => {
                 <p className='text-center text-muted'>{description}</p>
                 <div className='row'>
                     <div className='col d-flex justify-content-center'>
-                        <button className='btn btn-danger' onClick={()=>{}}>Delete</button>
+                        <button className='btn btn-danger' onClick={e=>destroy(e)}>Delete</button>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
-export default IngredientCard
+export default connect(null, {destory_ingredient})(IngredientCard)
