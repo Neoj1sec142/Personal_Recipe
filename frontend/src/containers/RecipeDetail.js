@@ -20,20 +20,35 @@ const RecipeDetail = ({
             <RecipeCard recipe={recipe} />
             <hr className='divider' />
             <p className='text-center fs-3 mt-2'>Ingredients:</p>
-            <ul className='list-group'>
-                {ingredients.length ? ingredients.map((item, index) => (
-                <li className='list-group-item' key={index}>
-                    <p className='fs-2'>{item.name} : {item.amount}</p>
-                </li>)):null}
-            </ul>
+            <div className='d-flex justify-content-center'>
+                <ul className='list-group w-75'>
+                    {ingredients.length ? ingredients.map((item, index) => (
+                    <li className='list-group-item text-center' key={index}>
+                        <p className='fs-2'>{item.name} : {item.amount}</p>
+                    </li>)):null}
+                </ul>
+            </div>
             <p className='text-center fs-3 mt-2'>Steps:</p>
-            <ul className='list-group'>
-                {steps.length ? steps.map((item, index) => (
-                <li className='list-group-item' key={index}>
-                    <p className='fs-2'>{item.label}</p>
-                    <p className='text-muted text-1'>{item.description}</p>
-                </li>)):null}
-            </ul>
+            <div className='d-flex justify-content-center'>
+                <ul className='list-group w-75'>
+                    {steps.length ? steps.map((item, index) => (
+                    <li className='list-group-item' key={index}>
+                        <p className='fs-2'>{item.label}</p>
+                        <p className='text-muted text-1 text-center'>{item.description}</p>
+                    </li>)):null}
+                </ul>
+            </div>
+            <div className='row'>
+                <div className='col d-flex justify-content-center'>
+                    <a className='btn btn-secondary m-2' href={`/add-ingredients/${id}`}>Edit Ingredients</a>
+                </div>
+                <div className='col d-flex justify-content-center'>
+                    <a className='btn btn-secondary m-2' href={`/add-steps/${id}`}>Edit Steps</a>
+                </div>
+                <div className='col d-flex justify-content-center'>
+                    <a className='btn btn-secondary m-2' href='/'>Back Home</a>
+                </div>
+            </div>
         </div>
     )
 }
