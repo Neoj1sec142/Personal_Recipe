@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Tracker</span>
+  <span class="spacer"></span>
+  <div class="d-flex justify-content-around">
+      <a 
+      *ngFor="let item of nav"
+      [routerLink]="item.link"
+      routerLinkActive="active"
+      class="btn btn-sm btn-success p-2 m-1"
+      [routerLinkActiveOptions]="{ exact: item.exact }"
+      >{{ item.name }}</a>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>
