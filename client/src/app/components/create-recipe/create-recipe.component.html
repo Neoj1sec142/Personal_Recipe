@@ -1,0 +1,73 @@
+<div>
+  <div class="row">
+      <p *ngIf="recipeForm.dirty">You have made changes that are unsaved. If you leave the page these changes will not be saved.</p>
+      <br/>
+      <p class="text-center">{{warning}}</p>
+  </div>
+  <div class="card mt-3">
+
+      <form #recipeForm="ngForm">
+
+        <!-- Recipe Name -->
+        <mat-form-field appearance="fill">
+          <mat-label>Recipe Name</mat-label>
+          <input matInput name="name" [(ngModel)]="recipe.name" required>
+        </mat-form-field>
+
+        <!-- Recipe Description -->
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput name="description" [(ngModel)]="recipe.description"></textarea>
+        </mat-form-field>
+
+        <!-- Food Style Selector -->
+        <mat-form-field appearance="fill">
+          <mat-label>Food Style</mat-label>
+          <mat-select name="style" [(ngModel)]="recipe.style">
+            <mat-option *ngFor="let style of styleList" [value]="style">{{style.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <div>
+          <h3>Ingredients</h3>
+          <mat-chip-listbox>
+            <mat-chip *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}}</mat-chip>
+          </mat-chip-listbox>
+          <mat-form-field class="wide-form-field">
+            <mat-label>Add an ingredient</mat-label>
+            <input matInput [matAutocomplete]="autoIngredient" #ingredientInput name="ing">
+            <button matSuffix mat-icon-button (click)="addIngredientManual(ingredientInput)">
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+            <mat-autocomplete #autoIngredient="matAutocomplete" (optionSelected)="addIngredient($event)">
+              <mat-option *ngFor="let ingredient of ingredientList" [value]="ingredient">
+                {{ingredient.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <!-- Instructions Selector -->
+        <div>
+          <h3>Instructions</h3>
+          <mat-chip-listbox>
+            <mat-chip *ngFor="let instruction of recipe.instructions">{{instruction.step}}</mat-chip>
+          </mat-chip-listbox>
+          <mat-form-field class="wide-form-field">
+            <mat-label>Add an instruction</mat-label>
+            <input matInput [matAutocomplete]="autoInstruction">
+            <mat-autocomplete #autoInstruction="matAutocomplete" (optionSelected)="addInstruction($event)">
+              <mat-option *ngFor="let instruction of instructionList" [value]="instruction">
+                {{instruction.step}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="createRecipeMap()">Create Recipe</button>
+      </form>
+    
+  </div>
+  <br/>
+</div>

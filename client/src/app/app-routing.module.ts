@@ -5,7 +5,7 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
 
 const routes: Routes = [
   { path: '', component: MainDisplayComponent, pathMatch:"full" },
-  { path: 'home', component: CreateRecipeComponent },
+  { path: 'create', component: CreateRecipeComponent },
 ];
 
 @NgModule({

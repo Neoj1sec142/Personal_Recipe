@@ -9,7 +9,6 @@ import { FoodStyleService } from 'src/app/services/food-style.service';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { InstructionService } from 'src/app/services/instruction.service';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-recipe',
@@ -21,6 +20,7 @@ export class CreateRecipeComponent implements OnInit {
   ingredientList: Ingredient[] = [];
   instructionList: Instruction[] = [];
   styleList: FoodStyle[] = [];
+  warning: string = ""
   displayedColumns: string[] = ['name', 'description', 'style'];
   constructor(
     private ingredientSvc: IngredientService,
@@ -39,6 +39,16 @@ export class CreateRecipeComponent implements OnInit {
     const selectedIngredient: Ingredient = event.option.value;
     if (!this.recipe.ingredients?.includes(selectedIngredient)) {
       this.recipe.ingredients?.push(selectedIngredient);
+    }
+  }
+  addIngredientManual(ingredientInput: HTMLInputElement){
+    const newIngredient: Ingredient = { name: ingredientInput.value }
+    if (!this.recipe.ingredients?.find(i => i.name.toLowerCase() == newIngredient.name.toLowerCase())) {
+      this.recipe.ingredients?.push(newIngredient);
+      ingredientInput.value = '';
+    }else{
+      this.warning = "This ingredient already in recipe"
+      ingredientInput.value = '';
     }
   }
 

@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoadingInterceptor } from './helpers/loading.interceptor';
-
 import { AppComponent } from './app.component';
-import { LoadingComponent } from './components/loading/loading.component';
-
-import { MainDisplayComponent } from './components/main-display/main-display.component';
-import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
@@ -33,23 +28,25 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list'
 import { MatTableModule } from '@angular/material/table'
 
+import { MainDisplayComponent } from './components/main-display/main-display.component';
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+// import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingComponent,
     MainDisplayComponent,
     CreateRecipeComponent
   ],
   imports: [
-    NgModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     MatCardModule,
     MatProgressBarModule,
     MatIconModule,
@@ -68,15 +65,9 @@ import { MatTableModule } from '@angular/material/table'
     MatListModule,
     MatTableModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
