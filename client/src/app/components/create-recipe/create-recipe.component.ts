@@ -16,7 +16,13 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./create-recipe.component.css']
 })
 export class CreateRecipeComponent implements OnInit {
-  recipe: Recipe = {} as Recipe;
+  recipe: Recipe = {
+    name: "", 
+    description: "",
+    instructions: [],
+    ingredients: [],
+    style: {name: ""}
+  };
   ingredientList: Ingredient[] = [];
   instructionList: Instruction[] = [];
   styleList: FoodStyle[] = [];
@@ -58,8 +64,13 @@ export class CreateRecipeComponent implements OnInit {
       this.recipe.instructions?.push(selectedInstruction);
     }
   }
+  addStyleManual(ingredientInput: HTMLInputElement){
+
+  }
+  addStyle(event: MatAutocompleteSelectedEvent){}
 
   createRecipeMap() {
+    console.log("HERE", this.recipe)
     const observables: Observable<any>[] = [
       ...this.createMissingItems(this.recipe.instructions, this.instructionList, (inst) => this.instructionSvc.create(inst)),
       ...this.createMissingItems(this.recipe.ingredients, this.ingredientList, (ing) => this.ingredientSvc.create(ing))

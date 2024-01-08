@@ -21,12 +21,25 @@
         </mat-form-field>
 
         <!-- Food Style Selector -->
-        <mat-form-field appearance="fill">
-          <mat-label>Food Style</mat-label>
-          <mat-select name="style" [(ngModel)]="recipe.style">
-            <mat-option *ngFor="let style of styleList" [value]="style">{{style.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div>
+          <h3>Style</h3>
+          <mat-chip-listbox>
+            <mat-chip *ngIf="recipe.style">{{recipe.style.name}}</mat-chip>
+          </mat-chip-listbox>
+          <mat-form-field  class="wide-form-field" appearance="fill">
+            <mat-label>Food Style</mat-label>
+            <input matInput [matAutocomplete]="autoStyle" #styleInput name="style">
+            <button matSuffix mat-icon-button (click)="addStyleManual(styleInput)">
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+            <mat-autocomplete #autoStyle="matAutocomplete" (optionSelected)="addStyle($event)">
+              <mat-option *ngFor="let style of styleList" [value]="style">
+                {{style.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        
 
 
         <div>
