@@ -1,3 +1,68 @@
-<p>
-  main-display works!
-</p>
+<mat-toolbar>
+  <div class="toolbar-buttons">
+    <button mat-button [matMenuTriggerFor]="viewMenu">View Menu <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #viewMenu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>book</mat-icon>
+        <span>View Recipes</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>lightblub</mat-icon>
+        <span>Browse Recipe Ideas</span>
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="createMenu">Create Menu <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #createMenu="matMenu">
+      <button mat-menu-item [routerLink]="['create']">
+        <mat-icon>local_dining</mat-icon>
+        <span>Add Recipe</span>
+      </button>
+      <button mat-menu-item (click)="openStyleForm()">
+        <mat-icon>fastfood</mat-icon>
+        <span>Add Style</span>
+      </button>
+    </mat-menu>
+    <!-- <button mat-button [matMenuTriggerFor]="menu3">Something <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #menu3="matMenu">
+      <button mat-menu-item>
+        <mat-icon>example_icon</mat-icon>
+        <span>Menu Item 3</span>
+      </button>
+    </mat-menu> -->
+  </div>
+</mat-toolbar>
+
+<ng-container>
+  <div [ngSwitch]="chosenMenuItem">
+    <div *ngSwitchCase="'add-style'">
+      <div class="card mt-3">
+        <h3 class="text-center mt-1 mb-1">Add Food Style</h3>
+        <form #styleForm="ngForm">
+          <!-- Style Name -->
+          <mat-form-field appearance="fill">
+            <mat-label>Style Name</mat-label>
+            <input matInput name="name" [(ngModel)]="newStyle.name" required>
+          </mat-form-field>
+
+          <!-- Recipe Description -->
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput name="description" [(ngModel)]="newStyle.description"></textarea>
+          </mat-form-field>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="createStyle()">Add Style</button>
+            <button mat-raised-button color="warn" (click)="backToHome()">Back to Recipes</button>
+          </div>
+        </form>
+        <!-- Maybe list styles here -->
+      </div>
+    </div>
+    <div *ngSwitchCase="'browse'">
+      Recipes
+    </div>
+    <div *ngSwitchCase="''">
+      Recipes
+    </div>
+  </div>
+</ng-container>

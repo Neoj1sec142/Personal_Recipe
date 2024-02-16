@@ -33,7 +33,7 @@
               <mat-icon>arrow_forward</mat-icon>
             </button>
             <mat-autocomplete #autoStyle="matAutocomplete" (optionSelected)="addStyle($event)">
-              <mat-option *ngFor="let style of styleList" [value]="style">
+              <mat-option *ngFor="let style of styleList" [value]="style.name">
                 {{style.name}}
               </mat-option>
             </mat-autocomplete>

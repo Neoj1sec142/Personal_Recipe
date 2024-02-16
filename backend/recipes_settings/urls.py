@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('recipes.urls')),
+    path('', include('recipes.urls')),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='dist/client/index.html'))]
+# urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='dist/client/index.html'))]
