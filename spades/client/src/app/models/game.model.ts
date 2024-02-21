@@ -80,6 +80,8 @@ export class Game {
         // Calculate and update scores for each player based on their bids and tricks won
         // This method would be called at the end of each round
     }
-
+    getCurrentPlayer(){
+        return this.players[this.currentPlayerIndex];
+    }
     // Additional methods for game logic, such as handling bids, scoring, and checking game end conditions, can be added here.
 }

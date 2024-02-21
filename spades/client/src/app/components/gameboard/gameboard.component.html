@@ -1,3 +1,16 @@
-<p>
-  gameboard works!
-</p>
+<ng-container *ngIf="gameIsStarted; else beforeGame">
+<div class="game-board">
+  <h2>Current Hand</h2>
+  <div *ngFor="let card of currentPlayer.hand; let i = index" (click)="playCard(i)" @slideIn>
+    <div class="card">
+      {{card.toString()}}
+    </div>
+  </div>
+</div>
+</ng-container>
+<ng-template #beforeGame>
+  <form #ngForm="ngForm">
+    <input type="text" id="playerName" formControlName="playerName" name="playerName">
+    <button type="submit" (click)="setPlayer()"></button>
+  </form>
+</ng-template>
