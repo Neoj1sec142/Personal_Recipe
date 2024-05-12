@@ -48,6 +48,11 @@ public class IngredientRepository : IIngredientRepository
         return await _db.Ingredients.AnyAsync(c => c.Id == id);
     }
 
+    public async Task<bool> Exists(int itemId, int mtId, int amount)
+    {
+        return await _db.Ingredients.AnyAsync(c => c.ItemId == itemId && c.MeasurementTypeId == mtId && c.Amount == amount);
+    }
+
     public async Task<Ingredient> Get(int id)
     {
         return await _db.Ingredients.FirstOrDefaultAsync(c => c.Id == id);

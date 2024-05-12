@@ -10,4 +10,5 @@ public interface IItemRepository
     Task<bool> Update(Item dto);
     Task<bool> Delete(int id);
     Task<bool> Exists(int id);
+    Task<bool> Exists(string name);
 }

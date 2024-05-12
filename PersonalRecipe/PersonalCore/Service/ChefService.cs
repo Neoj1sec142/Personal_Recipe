@@ -1,41 +1,43 @@
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
+using PersonalCore.Repository.IRepository;
 using PersonalCore.Service.IService;
 
 namespace PersonalCore.Service;
 public class ChefService : IChefService
 {
-    public ChefService()
+    private readonly IChefRepository _cRepo;
+    public ChefService(IChefRepository cRepo)
     {
-        
+        _cRepo = cRepo;
     }
-    public Task<Chef> Create(ChefDto dto)
+    public async Task<Chef> Create(ChefDto dto)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Delete(ChefDto dto)
-    {
-        throw new NotImplementedException();
+        return await _cRepo.Create(dto);
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        return await _cRepo.Delete(id);
     }
 
-    public Task<Chef> Get(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _cRepo.Exists(id);
     }
 
-    public Task<List<Chef>> GetAll(ListParams listParams)
+    public async Task<Chef> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _cRepo.Get(id);
     }
 
-    public Task<bool> Update(Chef dto)
+    public async Task<List<Chef>> GetAll(ListParams listParams)
     {
-        throw new NotImplementedException();
+        return await _cRepo.GetAll(listParams);
+    }
+
+    public async Task<bool> Update(Chef dto)
+    {
+        return await _cRepo.Update(dto);
     }
 }

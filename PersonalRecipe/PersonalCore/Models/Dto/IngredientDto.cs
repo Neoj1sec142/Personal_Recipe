@@ -1,6 +1,9 @@
 namespace PersonalCore.Models.Dto;
 public class  IngredientDto
 {
-    public string Name { get; set;}
-    public string? Description { get; set;}
+    public int ItemId { get; set;}
+    public Item? Item { get; set;}
+    public int MeasurementTypeId { get; set;}
+    public MeasurementType? MeasurementType { get; set;}
+    public int Amount { get; set;}
 }

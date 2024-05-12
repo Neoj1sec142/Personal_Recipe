@@ -1,41 +1,48 @@
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
+using PersonalCore.Repository.IRepository;
 using PersonalCore.Service.IService;
 
 namespace PersonalCore.Service;
 public class ItemService : IItemService
 {
-    public ItemService()
+    private readonly IItemRepository _itemRepo;
+    public ItemService(IItemRepository itemRepo)
     {
-        
+        _itemRepo = itemRepo;
     }
-    public Task<Item> Create(ItemDto dto)
+    public async Task<Item> Create(ItemDto dto)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Delete(ItemDto dto)
-    {
-        throw new NotImplementedException();
+        return await _itemRepo.Create(dto);
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        return await _itemRepo.Delete(id);
     }
 
-    public Task<Item> Get(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _itemRepo.Exists(id);
     }
 
-    public Task<List<Item>> GetAll(ListParams listParams)
+    public async Task<bool> Exists(string name)
     {
-        throw new NotImplementedException();
+        return await _itemRepo.Exists(name);
     }
 
-    public Task<bool> Update(Item dto)
+    public async Task<Item> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _itemRepo.Get(id);
+    }
+
+    public async Task<List<Item>> GetAll(ListParams listParams)
+    {
+        return await _itemRepo.GetAll(listParams);
+    }
+
+    public async Task<bool> Update(Item dto)
+    {
+        return await _itemRepo.Update(dto);
     }
 }

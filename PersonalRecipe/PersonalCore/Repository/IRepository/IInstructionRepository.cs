@@ -10,4 +10,5 @@ public interface IInstructionRepository
     Task<bool> Update(Instruction dto);
     Task<bool> Delete(int id);
     Task<bool> Exists(int id);
+    Task<bool> Exists(string content);
 }

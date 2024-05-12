@@ -49,6 +49,11 @@ public class InstructionRepository : IInstructionRepository
         return await _db.Instructions.AnyAsync(c => c.Id == id);
     }
 
+    public async Task<bool> Exists(string content)
+    {
+        return await _db.Instructions.AnyAsync(c => c.Content.ToLower() == content.ToLower());
+    }
+
     public async Task<Instruction> Get(int id)
     {
         return await _db.Instructions.FirstOrDefaultAsync(c => c.Id == id);

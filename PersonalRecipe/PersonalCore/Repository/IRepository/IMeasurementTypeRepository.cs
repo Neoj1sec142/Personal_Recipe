@@ -10,5 +10,6 @@ public interface IMeasurementTypeRepository
     Task<bool> Update(MeasurementType dto);
     Task<bool> Delete(int id);
     Task<bool> Exists(int id);
+    Task<bool> Exists(string name);
 }
 

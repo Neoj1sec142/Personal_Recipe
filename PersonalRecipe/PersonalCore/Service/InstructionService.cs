@@ -1,41 +1,48 @@
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
+using PersonalCore.Repository.IRepository;
 using PersonalCore.Service.IService;
 
 namespace PersonalCore.Service;
 public class InstructionService : IInstructionService
 {
-    public InstructionService()
+    private readonly IInstructionRepository _insRepo;
+    public InstructionService(IInstructionRepository insRepo)
     {
-        
+        _insRepo = insRepo;
     }
-    public Task<Instruction> Create(InstructionDto dto)
+    public async Task<Instruction> Create(InstructionDto dto)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Delete(InstructionDto dto)
-    {
-        throw new NotImplementedException();
+        return await _insRepo.Create(dto);
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        return await _insRepo.Delete(id);
     }
 
-    public Task<Instruction> Get(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _insRepo.Exists(id);
     }
 
-    public Task<List<Instruction>> GetAll(ListParams listParams)
+    public async Task<bool> Exists(string content)
     {
-        throw new NotImplementedException();
+        return await _insRepo.Exists(content);
     }
 
-    public Task<bool> Update(Instruction dto)
+    public async Task<Instruction> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _insRepo.Get(id);
+    }
+
+    public async Task<List<Instruction>> GetAll(ListParams listParams)
+    {
+        return await _insRepo.GetAll(listParams);
+    }
+
+    public async Task<bool> Update(Instruction dto)
+    {
+        return await _insRepo.Update(dto);
     }
 }

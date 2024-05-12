@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PersonalCore.Data;
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
@@ -15,33 +16,72 @@ public class MeasurementTypeRepository : IMeasurementTypeRepository
         _db = db;
     }
     
-    public Task<MeasurementType> Create(MeasurementTypeDto dto)
+    public async Task<MeasurementType> Create(MeasurementTypeDto dto)
     {
-        throw new NotImplementedException();
+        MeasurementType c = _mapper.Map<MeasurementType>(dto);
+        await _db.MeasurementTypes.AddAsync(c);
+        if(await Save())
+        {
+            return c;
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    public Task<bool> Delete(int id)
+
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        MeasurementType c = await _db.MeasurementTypes.FirstOrDefaultAsync(x => x.Id == id);
+        if(c != null)
+        {
+            _db.MeasurementTypes.Remove(c);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _db.MeasurementTypes.AnyAsync(c => c.Id == id);
     }
 
-    public Task<MeasurementType> Get(int id)
+    public async Task<bool> Exists(string name)
     {
-        throw new NotImplementedException();
+        return await _db.MeasurementTypes.AnyAsync(c => c.Name.ToLower() == name.ToLower());   
     }
 
-    public Task<List<MeasurementType>> GetAll(ListParams listParams)
+    public async Task<MeasurementType> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _db.MeasurementTypes.FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    public Task<bool> Update(MeasurementType dto)
+    public async Task<List<MeasurementType>> GetAll(ListParams listParams)
     {
-        throw new NotImplementedException();
+        return await  _db.MeasurementTypes.ToListAsync();
+    }
+
+    public async Task<bool> Update(MeasurementType dto)
+    {
+        MeasurementType existing = await _db.MeasurementTypes.FirstOrDefaultAsync(x => x.Id == dto.Id);
+        if(existing != null)
+        {
+            _mapper.Map(dto, existing);
+            _db.Update(existing);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private async Task<bool> Save()
+    {
+        return await _db.SaveChangesAsync() > 0;
     }
 }

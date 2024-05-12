@@ -1,41 +1,43 @@
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
+using PersonalCore.Repository.IRepository;
 using PersonalCore.Service.IService;
 
 namespace PersonalCore.Service;
 public class IngredientService : IIngredientService
 {
-    public IngredientService()
+    private readonly IIngredientRepository _ingRepo;
+    public IngredientService(IIngredientRepository ingRepo)
     {
-        
+        _ingRepo = ingRepo;
     }
-    public Task<Ingredient> Create(IngredientDto dto)
+    public async Task<Ingredient> Create(IngredientDto dto)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Delete(IngredientDto dto)
-    {
-        throw new NotImplementedException();
+        return await _ingRepo.Create(dto);
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        return await _ingRepo.Delete(id);
     }
 
-    public Task<Ingredient> Get(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _ingRepo.Exists(id);
     }
 
-    public Task<List<Ingredient>> GetAll(ListParams listParams)
+    public async Task<Ingredient> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _ingRepo.Get(id);
     }
 
-    public Task<bool> Update(Ingredient dto)
+    public async Task<List<Ingredient>> GetAll(ListParams listParams)
     {
-        throw new NotImplementedException();
+        return await _ingRepo.GetAll(listParams);
+    }
+
+    public async Task<bool> Update(Ingredient dto)
+    {
+        return await _ingRepo.Update(dto);
     }
 }

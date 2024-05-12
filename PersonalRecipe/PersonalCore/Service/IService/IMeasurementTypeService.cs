@@ -8,7 +8,8 @@ public interface IMeasurementTypeService
     Task<MeasurementType> Get(int id);
     Task<List<MeasurementType>> GetAll(ListParams listParams);
     Task<bool> Update(MeasurementType dto);
-    Task<bool> Delete(MeasurementTypeDto dto);
+    Task<bool> Delete(int id);
     Task<bool> Exists(int id);
+    Task<bool> Exists(string name);
 }
 

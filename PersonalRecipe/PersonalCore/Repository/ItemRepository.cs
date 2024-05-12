@@ -49,6 +49,11 @@ public class ItemRepository : IItemRepository
         return await _db.Items.AnyAsync(c => c.Id == id);
     }
 
+    public async Task<bool> Exists(string name)
+    {
+        return await _db.Items.AnyAsync(c => c.Name.ToLower() == name.ToLower());
+    }
+
     public async Task<Item> Get(int id)
     {
         return await _db.Items.FirstOrDefaultAsync(c => c.Id == id);

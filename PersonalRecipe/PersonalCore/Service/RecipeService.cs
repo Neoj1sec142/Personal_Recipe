@@ -1,41 +1,43 @@
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
+using PersonalCore.Repository.IRepository;
 using PersonalCore.Service.IService;
 
 namespace PersonalCore.Service;
 public class RecipeService : IRecipeService
 {
-    public RecipeService()
+    private readonly IRecipeRepository _rRepo;
+    public RecipeService(IRecipeRepository rRepo)
     {
-        
+        _rRepo = rRepo;
     }
-    public Task<Recipe> Create(RecipeDto dto)
+    public async Task<Recipe> Create(RecipeDto dto)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Delete(RecipeDto dto)
-    {
-        throw new NotImplementedException();
+        return await _rRepo.Create(dto);
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        return await _rRepo.Delete(id);
     }
 
-    public Task<Recipe> Get(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _rRepo.Exists(id);
     }
 
-    public Task<List<Recipe>> GetAll(ListParams listParams)
+    public async Task<Recipe> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _rRepo.Get(id);
     }
 
-    public Task<bool> Update(Recipe dto)
+    public async Task<List<Recipe>> GetAll(ListParams listParams)
     {
-        throw new NotImplementedException();
+        return await _rRepo.GetAll(listParams);
+    }
+
+    public async Task<bool> Update(Recipe dto)
+    {
+        return await _rRepo.Update(dto);
     }
 }

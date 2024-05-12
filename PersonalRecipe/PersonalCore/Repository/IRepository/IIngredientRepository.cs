@@ -10,4 +10,5 @@ public interface IIngredientRepository
     Task<bool> Update(Ingredient dto);
     Task<bool> Delete(int id);
     Task<bool> Exists(int id);
+    Task<bool> Exists(int itemId, int mtId, int amount);
 }
