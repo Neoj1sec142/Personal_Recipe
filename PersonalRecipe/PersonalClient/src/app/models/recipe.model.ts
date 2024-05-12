@@ -14,3 +14,12 @@ export interface Recipe{
     dateAdded: string;
     lastModified: string;
 }
+
+export interface QuickRecipe{
+    title: string;
+    description: string;
+    instructions?: Instruction[];
+    ingredients?: Ingredient[];
+    chefId?: number;
+    chefName?: string;
+}

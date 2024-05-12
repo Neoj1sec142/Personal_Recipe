@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { QuickFormComponent } from './quick-form.component';
+import { CheifCreateComponent } from './cheif-create.component';
 
-describe('QuickFormComponent', () => {
-  let component: QuickFormComponent;
-  let fixture: ComponentFixture<QuickFormComponent>;
+describe('CheifCreateComponent', () => {
+  let component: CheifCreateComponent;
+  let fixture: ComponentFixture<CheifCreateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuickFormComponent ]
+      declarations: [ CheifCreateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuickFormComponent);
+    fixture = TestBed.createComponent(CheifCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
