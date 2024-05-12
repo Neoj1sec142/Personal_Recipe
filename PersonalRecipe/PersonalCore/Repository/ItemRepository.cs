@@ -1,3 +1,6 @@
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PersonalCore.Data;
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
 using PersonalCore.Repository.IRepository;
@@ -5,37 +8,74 @@ using PersonalCore.Repository.IRepository;
 namespace PersonalCore.Repository;
 public class ItemRepository : IItemRepository
 {
-    public ItemRepository()
+    private readonly RecipeContext _db;
+    private IMapper _mapper;
+    public ItemRepository(IMapper mapper, RecipeContext db)
     {
-        
+        _mapper = mapper;
+        _db = db;
     }
-    public Task<Item> Create(ItemDto dto)
+    
+    public async Task<Item> Create(ItemDto dto)
     {
-        throw new NotImplementedException();
+        Item c = _mapper.Map<Item>(dto);
+        await _db.Items.AddAsync(c);
+        if(await Save())
+        {
+            return c;
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    public Task<bool> Delete(ItemDto dto)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        Item c = await _db.Items.FirstOrDefaultAsync(x => x.Id == id);
+        if(c != null)
+        {
+            _db.Items.Remove(c);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _db.Items.AnyAsync(c => c.Id == id);
     }
 
-    public Task<Item> Get(int id)
+    public async Task<Item> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _db.Items.FirstOrDefaultAsync(c => c.Id == id);
     }
 
     public Task<List<Item>> GetAll(ListParams listParams)
     {
-        throw new NotImplementedException();
+        return _db.Items.ToListAsync();
     }
 
-    public Task<bool> Update(Item dto)
+    public async Task<bool> Update(Item dto)
     {
-        throw new NotImplementedException();
+        Item existing = await _db.Items.FirstOrDefaultAsync(x => x.Id == dto.Id);
+        if(existing != null)
+        {
+            _mapper.Map(dto, existing);
+            _db.Update(existing);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private async Task<bool> Save()
+    {
+        return await _db.SaveChangesAsync() > 0;
     }
 }

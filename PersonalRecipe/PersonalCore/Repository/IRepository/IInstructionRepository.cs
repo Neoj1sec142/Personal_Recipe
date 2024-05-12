@@ -8,6 +8,6 @@ public interface IInstructionRepository
     Task<Instruction> Get(int id);
     Task<List<Instruction>> GetAll(ListParams listParams);
     Task<bool> Update(Instruction dto);
-    Task<bool> Delete(InstructionDto dto);
+    Task<bool> Delete(int id);
     Task<bool> Exists(int id);
 }

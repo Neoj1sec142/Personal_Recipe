@@ -8,6 +8,6 @@ public interface IIngredientRepository
     Task<Ingredient> Get(int id);
     Task<List<Ingredient>> GetAll(ListParams listParams);
     Task<bool> Update(Ingredient dto);
-    Task<bool> Delete(IngredientDto dto);
+    Task<bool> Delete(int id);
     Task<bool> Exists(int id);
 }

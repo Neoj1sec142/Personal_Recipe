@@ -1,3 +1,6 @@
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PersonalCore.Data;
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
 using PersonalCore.Repository.IRepository;
@@ -5,38 +8,78 @@ using PersonalCore.Repository.IRepository;
 namespace PersonalCore.Repository;
 public class ChefRepository : IChefRepository
 {
-    public ChefRepository()
+    private readonly RecipeContext _db;
+    private IMapper _mapper;
+    public ChefRepository(IMapper mapper, RecipeContext db)
     {
-        
+        _mapper = mapper;
+        _db = db;
     }
 
-    public Task<Chef> Create(ChefDto dto)
+    public async Task<Chef> Create(ChefDto dto)
     {
-        throw new NotImplementedException();
+        Chef c = _mapper.Map<Chef>(dto);
+        await _db.Chefs.AddAsync(c);
+        if(await Save())
+        {
+            return c;
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    public Task<bool> Delete(ChefDto dto)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        Chef c = await _db.Chefs.FirstOrDefaultAsync(x => x.Id == id);
+        if(c != null)
+        {
+            _db.Chefs.Remove(c);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public Task<bool> Exists(int id)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _db.Chefs.AnyAsync(c => c.Id == id);
     }
 
-    public Task<Chef> Get(int id)
+    public async Task<bool> Exists(string name)
     {
-        throw new NotImplementedException();
+        return await _db.Chefs.AnyAsync(c => c.Name.ToLower() == name.ToLower());   
     }
 
-    public Task<List<Chef>> GetAll(ListParams listParams)
+    public async Task<Chef> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _db.Chefs.FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    public Task<bool> Update(Chef dto)
+    public async Task<List<Chef>> GetAll(ListParams listParams)
     {
-        throw new NotImplementedException();
+        return await  _db.Chefs.ToListAsync();
+    }
+
+    public async Task<bool> Update(Chef dto)
+    {
+        Chef existing = await _db.Chefs.FirstOrDefaultAsync(x => x.Id == dto.Id);
+        if(existing != null)
+        {
+            _mapper.Map(dto, existing);
+            _db.Update(existing);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private async Task<bool> Save()
+    {
+        return await _db.SaveChangesAsync() > 0;
     }
 }

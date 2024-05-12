@@ -1,3 +1,6 @@
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PersonalCore.Data;
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
 using PersonalCore.Repository.IRepository;
@@ -5,37 +8,74 @@ using PersonalCore.Repository.IRepository;
 namespace PersonalCore.Repository;
 public class InstructionRepository : IInstructionRepository
 {
-    public InstructionRepository()
+    private readonly RecipeContext _db;
+    private IMapper _mapper;
+    public InstructionRepository(IMapper mapper, RecipeContext db)
     {
-        
+        _mapper = mapper;
+        _db = db;
     }
-    public Task<Instruction> Create(InstructionDto dto)
+    
+    public async Task<Instruction> Create(InstructionDto dto)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Delete(InstructionDto dto)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Exists(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Instruction> Get(int id)
-    {
-        throw new NotImplementedException();
+        Instruction c = _mapper.Map<Instruction>(dto);
+        await _db.Instructions.AddAsync(c);
+        if(await Save())
+        {
+            return c;
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    public Task<List<Instruction>> GetAll(ListParams listParams)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        Instruction c = await _db.Instructions.FirstOrDefaultAsync(x => x.Id == id);
+        if(c != null)
+        {
+            _db.Instructions.Remove(c);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public Task<bool> Update(Instruction dto)
+    public async Task<bool> Exists(int id)
     {
-        throw new NotImplementedException();
+        return await _db.Instructions.AnyAsync(c => c.Id == id);
+    }
+
+    public async Task<Instruction> Get(int id)
+    {
+        return await _db.Instructions.FirstOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task<List<Instruction>> GetAll(ListParams listParams)
+    {
+        return await _db.Instructions.ToListAsync();
+    }
+
+    public async Task<bool> Update(Instruction dto)
+    {
+        Instruction existing = await _db.Instructions.FirstOrDefaultAsync(x => x.Id == dto.Id);
+        if(existing != null)
+        {
+            _mapper.Map(dto, existing);
+            _db.Update(existing);
+            return await Save();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private async Task<bool> Save()
+    {
+        return await _db.SaveChangesAsync() > 0;
     }
 }

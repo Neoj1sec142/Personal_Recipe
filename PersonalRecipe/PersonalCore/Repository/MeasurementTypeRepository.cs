@@ -1,3 +1,5 @@
+using AutoMapper;
+using PersonalCore.Data;
 using PersonalCore.Models;
 using PersonalCore.Models.Dto;
 using PersonalCore.Repository.IRepository;
@@ -5,16 +7,20 @@ using PersonalCore.Repository.IRepository;
 namespace PersonalCore.Repository;
 public class MeasurementTypeRepository : IMeasurementTypeRepository
 {
-    public MeasurementTypeRepository()
+    private readonly RecipeContext _db;
+    private IMapper _mapper;
+    public MeasurementTypeRepository(IMapper mapper, RecipeContext db)
     {
-        
+        _mapper = mapper;
+        _db = db;
     }
+    
     public Task<MeasurementType> Create(MeasurementTypeDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> Delete(MeasurementTypeDto dto)
+    public Task<bool> Delete(int id)
     {
         throw new NotImplementedException();
     }
