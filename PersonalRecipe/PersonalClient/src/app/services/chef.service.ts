@@ -17,10 +17,10 @@ export class ChefService {
     private http: HttpClient,
   ){ this.apiUrl = this.appSvc.getBaseUrl() + "chef/" }
 
-  get(id: number){ this.http.get<Chef>(this.apiUrl + `${id}/`) };
-  create(c: Chef){ this.http.post<Chef>(this.apiUrl + `${c.id}/`, c) };
-  update(c: Chef){ this.http.put(this.apiUrl + `${c.id}/`, c) };
-  delete(id: number){ this.http.get<Chef>(this.apiUrl + `${id}/`) };
+  get(id: number){ return this.http.get<Chef>(this.apiUrl + `${id}/`) };
+  create(c: Chef){ return this.http.post<Chef>(this.apiUrl, c) };
+  update(c: Chef){ return this.http.put(this.apiUrl + `${c.id}/`, c) };
+  delete(id: number){ return this.http.get<Chef>(this.apiUrl + `${id}/`) };
   getAll(params: ListParams){
     const headers = this.headers;
     headers.append("MultiSearch", params.multiSearch ? "true" : "false");
@@ -28,6 +28,6 @@ export class ChefService {
     headers.append("SearchField", params.searchField ?? "");
     headers.append("OrderBy", params.orderBy ?? "");
     headers.append("Limit", params.limit ? params.limit.toString() : "");
-    return this.http.post<Chef[]>(this.apiUrl, {...headers});
+    return this.http.get<Chef[]>(this.apiUrl, {...headers});
   }
 }

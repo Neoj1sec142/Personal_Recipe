@@ -18,7 +18,7 @@ private readonly IIngredientService _ingSvc;
 
     // GET: api/chef
     [HttpGet]
-    public async Task<ActionResult<List<Ingredient>>> GetAll(ListParams listParams)
+    public async Task<ActionResult<List<Ingredient>>> GetAll([FromQuery] ListParams listParams)
     {
         List<Ingredient> objs = await _ingSvc.GetAll(listParams);
         return Ok(objs);
@@ -53,8 +53,8 @@ private readonly IIngredientService _ingSvc;
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("Ingredient", new { id = c.Id }, c);
+        return Ok(c);
+        // return CreatedAtAction("Ingredient", new { id = c.Id }, c);
     }
 
     // PUT: api/chef/5

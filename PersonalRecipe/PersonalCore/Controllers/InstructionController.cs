@@ -18,7 +18,7 @@ private readonly IInstructionService _insSvc;
 
     // GET: api/chef
     [HttpGet]
-    public async Task<ActionResult<List<Instruction>>> GetAll(ListParams listParams)
+    public async Task<ActionResult<List<Instruction>>> GetAll([FromQuery] ListParams listParams)
     {
         List<Instruction> objs = await _insSvc.GetAll(listParams);
         return Ok(objs);
@@ -53,8 +53,8 @@ private readonly IInstructionService _insSvc;
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("Instruction", new { id = c.Id }, c);
+        return Ok(c);
+        // return CreatedAtAction("Instruction", new { id = c.Id }, c);
     }
 
     // PUT: api/chef/5

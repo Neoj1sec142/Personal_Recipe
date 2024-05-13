@@ -38,7 +38,7 @@ public class RecipeController : ControllerBase
 
     // GET: api/recipe
     [HttpGet]
-    public async Task<ActionResult<List<Recipe>>> GetAll(ListParams listParams)
+    public async Task<ActionResult<List<Recipe>>> GetAll([FromQuery] ListParams listParams)
     {
         List<Recipe> objs = await _rSvc.GetAll(listParams);
         return Ok(objs);
@@ -73,8 +73,8 @@ public class RecipeController : ControllerBase
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("Recipe", new { id = c.Id }, c);
+        return Ok(c);
+        // return CreatedAtAction("Recipe", new { id = c.Id }, c);
     }
 
     // PUT: api/recipe/5
@@ -183,7 +183,7 @@ public class RecipeController : ControllerBase
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("Recipe", new { id = r.Id }, r);
+        return Ok(r);
+        // return CreatedAtAction("Recipe", new { id = r.Id }, r);
     }
 }

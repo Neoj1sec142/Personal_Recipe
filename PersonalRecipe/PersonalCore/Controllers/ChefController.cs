@@ -18,7 +18,7 @@ public class ChefController : ControllerBase
 
     // GET: api/chef
     [HttpGet]
-    public async Task<ActionResult<List<Chef>>> GetAll(ListParams listParams)
+    public async Task<ActionResult<List<Chef>>> GetAll([FromQuery] ListParams listParams)
     {
         List<Chef> objs = await _cSvc.GetAll(listParams);
         return Ok(objs);
@@ -53,8 +53,8 @@ public class ChefController : ControllerBase
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("Chef", new { id = c.Id }, c);
+        return Ok(c);
+        // return CreatedAtAction("Chef", new { id = c.Id }, c);
     }
 
     // PUT: api/chef/5

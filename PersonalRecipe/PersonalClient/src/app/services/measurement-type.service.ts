@@ -15,12 +15,12 @@ export class MeasurementTypeService {
   constructor(
     private appSvc: AppService,
     private http: HttpClient,
-  ){ this.apiUrl = this.appSvc.getBaseUrl() + "meaurementtype/" }
+  ){ this.apiUrl = this.appSvc.getBaseUrl() + "measurementType/" }
 
-  get(id: number){ this.http.get<MeasurementType>(this.apiUrl + `${id}/`) };
-  create(c: MeasurementType){ this.http.post<MeasurementType>(this.apiUrl + `${c.id}/`, c) };
-  update(c: MeasurementType){ this.http.put(this.apiUrl + `${c.id}/`, c) };
-  delete(id: number){ this.http.get<MeasurementType>(this.apiUrl + `${id}/`) };
+  get(id: number){ return this.http.get<MeasurementType>(this.apiUrl + `${id}/`) };
+  create(c: MeasurementType){ return this.http.post<MeasurementType>(this.apiUrl, c) };
+  update(c: MeasurementType){ return this.http.put(this.apiUrl + `${c.id}/`, c) };
+  delete(id: number){ return this.http.get<MeasurementType>(this.apiUrl + `${id}/`) };
   getAll(params: ListParams){
     const headers = this.headers;
     headers.append("MultiSearch", params.multiSearch ? "true" : "false");
@@ -28,6 +28,6 @@ export class MeasurementTypeService {
     headers.append("SearchField", params.searchField ?? "");
     headers.append("OrderBy", params.orderBy ?? "");
     headers.append("Limit", params.limit ? params.limit.toString() : "");
-    return this.http.post<MeasurementType[]>(this.apiUrl, {...headers});
+    return this.http.get<MeasurementType[]>(this.apiUrl, {...headers});
   }
 }

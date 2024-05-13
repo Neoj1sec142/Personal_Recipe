@@ -17,10 +17,10 @@ export class InstructionService {
     private http: HttpClient,
   ){ this.apiUrl = this.appSvc.getBaseUrl() + "instruction/" }
 
-  get(id: number){ this.http.get<Instruction>(this.apiUrl + `${id}/`) };
-  create(c: Instruction){ this.http.post<Instruction>(this.apiUrl + `${c.id}/`, c) };
-  update(c: Instruction){ this.http.put(this.apiUrl + `${c.id}/`, c) };
-  delete(id: number){ this.http.get<Instruction>(this.apiUrl + `${id}/`) };
+  get(id: number){ return this.http.get<Instruction>(this.apiUrl + `${id}/`) };
+  create(c: Instruction){ return this.http.post<Instruction>(this.apiUrl, c) };
+  update(c: Instruction){ return this.http.put(this.apiUrl + `${c.id}/`, c) };
+  delete(id: number){ return this.http.get<Instruction>(this.apiUrl + `${id}/`) };
   getAll(params: ListParams){
     const headers = this.headers;
     headers.append("MultiSearch", params.multiSearch ? "true" : "false");
@@ -28,6 +28,6 @@ export class InstructionService {
     headers.append("SearchField", params.searchField ?? "");
     headers.append("OrderBy", params.orderBy ?? "");
     headers.append("Limit", params.limit ? params.limit.toString() : "");
-    return this.http.post<Instruction[]>(this.apiUrl, {...headers});
+    return this.http.get<Instruction[]>(this.apiUrl, {...headers});
   }
 }

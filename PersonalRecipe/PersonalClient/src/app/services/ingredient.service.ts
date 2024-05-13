@@ -17,10 +17,10 @@ export class IngredientService {
     private http: HttpClient,
   ){ this.apiUrl = this.appSvc.getBaseUrl() + "ingredient/" }
 
-  get(id: number){ this.http.get<Ingredient>(this.apiUrl + `${id}/`) };
-  create(c: Ingredient){ this.http.post<Ingredient>(this.apiUrl + `${c.id}/`, c) };
-  update(c: Ingredient){ this.http.put(this.apiUrl + `${c.id}/`, c) };
-  delete(id: number){ this.http.get<Ingredient>(this.apiUrl + `${id}/`) };
+  get(id: number){ return this.http.get<Ingredient>(this.apiUrl + `${id}/`) };
+  create(c: Ingredient){ return this.http.post<Ingredient>(this.apiUrl, c) };
+  update(c: Ingredient){ return this.http.put(this.apiUrl + `${c.id}/`, c) };
+  delete(id: number){ return this.http.get<Ingredient>(this.apiUrl + `${id}/`) };
   getAll(params: ListParams){
     const headers = this.headers;
     headers.append("MultiSearch", params.multiSearch ? "true" : "false");
@@ -28,6 +28,6 @@ export class IngredientService {
     headers.append("SearchField", params.searchField ?? "");
     headers.append("OrderBy", params.orderBy ?? "");
     headers.append("Limit", params.limit ? params.limit.toString() : "");
-    return this.http.post<Ingredient[]>(this.apiUrl, {...headers});
+    return this.http.get<Ingredient[]>(this.apiUrl, {...headers});
   }
 }

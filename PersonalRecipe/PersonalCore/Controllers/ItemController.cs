@@ -18,7 +18,7 @@ public class ItemController : ControllerBase
 
     // GET: api/chef
     [HttpGet]
-    public async Task<ActionResult<List<Item>>> GetAll(ListParams listParams)
+    public async Task<ActionResult<List<Item>>> GetAll([FromQuery] ListParams listParams)
     {
         List<Item> objs = await _iSvc.GetAll(listParams);
         return Ok(objs);
@@ -53,8 +53,8 @@ public class ItemController : ControllerBase
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("Item", new { id = c.Id }, c);
+        return Ok(c);
+        // return CreatedAtAction("Item", new { id = c.Id }, c);
     }
 
     // PUT: api/chef/5

@@ -18,7 +18,7 @@ public class MeasurementTypeController : ControllerBase
 
     // GET: api/meaurementtype
     [HttpGet]
-    public async Task<ActionResult<List<MeasurementType>>> GetAll(ListParams listParams)
+    public async Task<ActionResult<List<MeasurementType>>> GetAll([FromQuery] ListParams listParams)
     {
         List<MeasurementType> objs = await _mtSvc.GetAll(listParams);
         return Ok(objs);
@@ -53,8 +53,8 @@ public class MeasurementTypeController : ControllerBase
             ModelState.AddModelError("error", "Error in Creation.");
             return BadRequest(ModelState);
         }    
-
-        return CreatedAtAction("MeasurementType", new { id = c.Id }, c);
+        return Ok(c);
+        // return CreatedAtAction("MeasurementType", new { id = c.Id }, c);
     }
 
     // PUT: api/chef/5
