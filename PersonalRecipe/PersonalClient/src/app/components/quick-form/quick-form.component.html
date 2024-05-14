@@ -1,10 +1,15 @@
-<div class="quick-form">
+<!-- <div class="quick-form">
   <form [formGroup]="rForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <input class="form-control" formControlName="title" placeholder="Title">
+      <label for="title">Title</label>
+      <input id="title" class="form-control" formControlName="title" placeholder="Enter title" required>
+      <div *ngIf="rForm.get('title')?.errors?.['required'] && rForm.get('title')?.touched">
+        Title is required.
+      </div>
     </div>
     <div class="form-group">
-      <input class="form-control" formControlName="description" placeholder="Description">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" formControlName="description" placeholder="Enter description"></textarea>
     </div>
     <div formArrayName="ingredients">
       <div *ngFor="let ingredient of ingredients.controls; index as i" [formGroupName]="i" class="ingredient-group">
@@ -35,10 +40,16 @@
       <button type="button" (click)="addInstruction()">+ Add Instruction</button>
     </div>
     <div class="form-group">
-      <select formControlName="chefId">
+      <label for="chef">Chef</label>
+      <select id="chef" class="form-control" formControlName="chefId">
+        <option value="">Select a Chef</option>
         <option *ngFor="let chef of existingChefs" [value]="chef.id">{{ chef.name }}</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-</div>
+</div> -->
+
+<form>
+  
+</form>

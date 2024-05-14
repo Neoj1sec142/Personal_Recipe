@@ -1,3 +1,9 @@
-<p>
-  cheif-create works!
-</p>
+<div class="create-form">
+  <form [formGroup]="cForm">
+    <div class="form-group">
+      <label>Name&nbsp;&nbsp;&nbsp;</label>
+      <input formControlName="name" name="name" type="text" />
+    </div>
+    <button type="submit" class="btn btn-outline-light">Submit</button>
+  </form>
+</div>

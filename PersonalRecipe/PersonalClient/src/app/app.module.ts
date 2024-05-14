@@ -24,12 +24,14 @@ import { MeasurementTypeCreateComponent } from './components/data-pages/measurem
 import { MeasurementTypeEditComponent } from './components/data-pages/measurement-types/measurement-type-edit/measurement-type-edit.component';
 import { MeasurementTypeListComponent } from './components/data-pages/measurement-types/measurement-type-list/measurement-type-list.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     QuickFormComponent,
+    NavBarComponent,
     CheifCreateComponent,
     CheifListComponent,
     CheifEditComponent,

@@ -22,6 +22,7 @@ export class QuickFormComponent implements OnInit {
 rForm!: FormGroup;
 existingChefs: Chef[] = [];
 existingInstructions: Instruction[] = [];
+existingItems: Item[] = [];
 existingIngredients: Ingredient[] = [];
 measurementTypes: MeasurementType[] = [];
 listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''};
@@ -43,7 +44,9 @@ listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''}
       this.getItems(),
       this.getMts()
     ]).subscribe(([c, i, m]) => {
+      console.log([c, i, m])
       this.existingChefs = c;
+      this.existingItems = i;
       this.measurementTypes = m;
     })
   }
@@ -73,9 +76,7 @@ listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''}
   }
 addInstruction() {
   const instructionGroup = this.fb.group({
-    content: ['', Validators.required],
-    newContent: [false],
-    newContentDetail: ['']
+    content: ['', Validators.required]
   });
   this.instructions.push(instructionGroup);
 }
@@ -93,7 +94,7 @@ addIngredient() {
 
 checkIfNewItem(index: number) {
   const item = this.ingredients.at(index);
-  item.get('newItem')?.setValue(item.get('itemId')?.value === 'new');
+  item.get('newItem')?.setValue(item.get('itemId')?.value === 0);
 }
 
 checkIfNewInstruction(index: number) {
@@ -110,10 +111,12 @@ get ingredients() {
 }
 
 onSubmit() {
-  this.rSvc.quickCreate(this.rForm.value).subscribe(
-    res => console.log(res, "Success"),
-    error => console.log(error, "Error")
-  );
+  console.log(this.rForm.value)
+
+  // this.rSvc.quickCreate(this.rForm.value).subscribe(
+  //   res => console.log(res, "Success"),
+  //   error => console.log(error, "Error")
+  // );
 }
 
 
