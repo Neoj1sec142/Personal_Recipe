@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Chef } from 'src/app/models/chef.model';
+import { ChefService } from 'src/app/services/chef.service';
 
 @Component({
   selector: 'app-cheif-list',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cheif-list.component.css']
 })
 export class CheifListComponent implements OnInit {
+chefs: Chef[] = [];
 
-  constructor() { }
+  constructor(private cSvc: ChefService) { }
 
   ngOnInit() {
+  }
+
+  private getChefs(){
+
   }
 
 }

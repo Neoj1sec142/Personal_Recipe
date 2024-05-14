@@ -1,3 +1,36 @@
-<p>
-  cheif-list works!
-</p>
+<div class="filter-container">
+  <button [routerLink]="['/chefs/new']" type="button">New Chef</button>
+</div>
+
+<div class="table-container">
+  <ng-container *ngIf="chefs.length > 0; noChefs">
+      <div class="top row" *ngFor="let c of chefs">
+        <div class="col">
+          <h3>Chef ID</h3>
+        </div>
+        <div class="col">
+          <h3>Chef Name</h3>
+        </div>
+        <div class="col">
+          <h3>Date Added</h3>
+        </div>
+      </div>
+      <div class="row" *ngFor="let c of chefs">
+        <div class="col">
+          <p>{{c.id}}</p>
+        </div>
+        <div class="col">
+          <p>{{c.name}}</p>
+        </div>
+        <div class="col">
+          <p>{{c.dateAdded | date: 'mm/dd/yyyy'}}</p>
+        </div>
+      </div>
+    
+  </ng-container>
+  <ng-template #noChefs>
+    <div class="top row">
+      <h1 class="text-center">No Chefs Created Yet</h1>
+    </div>
+  </ng-template>
+</div>

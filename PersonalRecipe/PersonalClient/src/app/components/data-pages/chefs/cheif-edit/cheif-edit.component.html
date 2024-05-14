@@ -1,3 +1,9 @@
-<p>
-  cheif-edit works!
-</p>
+<div class="create-form">
+  <form (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Name&nbsp;&nbsp;&nbsp;</label>
+      <input [(ngModel)]="chef.name" name="name" type="text" />
+    </div>
+    <button type="submit" class="btn btn-outline-light">Submit</button>
+  </form>
+</div>

@@ -9,6 +9,8 @@ import { ListParams } from 'src/app/models/list-params.model';
 import { MeasurementType } from 'src/app/models/meaurement-type.model';
 import { Recipe } from 'src/app/models/recipe.model';
 import { ChefService } from 'src/app/services/chef.service';
+import { IngredientService } from 'src/app/services/ingredient.service';
+import { InstructionService } from 'src/app/services/instruction.service';
 import { ItemService } from 'src/app/services/item.service';
 import { MeasurementTypeService } from 'src/app/services/measurement-type.service';
 import { RecipeService } from 'src/app/services/recipe.service';
@@ -22,8 +24,14 @@ export class QuickFormComponent implements OnInit {
 rForm!: FormGroup;
 existingChefs: Chef[] = [];
 existingInstructions: Instruction[] = [];
+newInstruction: Instruction = {content: ""};
+creatingNewIns: boolean = false;
 existingItems: Item[] = [];
+newItem: Item = {name: ''};
+creatingNewItem: boolean = false;
 existingIngredients: Ingredient[] = [];
+newIngredient: Ingredient = {itemId: 0, measurementTypeId: 0, amount: 0};
+creatingNewIng: boolean = false;
 measurementTypes: MeasurementType[] = [];
 listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''};
   constructor(
@@ -31,23 +39,30 @@ listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''}
     private rSvc: RecipeService,
     private chefSvc: ChefService,
     private iSvc: ItemService,
+    private insSvc: InstructionService,
+    private ingSvc: IngredientService,
     private mtSvc: MeasurementTypeService
   ){ }
 
   ngOnInit() {
     this.initForm();
+    this.loadExistingData();
   }
 
   private loadExistingData(){
     forkJoin([
       this.getChefs(),
       this.getItems(),
-      this.getMts()
-    ]).subscribe(([c, i, m]) => {
+      this.getMts(),
+      this.getIngredients(),
+      this.getInstructions()
+    ]).subscribe(([c, i, m, ing, ins]) => {
       console.log([c, i, m])
       this.existingChefs = c;
       this.existingItems = i;
       this.measurementTypes = m;
+      this.existingIngredients = ing;
+      this.existingInstructions = ins;
     })
   }
 
@@ -63,6 +78,14 @@ listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''}
     const params = {...this.listParams};
     return this.mtSvc.getAll(params);
   }
+  private getIngredients(){
+    const params = {...this.listParams};
+    return this.ingSvc.getAll(params);
+  }
+  private getInstructions(){
+    const params = {...this.listParams};
+    return this.insSvc.getAll(params);
+  }
 
   private initForm(){
     this.rForm = this.fb.group({
@@ -74,50 +97,76 @@ listParams: ListParams = {multiSearch: false, searchField: '', searchString: ''}
       'chefName': ['']
     })
   }
-addInstruction() {
-  const instructionGroup = this.fb.group({
-    content: ['', Validators.required]
-  });
-  this.instructions.push(instructionGroup);
-}
 
-addIngredient() {
-  const ingredientGroup = this.fb.group({
-    itemId: ['', Validators.required],
-    newItem: [false],
-    newItemName: [''],
-    measurementTypeId: ['', Validators.required],
-    amount: ['', Validators.required]
-  });
-  this.ingredients.push(ingredientGroup);
-}
 
-checkIfNewItem(index: number) {
-  const item = this.ingredients.at(index);
-  item.get('newItem')?.setValue(item.get('itemId')?.value === 0);
-}
+  createInstruction(){
+    if(this.newInstruction.content === ""){ return };
+    this.insSvc.create(this.newInstruction).subscribe(
+      (res: Instruction) => {
+        console.log(res, "Success")
+        this.addInstruction(res);
+        this.loadExistingData();
+      },(error: any) => {
+        console.log(error)
+      })
+  }
+  // Method to get the instructions form array
+  get instructions() {
+    return this.rForm.get('instructions') as FormArray;
+  }
 
-checkIfNewInstruction(index: number) {
-  const instruction = this.instructions.at(index);
-  instruction.get('newContent')?.setValue(instruction.get('content')?.value === 'new');
-}
+  // Method to add an instruction
+  addInstruction(ins: Instruction) {
+    const instructionGroup = this.fb.group({
+      content: [ins.content, Validators.required],
+      id: [ins.id]
+    });
+    this.instructions.push(instructionGroup);
+  }
 
-get instructions() {
-  return this.rForm.get('instructions') as FormArray;
-}
+  createItem(i: Item){
+    if(this.newItem.name === ""){ return };
+    this.iSvc.create(this.newItem).subscribe(
+      (res: Item) => {
+        console.log(res, "Success")
+        this.loadExistingData();
+      },(error: any) => {
+        console.log(error)
+      })
+  }
+  selectItem(event: any){
+    const id = event.target.value;
+    
+  }
+  selectMT(event: any){
+    const id = event.target.value;
+    
+  }
 
-get ingredients() {
-  return this.rForm.get('ingredients') as FormArray;
-}
+  // Method to get the ingredients form array
+  get ingredients() {
+    return this.rForm.get('ingredients') as FormArray;
+  }
 
-onSubmit() {
-  console.log(this.rForm.value)
+  // Method to add an ingredient 
+  addIngredient(ingredient: Ingredient = {itemId: 0, measurementTypeId: 0, amount: 0}) {
+    const ingredientGroup = this.fb.group({
+      itemId: [ingredient.itemId, Validators.required],
+      measurementTypeId: [ingredient.measurementTypeId, Validators.required],
+      amount: [ingredient.amount]
+    });
+    this.ingredients.push(ingredientGroup);
+  }
 
-  // this.rSvc.quickCreate(this.rForm.value).subscribe(
-  //   res => console.log(res, "Success"),
-  //   error => console.log(error, "Error")
-  // );
-}
+
+  onSubmit() {
+    console.log(this.rForm.value)
+
+    // this.rSvc.quickCreate(this.rForm.value).subscribe(
+    //   res => console.log(res, "Success"),
+    //   error => console.log(error, "Error")
+    // );
+  }
 
 
 
@@ -128,41 +177,9 @@ onSubmit() {
   //     }, (error: any) => {console.log(error, "Error")})
   // }
 
-  // // Method to get the instructions form array
-  // get instructions() {
-  //   return this.rForm.get('instructions') as FormArray;
-  // }
+  
 
-  // // Method to add an instruction
-  // addInstruction(instructionContent: string = '') {
-  //   const instructionGroup = this.fb.group({
-  //     content: [instructionContent, Validators.required]
-  //   });
-  //   this.instructions.push(instructionGroup);
-  // }
-
-  // // Method to get the ingredients form array
-  // get ingredients() {
-  //   return this.rForm.get('ingredients') as FormArray;
-  // }
-
-  // // Method to add an ingredient 
-  // addIngredient(itemId: number, mTypeId: number, amount: number, item?: Item, mType?: MeasurementType) {
-  //   const ingredientGroup = this.fb.group({
-  //     itemId: [itemId, Validators.required],
-  //     item: this.fb.group({
-  //       name: [item?.name],
-  //       description: [item?.description]
-  //     }),
-  //     measurementTypeId: [mTypeId, Validators.required],
-  //     measurementType: this.fb.group({
-  //       name: [mType?.name],
-  //       description: [mType?.description]
-  //     }),
-  //     amount: [amount]
-  //   });
-  //   this.ingredients.push(ingredientGroup);
-  // }
+  
 }
 
 

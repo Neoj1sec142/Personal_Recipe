@@ -1,9 +1,10 @@
 <div class="create-form">
-  <form [formGroup]="cForm">
+  <form [formGroup]="cForm" (ngSubmit)="submit()">
     <div class="form-group">
       <label>Name&nbsp;&nbsp;&nbsp;</label>
       <input formControlName="name" name="name" type="text" />
     </div>
     <button type="submit" class="btn btn-outline-light">Submit</button>
+    <button type="button" (click)="resetForm()" class="btn btn-outline-danger">Reset</button>
   </form>
 </div>

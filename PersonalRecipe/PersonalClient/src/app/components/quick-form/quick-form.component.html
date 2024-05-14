@@ -51,5 +51,55 @@
 </div> -->
 
 <form>
-  
+  <div class="form-group">
+    <input class="form-control" name="title" formControlName="title" tpye="text" />
+  </div>
+  <div class="form-group">
+    <input class="form-control" name="description" formControlName="description" type="text"/>
+  </div>
+  <div class="ingredients">
+    <!-- Select Ingredient -->
+    <ng-container *ngIf="!creatingNewIng; createNewIng">
+      <select>
+
+      </select>
+    </ng-container>
+    <!-- Create Ingredient -->
+    <ng-template #createNewIng>
+      <!-- Select Item -->
+      <ng-container *ngIf="!creatingNewItem; else createNewItem">
+        <select (change)="selectItem($event)">
+          <option>~ Select an Item ~</option>
+          <option *ngFor="let i of existingItems" [value]="i.id">{{i.name}}</option>
+        </select>
+      </ng-container>
+      <!-- Create Item -->
+      <ng-template #createNewItem>
+
+      </ng-template>
+      <div class="form-group">
+        <select (change)="selectMT($event)">
+          <option *ngFor="let mt of measurementTypes" [value]="mt.id">{{mt.name}}</option>
+        </select>
+      </div>
+    </ng-template>
+  </div>
+  <div class="instructions">
+    <!-- Select Instruction -->
+    <ng-container *ngIf="!creatingNewIns; else createNewIns">
+      <select>
+
+      </select>
+    </ng-container>
+    <!-- Create Instruction -->
+    <ng-template #createNewIns>
+      <div class="form-group">
+        <input [(ngModel)]="newInstruction.content" name="content" type="text" />
+        <button class="btn" type="button" (click)="createInstruction()">Save</button>
+      </div>
+    </ng-template>
+  </div>
+  <div class="form-group">
+    <input class="form-control" name="chefName" formControlName="chefName" type="text" />
+  </div>
 </form>
